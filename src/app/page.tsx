@@ -4,9 +4,9 @@ import { Button } from "../../lib/antd";
 export default function Home() {
   return (
     <>
-      <Button type="primary">
+      {/* <Button type="primary">
         test
-      </Button>
+      </Button> */}
     </>
   )
 }

@@ -3,7 +3,13 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import StyledComponentsRegistry from '../../lib/AntdRegistry'
 import theme from '../../theme/themeConfig';
-import { Button, ConfigProvider } from '../../lib/antd';
+import { ConfigProvider } from '../../lib/antd';
+import { Button, Input, Layout, MenuProps, Space } from 'antd';
+import Image from 'next/image'
+import { DownOutlined, SearchOutlined, SmileOutlined } from '@ant-design/icons'
+import Dropdown from 'antd/es/dropdown/dropdown'
+import LayoutHeader from '../components/header'
+import AppLayout from '../components/layout';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,10 +28,13 @@ export default function RootLayout({
       <body className={inter.className}>
         <StyledComponentsRegistry>
           <ConfigProvider theme={theme}>
-            {children}
+            <AppLayout>
+              {children}
+            </AppLayout>
           </ConfigProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
   )
 }
+

@@ -4,7 +4,8 @@ const theme: ThemeConfig = {
   token: {
     fontSize: 16,
     colorPrimary: "#18948a",
-    colorTextBase: "#171923",
+    colorTextBase: "#111827",
+    colorTextDisabled: "#9CA3AF",
     colorBgBase: "#ffffff",
     borderRadius: 10,
     wireframe: true,
