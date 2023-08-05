@@ -1,12 +1,10 @@
-import type { ThemeConfig } from 'antd';
-
-const theme: ThemeConfig = {
+const theme = {
   token: {
     fontSize: 16,
     colorPrimary: "#18948a",
     colorTextBase: "#111827",
     colorTextDisabled: "#9CA3AF",
-    colorBgBase: "#ffffff",
+    colorBgBase: "#F9FAFB",
     borderRadius: 10,
     wireframe: true,
     colorBgContainer: "#ffffff",

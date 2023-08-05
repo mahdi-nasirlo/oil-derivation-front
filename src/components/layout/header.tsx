@@ -12,6 +12,7 @@ export default function LayoutHeader() {
   return (
     <>
       <Header style={{
+        border: "1px solid var(--gray-200, #E5E7EB)",
         flexDirection: "row-reverse",
         padding: "0 40px",
         background: 'white',
@@ -21,24 +22,23 @@ export default function LayoutHeader() {
         height: 97,
         gap: 64,
       }}>
-        <Image src="/static/logo.svg" alt='standad logo' height={49} width={200} />
-        <Input style={{ width: "704px" }} color='primary' type='primary' size='large' placeholder='جستوجو ...' suffix={<SearchOutlined />} />
-        <Space align='center'>
-          <Dropdown menu={{ items }}>
-            <Space className='flex-row-reverse flex gap-0' align='center'>
+        <Space align='center' className='flex items-center'>
+          <Image height={24} width={24} alt='bell icon' src="/static/bell.svg" />
+          <Image className='mr-4 ml-8' height={24} width={24} alt='chat-bubble-oval-left-ellipsis icon' src="/static/chat-bubble-oval-left-ellipsis.svg" />
+          <Dropdown className='flex flex-wrap items-center' menu={{ items }}>
+            <Space align='center'>
               <Image className='ml-4' height={40} width={40} alt='person-circle icon' src="/static/person-circle.svg" />
-              <Space align='center' direction='vertical' className='flex items-center'>
+              <span>
                 <Typography style={{ fontSize: "16px", fontWeight: 400, color: token.colorTextBase }} className='text-lg'>نام کاربری</Typography>
                 <Typography style={{ fontSize: "12px", fontWeight: 400, color: token.colorTextDisabled, }} className='font-semibold'>سمت شغلی</Typography>
-              </Space>
+              </span>
               <Image className='mr-8' height={16} width={16} src={"/static/chevron-down.svg"} alt='chevron-down.svg' />
             </Space>
           </Dropdown>
-          <Image className='mr-4 ml-8' height={24} width={24} alt='chat-bubble-oval-left-ellipsis icon' src="/static/chat-bubble-oval-left-ellipsis.svg" />
-          <Image height={24} width={24} alt='bell icon' src="/static/bell.svg" />
         </Space>
-        {/* </a> */}
-        {/* </Space> */}
+        <Input style={{ width: "704px" }} size='large' placeholder='جستوجو ...' />
+        {/*  color='primary' type='primary' size='large' placeholder='جستوجو ...' suffix={<SearchOutlined />} */}
+        <Image src="/static/logo.svg" alt='standad logo' height={49} width={200} />
       </Header>
     </>
   )

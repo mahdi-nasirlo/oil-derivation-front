@@ -4,12 +4,7 @@ import { Inter } from 'next/font/google'
 import StyledComponentsRegistry from '../../lib/AntdRegistry'
 import theme from '../../theme/themeConfig';
 import { ConfigProvider } from '../../lib/antd';
-import { Button, Input, Layout, MenuProps, Space } from 'antd';
-import Image from 'next/image'
-import { DownOutlined, SearchOutlined, SmileOutlined } from '@ant-design/icons'
-import Dropdown from 'antd/es/dropdown/dropdown'
-import LayoutHeader from '../components/header'
-import AppLayout from '../components/layout';
+import AppLayout from '@/components/layout/layout';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,10 +19,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="fa">
       <body className={inter.className}>
         <StyledComponentsRegistry>
-          <ConfigProvider theme={theme}>
+          <ConfigProvider direction='rtl' theme={theme}>
             <AppLayout>
               {children}
             </AppLayout>
@@ -37,4 +32,3 @@ export default function RootLayout({
     </html>
   )
 }
-
