@@ -12,6 +12,7 @@ export default function LayoutHeader() {
   return (
     <>
       <Header style={{
+        position: "sticky",
         border: "1px solid var(--gray-200, #E5E7EB)",
         flexDirection: "row-reverse",
         padding: "0 40px",

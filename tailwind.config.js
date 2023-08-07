@@ -8,13 +8,21 @@ module.exports = {
   theme: {
     colors: {
       white: "#FFFFFF",
+      red: {
+        500: "#F43F5E",
+      },
       gray: {
         900: "#F9FAFB",
       },
     },
     backgroundColor: {
+      white: "#FFFFFF",
       primary: {
         500: "#18948A",
+      },
+      gray: {
+        200: "#E2E8F0",
+        50: "#F9FAFB",
       },
       red: {
         500: "#F43F5E",

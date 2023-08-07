@@ -1,6 +1,6 @@
 'use client'
 
-import { Space, theme } from 'antd'
+import { Divider, Space, theme } from 'antd'
 import Layout, { Content } from 'antd/es/layout/layout'
 import React from 'react'
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
@@ -9,6 +9,7 @@ import LayoutHeader from './header'
 import Sider from 'antd/es/layout/Sider'
 import Menu from 'antd/es/menu/menu'
 import LayoutSidebar from './sidebar';
+import LayoutBreadcrumb from './breadcrumb';
 
 
 
@@ -20,25 +21,23 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         minHeight: 120,
         lineHeight: '120px',
         color: '#fff',
-        backgroundColor: token.colorBgBase,
-    };
-
-    const siderStyle: React.CSSProperties = {
-        textAlign: 'center',
-        lineHeight: '120px',
-        // color: token.colorTextBase,
-        // backgroundColor: "white"
+        // 
     };
 
     return (
         <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
-            <Layout>
+            <Layout style={{ minHeight: "100vh" }}>
                 <LayoutHeader />
-                <Layout hasSider>
+                <Layout className='bg-gray-50' hasSider>
                     <LayoutSidebar />
-                    <Content style={contentStyle}>{children}</Content>
+                    <Layout className='mt-6 mx-10 bg-gray-50'>
+                        <span>
+                            <LayoutBreadcrumb />
+                        </span>
+                        <Divider className='my-8' />
+                        <Content style={contentStyle}>{children}</Content>
+                    </Layout>
                 </Layout>
-                {children}
             </Layout>
         </Space>
     )

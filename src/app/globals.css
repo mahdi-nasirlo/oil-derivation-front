@@ -104,6 +104,14 @@ body {
   }
 }
 
+.box-border {
+  border-radius: 16px !important;
+  border: 1px solid var(--gray-200, #e2e8f0) !important;
+  background: var(--black-white-white, #fff) !important;
+  /* Dark/XS */
+  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.05) !important;
+}
+
 .ant-input {
   border-radius: 8px !important;
 }
@@ -129,4 +137,12 @@ body {
   background-color: theme("backgroundColor.primary.500") !important;
   color: theme("colors.white") !important;
   /* filter: brightness(0) invert(1); */
+}
+
+.ant-alert-error .ant-alert-content .ant-alert-message {
+  color: theme("colors.red.500") !important;
+}
+
+.ant-alert-error {
+  border: unset !important;
 }
