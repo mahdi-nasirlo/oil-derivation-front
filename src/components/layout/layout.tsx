@@ -14,14 +14,11 @@ import LayoutBreadcrumb from './breadcrumb';
 
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-    const { token } = theme.useToken()
-
     const contentStyle: React.CSSProperties = {
         textAlign: 'center',
         minHeight: 120,
         lineHeight: '120px',
         color: '#fff',
-        // 
     };
 
     return (

@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     colors: {
+      primary: {
+        500: "#18948A",
+      },
       white: "#FFFFFF",
       red: {
         500: "#F43F5E",
@@ -17,6 +20,9 @@ module.exports = {
     },
     backgroundColor: {
       white: "#FFFFFF",
+      orange: {
+        500: "#FA8C16",
+      },
       primary: {
         500: "#18948A",
       },

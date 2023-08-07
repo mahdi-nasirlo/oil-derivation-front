@@ -108,11 +108,13 @@ body {
   border-radius: 16px !important;
   border: 1px solid var(--gray-200, #e2e8f0) !important;
   background: var(--black-white-white, #fff) !important;
-  /* Dark/XS */
   box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.05) !important;
 }
 
-.ant-input {
+.ant-input,
+.ant-picker,
+.ant-select-selector {
+  background-color: theme("backgroundColor.gray.50") !important;
   border-radius: 8px !important;
 }
 
@@ -146,3 +148,56 @@ body {
 .ant-alert-error {
   border: unset !important;
 }
+
+.management-info-form-submit {
+  background-color: theme("backgroundColor.orange.500") !important;
+}
+
+.btn-error {
+  background-color: theme("colors.red.500") !important;
+}
+
+/* table styles */
+
+:where(.css-dev-only-do-not-override-xam6sq).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th,
+:where(.css-dev-only-do-not-override-xam6sq).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > td {
+  background: theme("backgroundColor.primary.500") !important;
+  color: theme("colors.white") !important;
+}
+
+.ant-table-row {
+  background-color: theme("backgroundColor.gray.50") !important;
+}
+
+.ant-table-cell {
+  font-weight: 500;
+}
+
+.ant-table-row:last-child {
+  border: 2px solid red !important;
+  border-radius: theme("borderRadius.xl") !important;
+}
+
+.action-btn-edit {
+  color: theme("colors.primary.500") !important;
+}
+
+.action-btn-delete {
+  color: theme("colors.red.500");
+}
+
+.ant-table-row:last-child .ant-table-cell {
+  border-bottom: unset !important;
+}
+/* .ant-table-container {
+  border-radius: 16px !important;
+  border: 1px solid var(--gray-200, #e2e8f0) !important;
+  background: var(--black-white-white, #fff) !important;
+  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.05) !important;
+} */
