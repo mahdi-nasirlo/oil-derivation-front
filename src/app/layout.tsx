@@ -1,12 +1,11 @@
 import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import type {Metadata} from 'next'
+import {Inter} from 'next/font/google'
 import StyledComponentsRegistry from '../../lib/AntdRegistry'
 import theme from '../../theme/themeConfig';
-import { ConfigProvider } from '../../lib/antd';
-import AppLayout from '@/components/layout/layout';
+import {ConfigProvider} from '../../lib/antd';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({subsets: ['latin']})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,9 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <StyledComponentsRegistry>
           <ConfigProvider direction='rtl' theme={theme}>
-            <AppLayout>
               {children}
-            </AppLayout>
           </ConfigProvider>
         </StyledComponentsRegistry>
       </body>

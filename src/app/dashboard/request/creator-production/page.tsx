@@ -1,8 +1,8 @@
 'use client'
 
-import { Alert, Button, Col, Divider, Form, FormItemProps, Input, Row } from 'antd';
+import {Alert, Button, Col, Divider, Form, FormItemProps, Input, Row} from 'antd';
 import React from 'react'
-import staticMessages from '../../../../lib/staticMessages';
+import staticMessages from '../../../../../lib/staticMessages';
 
 export default function NewRequest() {
   return (

@@ -1,4 +1,4 @@
-import { Button } from "../../lib/antd";
+import {Button} from "../../../lib/antd";
 
 
 export default function Home() {

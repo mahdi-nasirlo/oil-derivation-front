@@ -1,10 +1,22 @@
 'use client'
 
-import { ColumnsType } from 'antd/es/table';
-import { Button, Col, DatePicker, Divider, Form, FormItemProps, Input, Row, Select, Space, Table, Tag, Typography } from '../../../../lib/antd';
+import {ColumnsType} from 'antd/es/table';
+import {
+  Button,
+  Col,
+  DatePicker,
+  Divider,
+  Form,
+  FormItemProps,
+  Input,
+  Row,
+  Select,
+  Space,
+  Table,
+  Typography
+} from '../../../../../lib/antd';
 import React from 'react'
-import Image from 'next/image';
-import { SvgIcon } from '@/components/layout/sidebar';
+import {SvgIcon} from '@/components/layout/sidebar';
 import Link from 'next/link';
 
 
