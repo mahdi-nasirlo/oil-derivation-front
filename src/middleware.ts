@@ -8,7 +8,6 @@ export default async function middleware(request: NextRequest) {
 
     const params = request.nextUrl.searchParams
 
-    console.log(pathname.startsWith('/dashboard'), pathname.startsWith('/auth'), pathname === '/', hasApiToken, request.nextUrl.searchParams.has('code'))
 
     if (pathname.startsWith('/dashboard') && !hasApiToken) {
         console.log('/auth/login')
@@ -38,7 +37,6 @@ export default async function middleware(request: NextRequest) {
                 secure: process.env.NODE_ENV !== "development",
                 sameSite: "strict",
                 maxAge: 60 * 60,
-                // path: request.url,
             });
 
             return response;
