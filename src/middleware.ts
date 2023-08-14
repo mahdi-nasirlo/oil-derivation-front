@@ -1,19 +1,12 @@
-import type {NextRequest} from 'next/server'
-import {NextResponse} from "next/server";
+import {chain} from "../middleware/chine";
+import {redirectMiddleware} from "../middleware/redirect";
+import {authenticateMiddleware} from "../middleware/authenticate";
 
-// This function can be marked `async` if using `await` inside
-export function middleware(request: NextRequest) {
+export default chain([authenticateMiddleware, redirectMiddleware])
 
-    const {pathname} = request.nextUrl
 
-    const hasApiToken = request.cookies.has('authorization')
 
-    if (pathname.startsWith('/dashboard') && !hasApiToken) {
-        return NextResponse.rewrite(new URL('/login', request.url))
-    }
 
-    if (pathname.startsWith("/auth") && hasApiToken) {
-        return NextResponse.rewrite(new URL('/dashboard'))
-    }
 
-}
+
+
