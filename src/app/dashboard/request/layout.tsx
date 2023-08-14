@@ -1,4 +1,4 @@
-import { Divider, Steps } from "antd"
+import {Steps} from "../../../../lib/antd"
 
 export default function RootLayout({
     children,

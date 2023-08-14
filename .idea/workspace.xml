@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3662cbbe-ff6f-4894-a968-20ba9599c8c6" name="Changes" comment="receive in middleware">
-      <change afterPath="$PROJECT_DIR$/src/app/dashboard/components/showData.tsx" afterDir="false" />
+    <list default="true" id="3662cbbe-ff6f-4894-a968-20ba9599c8c6" name="Changes" comment="demo data in dashboard data">
+      <change afterPath="$PROJECT_DIR$/src/app/dashboard/loading.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/components/showData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/components/showData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/request/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/request/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/sidebar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -99,7 +100,7 @@
       <workItem from="1691909404224" duration="29878000" />
       <workItem from="1691990558868" duration="1045000" />
       <workItem from="1691991631842" duration="21221000" />
-      <workItem from="1692016466723" duration="2199000" />
+      <workItem from="1692016466723" duration="4227000" />
     </task>
     <task id="LOCAL-00001" summary="add authorization middleware">
       <created>1691912775693</created>
@@ -115,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692008003812</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="demo data in dashboard data">
+      <created>1692018874893</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1692018874893</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +143,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add authorization middleware" />
     <MESSAGE value="receive in middleware" />
-    <option name="LAST_COMMIT_MESSAGE" value="receive in middleware" />
+    <MESSAGE value="demo data in dashboard data" />
+    <option name="LAST_COMMIT_MESSAGE" value="demo data in dashboard data" />
   </component>
 </project>
