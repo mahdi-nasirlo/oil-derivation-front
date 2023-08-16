@@ -195,6 +195,22 @@ body {
 .ant-table-row:last-child .ant-table-cell {
   border-bottom: unset !important;
 }
+
+
+
+
+/*request-list style*/
+.btn-filter{
+  background-color: theme("colors.primary.500") !important;
+}  
+.btn-delete-filter{
+  background-color:theme("colors.red.500")!important;
+}
+
+
+
+
+
 /* .ant-table-container {
   border-radius: 16px !important;
   border: 1px solid var(--gray-200, #e2e8f0) !important;
