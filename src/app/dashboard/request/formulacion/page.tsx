@@ -2,6 +2,7 @@
 import {Button, Col, Divider, Form, FormItemProps, Input, Row, Select, Typography} from "../../../../../lib/antd";
 import React from "react";
 import {SvgIcon} from "@/components/layout/sidebar";
+import PrimaryProductTable from "@/app/dashboard/request/formulacion/components/primary-product-table";
 
 export default function Formulacion() {
     return <>
@@ -53,7 +54,8 @@ export default function Formulacion() {
                         </Col>
                     </Row>
                     <Divider/>
-                    <Typography className='mt-3 text-right font-medium text-base text-secondary-500 text-secondary'>
+                    <Typography
+                        className='mt-3 mb-6 text-right font-medium text-base text-secondary-500 text-secondary'>
                         منابع عمده تامین
                     </Typography>
                     <Row gutter={32}>
@@ -65,6 +67,40 @@ export default function Formulacion() {
                         <Col span={12}>
                             <MyFormItem name="raw-material" label="درصد تامین خارجی">
                                 <Input type={"number"} max={"100"} min={"0"} size='large' placeholder="انتخاب نمایید"/>
+                            </MyFormItem>
+                        </Col>
+                    </Row>
+                    <Divider/>
+                    <Typography
+                        className='mt-3 mb-6 text-right font-medium text-base text-secondary-500 text-secondary'>
+                        مشخصات تامین کننده مواد اولیه
+                    </Typography>
+                    <Row gutter={32}>
+                        <Col span={8}>
+                            <MyFormItem name="raw-material" label="نام">
+                                <Input size='large' placeholder="وارد نمایید"/>
+                            </MyFormItem>
+                        </Col>
+                        <Col span={8}>
+                            <MyFormItem name="how-to-supply" label="شخصیت">
+                                <Select size='large' placeholder="انتخاب نمایید"/>
+                            </MyFormItem>
+                        </Col>
+                        <Col span={8}>
+                            <MyFormItem name="how-to-supply" label="کد ملی / شناسه ملی">
+                                <Input size='large' placeholder="انتخاب نمایید"/>
+                            </MyFormItem>
+                        </Col>
+                    </Row>
+                    <Row gutter={32}>
+                        <Col span={12}>
+                            <MyFormItem name="how-to-supply" label="ایرانکد">
+                                <Input size='large' placeholder="انتخاب نمایید"/>
+                            </MyFormItem>
+                        </Col>
+                        <Col span={12}>
+                            <MyFormItem name="how-to-supply" label="آدرس">
+                                <Input size='large' placeholder="انتخاب نمایید"/>
                             </MyFormItem>
                         </Col>
                     </Row>
@@ -81,6 +117,11 @@ export default function Formulacion() {
                 </MyFormItemGroup>
             </MyFormItemGroup>
         </Form>
+        <PrimaryProductTable/>
+        <Divider/>
+        <Button type="primary" size="large" className="w-full py-3">
+            ذخیره و ادامه
+        </Button>
     </>
 }
 

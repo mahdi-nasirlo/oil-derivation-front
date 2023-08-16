@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3662cbbe-ff6f-4894-a968-20ba9599c8c6" name="Changes" comment="fix navigation of sidebar">
-      <change afterPath="$PROJECT_DIR$/src/components/layout/header-dropdown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/dashboard/request/formulacion/components/primary-product-table.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/request/formulacion/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/request/formulacion/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -102,6 +101,7 @@
       <workItem from="1691991631842" duration="21221000" />
       <workItem from="1692016466723" duration="4630000" />
       <workItem from="1692077198391" duration="3164000" />
+      <workItem from="1692188913170" duration="4415000" />
     </task>
     <task id="LOCAL-00001" summary="add authorization middleware">
       <created>1691912775693</created>
