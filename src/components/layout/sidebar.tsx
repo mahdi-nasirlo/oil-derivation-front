@@ -5,6 +5,8 @@ import type {MenuProps} from 'antd';
 import {Badge, Menu} from 'antd';
 import Image from 'next/image';
 import {usePathname} from "next/navigation";
+import {ChatBubbleLeftEllipsisIcon, Cog6ToothIcon, HomeIcon, PencilIcon} from "@heroicons/react/24/outline";
+import {ListBulletIcon} from "@heroicons/react/24/solid";
 
 
 export default function LayoutSidebar() {
@@ -65,22 +67,19 @@ export const SvgIcon = ({src, width = 16, height = 16, className}:
 const items: MenuProps['items'] = [
 
 
-    getItem(<Link href="/dashboard">خانه</Link>, '/dashboard', <SvgIcon src="/static/home.svg" className='ml-1'/>),
+    getItem(<Link href="/dashboard">خانه</Link>, '/dashboard', <HomeIcon width={16} height={16}/>),
 
     {type: 'divider'},
 
     getItem('پیشخوان', 'dashboard', null, [
-        getItem(<MakeRequest/>, "/dashboard/request/personnel-info", <SvgIcon src="/static/pencil.svg"
-                                                                              className='ml-1'/>),
-        getItem('لیست درخواست', 'request_list', <SvgIcon src="/static/list-bullet.svg" className='ml-1'/>)
+        getItem(<MakeRequest/>, "/dashboard/request/personnel-info", <PencilIcon width={16} height={16}/>),
+        getItem('لیست درخواست', 'request_list', <ListBulletIcon width={16} height={16}/>)
     ], 'group'),
 
     {type: 'divider'},
 
     getItem('مدیریت', 'management', null, [
-        getItem("تنظیمات حساب کاربری", 'profile-setting', <SvgIcon src="/static/cog-6-tooth.svg" className='ml-1'/>),
-        getItem('ارتباط با پشتیبان', 'connect-support', <SvgIcon src="/static/chat-bubble-left-ellipsis.svg"
-                                                                 className='ml-1'/>)
+        getItem("تنظیمات حساب کاربری", 'profile-setting', <Cog6ToothIcon width={16} height={16}/>),
+        getItem('ارتباط با پشتیبان', 'connect-support', <ChatBubbleLeftEllipsisIcon width={16} height={16}/>)
     ], 'group'),
-
 ];
