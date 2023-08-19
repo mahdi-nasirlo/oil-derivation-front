@@ -24,56 +24,36 @@ export default function Page() {
         <MyFormItemGroup prefix={["user"]}>
           <MyFormItemGroup prefix={["name"]}>
             <Row gutter={32}>
-              <Col span={12}>
-                <MyFormItem name="year-establishment" label="استان ">
-                  <Select size="large" />
-                </MyFormItem>
-              </Col>
-              <Col span={12}>
-                <MyFormItem name="lastName" label="شهرستان">
-                  <Select size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row gutter={32}>
-              <Col span={12}>
-                <MyFormItem name="company-registratuon-num" label="شهرک">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col span={12}>
-                <MyFormItem name="license-establish" label="خیابان اصلی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row gutter={32}>
-              <Col span={12}>
-                <MyFormItem name="operation-license" label="خیابان فرعی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col span={12}>
-                <MyFormItem name={"phone_number"} label="کوچه">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row>
               <Col span={24}>
-                <MyFormItem name="operation-license" label="نشانی دفتر مرکزی">
-                  <Input size="large" />
+                <MyFormItem
+                  name="year-establishment"
+                  label=" تجهیزات آزمایشگاه"
+                >
+                  <Select size="large" />
                 </MyFormItem>
               </Col>
             </Row>
             <Row gutter={32}>
               <Col span={12}>
-                <MyFormItem name="operation-license" label="تلفن دفتر مرکزی">
-                  <Input size="large" />
+                <MyFormItem
+                  name="company-registratuon-num"
+                  label="کشورهای مقصد صادراتی محصول"
+                >
+                  <Select size="large" />
                 </MyFormItem>
               </Col>
               <Col span={12}>
-                <MyFormItem name={"phone_number"} label="تلفن تماس کارخانه">
+                <MyFormItem name="license-establish" label="ضایعات">
+                  <Select size="large" />
+                </MyFormItem>
+              </Col>
+            </Row>
+            <Row gutter={32}>
+              <Col span={12}>
+                <MyFormItem
+                  name="operation-license"
+                  label="محل فروش و یا دفن ضایعات"
+                >
                   <Input size="large" />
                 </MyFormItem>
               </Col>

@@ -242,3 +242,9 @@ body {
 .ant-pagination-item-link-icon{
 color: theme("colors.primary.500") !important;
 }
+
+
+/*production-process*/
+.message-info{
+  color: theme("colors.red.500")!important;
+}

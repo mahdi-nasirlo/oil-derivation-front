@@ -1,5 +1,6 @@
 "use client";
 
+import TextArea from "antd/es/input/TextArea";
 import {
   Button,
   Col,
@@ -12,6 +13,13 @@ import {
   Typography,
 } from "../../../../../lib/antd";
 import React from "react";
+import {
+  InboxOutlined,
+  InfoCircleOutlined,
+  UploadOutlined,
+} from "@ant-design/icons";
+import Upload from "antd/es/upload/Upload";
+import Dragger from "antd/es/upload/Dragger";
 
 export default function Page() {
   return (
@@ -24,57 +32,39 @@ export default function Page() {
         <MyFormItemGroup prefix={["user"]}>
           <MyFormItemGroup prefix={["name"]}>
             <Row gutter={32}>
-              <Col span={12}>
-                <MyFormItem name="year-establishment" label="استان ">
-                  <Select size="large" />
-                </MyFormItem>
-              </Col>
-              <Col span={12}>
-                <MyFormItem name="lastName" label="شهرستان">
-                  <Select size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row gutter={32}>
-              <Col span={12}>
-                <MyFormItem name="company-registratuon-num" label="شهرک">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col span={12}>
-                <MyFormItem name="license-establish" label="خیابان اصلی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row gutter={32}>
-              <Col span={12}>
-                <MyFormItem name="operation-license" label="خیابان فرعی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col span={12}>
-                <MyFormItem name={"phone_number"} label="کوچه">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row>
               <Col span={24}>
-                <MyFormItem name="operation-license" label="نشانی دفتر مرکزی">
-                  <Input size="large" />
+                <MyFormItem name="year-establishment" label="شرح فرآیند تولید">
+                  <TextArea
+                    showCount
+                    maxLength={100}
+                    style={{
+                      height: 120,
+                      resize: "none",
+                    }}
+                    placeholder="وارد کنید"
+                  />
                 </MyFormItem>
               </Col>
             </Row>
             <Row gutter={32}>
-              <Col span={12}>
-                <MyFormItem name="operation-license" label="تلفن دفتر مرکزی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col span={12}>
-                <MyFormItem name={"phone_number"} label="تلفن تماس کارخانه">
-                  <Input size="large" />
+              <Col span={24}>
+                <MyFormItem
+                  name="company-registratuon-num"
+                  label="نمودار شماتیک فرآیند"
+                >
+                  <Dragger className="hy-10">
+                    <div className="inset-y-0 left-0">
+                      <UploadOutlined />
+                    </div>
+                  </Dragger>
+                  <div className="flex mt-2 mr-2 message-info ">
+                    <span>
+                      <InfoCircleOutlined />
+                    </span>
+                    <p className="mr-2  ">
+                      فایل OPC فقط به صورت png یا jpg بارگذاری شود!
+                    </p>
+                  </div>
                 </MyFormItem>
               </Col>
             </Row>
