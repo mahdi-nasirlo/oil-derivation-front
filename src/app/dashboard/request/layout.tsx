@@ -1,11 +1,11 @@
 'use client'
-import {Steps} from "../../../../lib/antd"
-import {useState} from "react";
-import {usePathname, useRouter} from "next/navigation";
+import { Steps } from "../../../../lib/antd"
+import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function RootLayout({
-                                       children,
-                                   }: {
+    children,
+}: {
     children: React.ReactNode
 }) {
     const pathname = usePathname()
@@ -60,7 +60,7 @@ export default function RootLayout({
                         title: 'فرمولاسیون',
                         description: 'تولید محصول'
                     },
-                ]}/>
+                ]} />
             <div className="box-border w-full mt-8 p-6">
                 {children}
             </div>
@@ -70,9 +70,12 @@ export default function RootLayout({
 
 
 const stepLinks: { number: number, href: string }[] = [
-    {number: 0, href: "/dashboard/request/creator-production"},
-    {number: 1, href: "/dashboard/request/management-info"},
-    {number: 2, href: "/dashboard/request/personnel-info"},
-    {number: 3, href: "/dashboard/request/license-info"},
-    {number: 7, href: "/dashboard/request/formulacion"},
+    { number: 0, href: "/dashboard/request/creator-production" },
+    { number: 1, href: "/dashboard/request/management-info" },
+    { number: 2, href: "/dashboard/request/personnel-info" },
+    { number: 3, href: "/dashboard/request/license-info" },
+    { number: 4, href: "/dashboard/request/contact-info" },
+    { number: 5, href: "/dashboard/request/production-process" },
+    { number: 6, href: "/dashboard/request/laboratory" },
+    { number: 7, href: "/dashboard/request/formulacion" },
 ]

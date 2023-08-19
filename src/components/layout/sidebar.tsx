@@ -77,14 +77,6 @@ export const SvgIcon = ({ src, width = 16, height = 16, className }:
     alt='' />
 
 const items: MenuProps["items"] = [
-  getItem(
-    <Link href="/dashboard">خانه</Link>,
-    "/dashboard",
-    <HomeIcon width={16} height={16} />
-  ),
-
-  { type: "divider" },
-
   getItem(<Link href="/dashboard">خانه</Link>, '/dashboard', <HomeIcon width={16} height={16} />),
 
   { type: 'divider' },
