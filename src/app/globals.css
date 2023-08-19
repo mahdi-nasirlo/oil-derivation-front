@@ -232,3 +232,13 @@ body {
     background-color: rgb(255 255 255 / 0%) !important;
     backdrop-filter: blur(1px);
 }
+.ant-pagination
+.ant-pagination-item-active {
+  background-color: theme("colors.primary.500") !important;
+  border-color: theme("colors.gray.900") !important; 
+}
+.ant-pagination .ant-pagination-item-active a {color: theme("colors.white") !important;}
+
+.ant-pagination-item-link-icon{
+color: theme("colors.primary.500") !important;
+}
