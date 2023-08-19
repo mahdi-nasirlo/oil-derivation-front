@@ -232,3 +232,9 @@ body {
     background-color: rgb(255 255 255 / 0%) !important;
     backdrop-filter: blur(1px);
 }
+
+
+/*production-process*/
+.message-info{
+  color: theme("colors.red.500")!important;
+}
