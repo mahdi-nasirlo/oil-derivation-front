@@ -43,6 +43,14 @@ export default async function middleware(request: NextRequest) {
         }
 
     }
+
+    if (params.has('logout')) {
+        const response = NextResponse.redirect(new URL('/auth/login', request.url))
+
+        response.cookies.delete('accessToken')
+
+        return response
+    }
 }
 
 export const config = {

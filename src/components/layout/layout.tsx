@@ -1,19 +1,15 @@
 'use client'
-
-import { Divider, Space, theme } from 'antd'
-import Layout, { Content } from 'antd/es/layout/layout'
+import type {MenuProps} from 'antd';
+import {Divider, Space} from 'antd'
+import Layout, {Content} from 'antd/es/layout/layout'
 import React from 'react'
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
+import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
 import LayoutHeader from './header'
-import Sider from 'antd/es/layout/Sider'
-import Menu from 'antd/es/menu/menu'
 import LayoutSidebar from './sidebar';
 import LayoutBreadcrumb from './breadcrumb';
 
 
-
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default function AppLayout({children}: { children: React.ReactNode }) {
     const contentStyle: React.CSSProperties = {
         textAlign: 'center',
         minHeight: 120,
@@ -22,8 +18,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     };
 
     return (
-        <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
-            <Layout style={{ minHeight: "100vh" }}>
+        <Space direction="vertical" style={{width: '100%'}} size={[0, 48]}>
+            <Layout style={{minHeight: "100vh"}}>
                 <LayoutHeader />
                 <Layout className='bg-gray-50' hasSider>
                     <LayoutSidebar />

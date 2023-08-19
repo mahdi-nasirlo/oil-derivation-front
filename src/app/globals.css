@@ -93,29 +93,34 @@
 }
 
 body {
-  font-family: IRANSans !important;
+    font-family: IRANSans !important;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+.text-secondary {
+    color: theme('textColor.secondary.500') !important;
 }
 
 .box-border {
-  border-radius: 16px !important;
-  border: 1px solid var(--gray-200, #e2e8f0) !important;
-  background: var(--black-white-white, #fff) !important;
-  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--gray-200, #e2e8f0) !important;
+    background: var(--black-white-white, #fff) !important;
+    box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.05) !important;
 }
 
 .ant-input,
 .ant-picker,
 .ant-select-selector {
-  background-color: theme("backgroundColor.gray.50") !important;
-  border-radius: 8px !important;
+    background-color: theme("backgroundColor.gray.50") !important;
+    border-radius: 8px !important;
+    text-align: right !important;
 }
 
 .ant-menu-item {
@@ -142,33 +147,37 @@ body {
 }
 
 .ant-alert-error .ant-alert-content .ant-alert-message {
-  color: theme("colors.red.500") !important;
+    color: theme("colors.red.500") !important;
 }
 
 .ant-alert-error {
-  border: unset !important;
+    border: unset !important;
 }
 
 .management-info-form-submit {
-  background-color: theme("backgroundColor.orange.500") !important;
+    background-color: theme("backgroundColor.orange.500") !important;
+}
+
+.secondary-btn {
+    background-color: theme("backgroundColor.orange.500") !important;
 }
 
 .btn-error {
-  background-color: theme("colors.red.500") !important;
+    background-color: theme("colors.red.500") !important;
 }
 
 /* table styles */
 
 :where(.css-dev-only-do-not-override-xam6sq).ant-table-wrapper
-  .ant-table-thead
-  > tr
-  > th,
+.ant-table-thead
+> tr
+> th,
 :where(.css-dev-only-do-not-override-xam6sq).ant-table-wrapper
-  .ant-table-thead
-  > tr
-  > td {
-  background: theme("backgroundColor.primary.500") !important;
-  color: theme("colors.white") !important;
+.ant-table-thead
+> tr
+> td {
+    background: theme("backgroundColor.primary.500") !important;
+    color: theme("colors.white") !important;
 }
 
 .ant-table-row {
@@ -193,7 +202,7 @@ body {
 }
 
 .ant-table-row:last-child .ant-table-cell {
-  border-bottom: unset !important;
+    border-bottom: unset !important;
 }
 
 
@@ -217,3 +226,9 @@ body {
   background: var(--black-white-white, #fff) !important;
   box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.05) !important;
 } */
+
+
+.ant-modal-mask {
+    background-color: rgb(255 255 255 / 0%) !important;
+    backdrop-filter: blur(1px);
+}

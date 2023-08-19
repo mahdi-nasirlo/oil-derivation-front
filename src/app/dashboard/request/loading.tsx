@@ -1,4 +1,4 @@
-import {Spin} from '../../../lib/antd';
+import {Spin} from '../../../../lib/antd';
 
 export default function Loading() {
 
