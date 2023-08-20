@@ -239,12 +239,24 @@ body {
 }
 .ant-pagination .ant-pagination-item-active a {color: theme("colors.white") !important;}
 
-.ant-pagination-item-link-icon{
-color: theme("colors.primary.500") !important;
+.ant-pagination-item-link-icon {
+    color: theme("colors.primary.500") !important;
 }
 
 
 /*production-process*/
-.message-info{
-  color: theme("colors.red.500")!important;
+.message-info {
+    color: theme("colors.red.500") !important;
+}
+
+/*ant file upload*/
+.ant-upload {
+    @apply w-full
+}
+
+.ant-upload button {
+    @apply w-full bg-gray-50 rounded-b-xl h-[73px] flex flex-row-reverse justify-between items-center
+}
+
+.ant-upload button .ant-btn-icon {
 }

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  important: true,
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,6 +19,7 @@ module.exports = {
         500: "#F43F5E",
       },
       gray: {
+        300: "#D1D5DB",
         900: "#F9FAFB",
       },
     },
