@@ -1,11 +1,11 @@
 'use client'
-import { Steps } from "../../../../lib/antd"
-import { useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import {Steps} from "../../../../lib/antd"
+import {useEffect, useState} from "react";
+import {usePathname, useRouter} from "next/navigation";
 
 export default function RootLayout({
-    children,
-}: {
+                                       children,
+                                   }: {
     children: React.ReactNode
 }) {
     const pathname = usePathname()
@@ -20,6 +20,12 @@ export default function RootLayout({
         router.push(`${currentLink}`)
         setCurrent(value);
     };
+
+    useEffect(() => {
+
+        setCurrent(currentNumber);
+
+    }, [currentNumber, pathname])
 
     return (
         <>
