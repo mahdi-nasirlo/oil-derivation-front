@@ -4,8 +4,11 @@ import {Button, Col, Divider, Form, Input, Row, Typography, Upload} from "../../
 import React from "react";
 import {UploadOutlined,} from "@ant-design/icons";
 import axios, {AxiosResponse} from "axios";
+import {useRouter} from "next/navigation";
 
 export default function Page() {
+
+    const router = useRouter()
 
     const onFinish = (values: RequestMasterForm) => {
 
@@ -13,7 +16,8 @@ export default function Page() {
 
         axios.post("http://192.168.52.102:97/api/RequestMaster/Create", data)
             .then((res: AxiosResponse) => {
-                console.log(res)
+                localStorage.setItem("requestMasterUid", res.data.data)
+                router.push("/dashboard/request/formulacion")
             })
     };
 
