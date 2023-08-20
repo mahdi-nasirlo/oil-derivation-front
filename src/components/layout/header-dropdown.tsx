@@ -71,11 +71,11 @@ export default function HeaderDropdown() {
                          src="/static/person-circle.svg"/>
                   <span>
                     <Typography style={{fontSize: "16px", fontWeight: 400, color: token.colorTextBase}}
-                                className='text-lg'>نام کاربری</Typography>
+                                className='text-lg hidden lg:block'>نام کاربری</Typography>
                     <Typography style={{fontSize: "12px", fontWeight: 400, color: token.colorTextDisabled,}}
-                                className='font-semibold'>سمت شغلی</Typography>
+                                className='font-semibold hidden lg:block'>سمت شغلی</Typography>
                   </span>
-                  <Image className='mr-8' height={16} width={16} src={"/static/chevron-down.svg"}
+                  <Image className='mr-8 hidden lg:block' height={16} width={16} src={"/static/chevron-down.svg"}
                          alt='chevron-down.svg'/>
                 </span>
             </Dropdown>
