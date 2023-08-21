@@ -1,10 +1,8 @@
-"use client";
 import {
   Button,
   Col,
   Divider,
   Form,
-  FormItemProps,
   Input,
   InputNumber,
   Row,
@@ -15,9 +13,10 @@ import React, { ChangeEvent } from "react";
 import { SvgIcon } from "@/components/layout/sidebar";
 import PrimaryProductTable from "@/app/dashboard/request/formulacion/components/primary-product-table";
 import axios from "axios";
-import TypedInputNumber from "antd/es/input-number";
+import { MaterialRequest } from "./components/primary-product-form";
+import { cookies } from "next/headers";
 
-export default function Formulacion() {
+export default async function Formulacion() {
   const onChange = (value: number | string | null) => {
     if (typeof value === "string") {
       // Remove the percent symbol and convert the remaining value to a number
@@ -46,9 +45,10 @@ export default function Formulacion() {
       .catch(() => {});
   };
 
-  // useEffect(() => {
-  //     console.log(localStorage.getItem("requestMasterUid"))
-  // })
+  const data: { records: []; count: number } = await getAllRequestMaster();
+
+  const material: Material[] = await getAllMaterial();
+
   return (
     <>
       <Typography className="text-right font-medium text-base">
@@ -312,7 +312,7 @@ export default function Formulacion() {
             </Button>
           </Col>
         </Row>
-        <PrimaryProductTable />
+        <PrimaryProductTable data={data.records} />
         <Divider />
         <Button
           type="primary"
@@ -327,54 +327,38 @@ export default function Formulacion() {
   );
 }
 
-type MaterialRequest = {
-  requestMasterUid: string | null;
-  materialUid: string;
-  materialSupplyMethodId: number;
-  materialTotalConsumption: string;
-  materialUnitConsumption: string;
-  materialUsagePercentage: number;
-  materialInternalSupplyPercentage: number;
-  materialForeignSupplyPercentage: number;
-  materialImportDeclarationNumber: string;
-  materialSupplyName: string;
-  materialSupplyPersonTypeId: number;
-  materialSupplyNationalCode: string;
-  materialSupplyIranCode: string;
-  materialSupplyAddress: string;
-};
+async function getAllRequestMaster() {
+  const cookieStore = cookies();
+  const requestMasterUid = cookieStore.get("requestMasterUid")?.value;
 
-const MyFormItemContext = React.createContext<(string | number)[]>([]);
-
-interface MyFormItemGroupProps {
-  prefix: string | number | (string | number)[];
-  children: React.ReactNode;
+  return await axios
+    .request({
+      method: "get",
+      url: `http://192.168.52.102:97/api/RequestDetail/GetPageMaterial`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        requestMasterUid: requestMasterUid,
+        fromRecord: 0,
+        selectRecord: 20,
+      },
+    })
+    .then((res: any) => res.data.data);
 }
 
-function toArr(
-  str: string | number | (string | number)[]
-): (string | number)[] {
-  return Array.isArray(str) ? str : [str];
+async function getAllMaterial() {
+  return await axios
+    .request({
+      method: "get",
+      url: `http://192.168.52.102:97/api/Material/GetAll`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        name: null,
+        is_Active: true,
+      },
+    })
+    .then((res: any) => res.data.data);
 }
-
-const MyFormItemGroup = ({ prefix, children }: MyFormItemGroupProps) => {
-  const prefixPath = React.useContext(MyFormItemContext);
-  const concatPath = React.useMemo(
-    () => [...prefixPath, ...toArr(prefix)],
-    [prefixPath, prefix]
-  );
-
-  return (
-    <MyFormItemContext.Provider value={concatPath}>
-      {children}
-    </MyFormItemContext.Provider>
-  );
-};
-
-const MyFormItem = ({ name, ...props }: FormItemProps) => {
-  const prefixPath = React.useContext(MyFormItemContext);
-  const concatName =
-    name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
-
-  return <Form.Item name={concatName} {...props} />;
-};
