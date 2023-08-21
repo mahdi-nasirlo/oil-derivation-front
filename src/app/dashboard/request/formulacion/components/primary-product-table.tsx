@@ -1,47 +1,39 @@
+'use client'
 import {Table, Typography} from "../../../../../../lib/antd";
 import {ColumnsType} from "antd/es/table";
 import React from "react";
+import {RequestDetail} from "../../../../../../interfaces/requestDetail";
 
-interface DataType {
-    key: React.Key;
-    index: number;
-    name: string;
-    usage_per_unit: number;
-    percent: number;
-    usage: number;
-    inside_supply: number;
-    outside_supply: number;
-}
 
-const columns: ColumnsType<DataType> = [
+const columns: ColumnsType<RequestDetail> = [
     {
         title: 'ردیف',
         width: 100,
-        dataIndex: 'index',
-        key: 'name',
+        dataIndex: 'Id',
+        key: 'id',
     },
     {
         title: 'نام مواد',
         width: 100,
-        dataIndex: 'name',
-        key: 'age',
+        dataIndex: 'ProductOrMaterialName',
+        key: 'productOrMaterialName',
     },
     {
         title: 'میزان مصرف برای یک واحد',
-        dataIndex: 'usage_per_unit',
-        key: '1',
+        dataIndex: 'MaterialUsagePercentage',
+        key: 'MaterialUsagePercentage',
         width: 150,
     },
     {
         title: 'درصد',
-        dataIndex: 'percent',
-        key: '2',
+        dataIndex: 'MaterialUsagePercentage',
+        key: 'MaterialUsagePercentage',
         width: 150,
     },
     {
         title: 'میزان مصرف',
-        dataIndex: 'usage',
-        key: '3',
+        dataIndex: 'MaterialTotalConsumption',
+        key: 'MaterialTotalConsumption',
         width: 150,
     },
     {
@@ -49,13 +41,13 @@ const columns: ColumnsType<DataType> = [
         children: [
             {
                 title: "درصد تامین خارجی",
-                dataIndex: "inside_supply",
+                dataIndex: "MaterialInternalSupplyPercentage",
                 key: '4',
                 align: "center",
             },
             {
                 title: "درصد تامین داخلی",
-                dataIndex: "outside_supply",
+                dataIndex: "MaterialInternalSupplyPercentage",
                 key: '4',
                 align: "center",
             },
@@ -75,21 +67,8 @@ const columns: ColumnsType<DataType> = [
     },
 ];
 
-const data: DataType[] = [];
-for (let i = 0; i < 3; i++) {
-    data.push({
-        key: i,
-        name: `Edward ${i}`,
-        index: i,
-        usage: i * 25,
-        percent: 2 * i,
-        usage_per_unit: 1 + i,
-        inside_supply: 1.2 * i,
-        outside_supply: 1.2 * i,
-    });
-}
-
-export default function PrimaryProductTable() {
+export default function PrimaryProductTable({data}: { data: RequestDetail[] }) {
+    console.log(data)
     return <>
         <Table className={"mt-6"} pagination={false} columns={columns} dataSource={data} scroll={{x: 1500, y: 300}}/>
     </>

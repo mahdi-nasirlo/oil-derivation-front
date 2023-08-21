@@ -3,8 +3,8 @@
 import {Button, Col, Divider, Form, Input, Row, Typography, Upload} from "../../../../../lib/antd";
 import React from "react";
 import {UploadOutlined,} from "@ant-design/icons";
-import axios, {AxiosResponse} from "axios";
 import {useRouter} from "next/navigation";
+import {createRequestMaster} from "../../../../../units/RequestMaster/createRequestMaster";
 
 export default function Page() {
 
@@ -14,12 +14,11 @@ export default function Page() {
 
         let data: RequestMaster = {...values, fileName: values.fileName.file.name}
 
-        axios.post("http://192.168.52.102:97/api/RequestMaster/Create", data)
-            .then((res: AxiosResponse) => {
-                localStorage.setItem("requestMasterUid", res.data.data)
-                router.push("/dashboard/request/formulacion")
-            })
+        createRequestMaster(data).then(() => router.push("/dashboard/request/formulacion"))
+        
     };
+    // localStorage.setItem("requestMasterUid", res.data.data)
+    // router.push("/dashboard/request/formulacion")
 
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
@@ -75,7 +74,7 @@ export default function Page() {
     );
 }
 
-type RequestMaster = {
+export type RequestMaster = {
     processDescription: string,
     fileName: string
 }
