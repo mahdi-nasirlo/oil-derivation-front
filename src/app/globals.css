@@ -197,8 +197,12 @@ body {
     color: theme("colors.white") !important;
 }
 
-.ant-table-row {
+.ant-table-row:nth-child(odd) {
   background-color: theme("backgroundColor.gray.50") !important;
+}
+
+.ant-table-row:nth-child(even) {
+  background-color: theme("backgroundColor.white") !important;
 }
 
 .ant-table-cell {
@@ -289,11 +293,6 @@ body {
 .ant-upload button {
     @apply w-full bg-gray-50 rounded-b-xl h-[73px] flex flex-row-reverse justify-between items-center
 }
-
-.ant-upload button .ant-btn-icon {
-}
-
-
 
 
 /*form style*/

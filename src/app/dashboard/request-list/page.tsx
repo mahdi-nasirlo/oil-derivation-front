@@ -10,11 +10,11 @@ import {
   Select,
   Space,
   Table,
+  Tag,
 } from "../../../../lib/antd";
 import React from "react";
 import Link from "next/link";
 import { ColumnsType } from "antd/es/table";
-import { Tag } from 'antd';
 
 
 export default function Page() {
