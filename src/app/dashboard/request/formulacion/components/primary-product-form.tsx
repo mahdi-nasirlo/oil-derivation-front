@@ -12,7 +12,7 @@ export default function PrimaryProductForm({material}: { material: Material[] })
         values.materialSupplyMethodId = 1
 
         return axios
-            .post('http://192.168.52.102:97/api/RequestDetail/CreateMaterial', values)
+            .post(`${process.env["NEXT_PUBLIC_API_URL"]}/api/RequestDetail/CreateMaterial`, values)
             .then((response: any) => {
                 console.log(response.data.message);
             })

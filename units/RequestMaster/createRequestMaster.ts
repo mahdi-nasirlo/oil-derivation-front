@@ -4,7 +4,7 @@ import {RequestMaster} from "@/app/dashboard/request/production-process/page";
 export async function createRequestMaster(data: RequestMaster) {
     try {
         const res: AxiosResponse = await axios.post(
-            "http://192.168.52.102:97/api/RequestMaster/Create",
+            `${process.env["NEXT_PUBLIC_API_URL"]}/api/RequestMaster/Create`,
             data
         );
 

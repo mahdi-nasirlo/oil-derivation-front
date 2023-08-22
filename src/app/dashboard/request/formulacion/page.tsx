@@ -6,6 +6,7 @@ import PrimaryProductForm, {MaterialRequest} from "./components/primary-product-
 import {cookies} from "next/headers";
 
 export default async function Formulacion() {
+
     const onChange = (value: number | string | null) => {
         if (typeof value === "string") {
             // Remove the percent symbol and convert the remaining value to a number
@@ -27,7 +28,7 @@ export default async function Formulacion() {
         console.log(values);
 
         return axios
-            .post("http://192.168.52.102:97/api/RequestDetail/CreateMaterial", values)
+            .post(`${process.env["NEXT_PUBLIC_API_URL"]}/api/RequestDetail/CreateMaterial`, values)
             .then((response) => {
                 console.log(response.data.message);
             })
@@ -63,10 +64,11 @@ async function getAllRequestMaster() {
     const cookieStore = cookies();
     const requestMasterUid = cookieStore.get("requestMasterUid")?.value;
 
+
     return await axios
         .request({
             method: "get",
-            url: `http://192.168.52.102:97/api/RequestDetail/GetPageMaterial`,
+            url: `${process.env["NEXT_PUBLIC_API_URL"]}/api/RequestDetail/GetPageMaterial`,
             headers: {
                 "Content-Type": "application/json",
             },
@@ -83,7 +85,7 @@ async function getAllMaterial() {
     return await axios
         .request({
             method: "get",
-            url: `http://192.168.52.102:97/api/Material/GetAll`,
+            url: `${process.env["NEXT_PUBLIC_API_URL"]}/api/Material/GetAll`,
             headers: {
                 "Content-Type": "application/json",
             },

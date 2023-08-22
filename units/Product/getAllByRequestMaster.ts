@@ -4,7 +4,7 @@ export async function getAllByRequestMaster() {
 
     const res = await axios.request({
         method: 'get',
-        url: `http://192.168.52.102:97/api/Product/GetAllByRequestMaster`,
+        url: `${process.env["NEXT_PUBLIC_API_URL"]}/api/Product/GetAllByRequestMaster`,
         headers: {
             "Content-Type": "application/json"
         },
