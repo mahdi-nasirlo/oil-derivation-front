@@ -300,3 +300,10 @@ body {
 .ant-form-item-label.required::before {
   display: none !important;
 }
+
+@media screen and (max-width: 1024px) { 
+  .ant-divider{
+    margin: 10px 0 !important;
+
+  }
+ }
