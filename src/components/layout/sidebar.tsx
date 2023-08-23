@@ -8,8 +8,12 @@ import { usePathname } from "next/navigation";
 import {
   ChatBubbleLeftEllipsisIcon,
   Cog6ToothIcon,
+  DocumentDuplicateIcon,
   HomeIcon,
   PencilIcon,
+  PhoneIcon,
+  UserCircleIcon,
+  UsersIcon,
 } from "@heroicons/react/24/outline";
 import { ListBulletIcon } from "@heroicons/react/24/solid";
 
@@ -119,29 +123,29 @@ const items: MenuProps["items"] = [
           اطلاعات واحدتولیدی
         </Link>,
         "/creator-peoduction",
-        <Cog6ToothIcon width={16} height={16} />
+        <PencilIcon width={16} height={16} />
       ),
       getItem(
         <Link href="/dashboard/base-info/management-info">
           اطلاعات مدیریتی
         </Link>,
         "/management-info",
-        <ListBulletIcon width={16} height={16} />
+        <UserCircleIcon width={16} height={16} />
       ),
       getItem(
         <Link href="/dashboard/base-info/personnel-info">اطلاعات پرسنلی</Link>,
         "/personnel-info",
-        <ListBulletIcon width={16} height={16} />
+        <UsersIcon width={16} height={16} />
       ),
       getItem(
         <Link href="/dashboard/base-info/license-info">اطلاعات مجوز</Link>,
         "/license-info",
-        <ListBulletIcon width={16} height={16} />
+        <DocumentDuplicateIcon width={16} height={16} />
       ),
       getItem(
         <Link href="/dashboard/base-info/contact-info">اطلاعات تماس</Link>,
         "/contact-info",
-        <ListBulletIcon width={16} height={16} />
+        <PhoneIcon width={16} height={16} />
       ),
     ],
     "group"
