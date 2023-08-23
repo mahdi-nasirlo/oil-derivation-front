@@ -67,10 +67,11 @@ const columns: ColumnsType<RequestDetail> = [
     },
 ];
 
-export default function PrimaryProductTable({data}: { data: RequestDetail[] }) {
+export default function PrimaryProductTable({data, loading = false}: { data: RequestDetail[], loading: boolean }) {
     console.log(data)
     return <>
-        <Table className={"mt-6"} pagination={false} columns={columns} dataSource={data} scroll={{x: 1500, y: 300}}/>
+        <Table loading={loading} className={"mt-6"} pagination={false} columns={columns} dataSource={data || []}
+               scroll={{x: 1500, y: 300}}/>
     </>
 }
 

@@ -1,4 +1,4 @@
 interface Material {
     Uid: string,
-    Name: string
+    Name: string,
 }
