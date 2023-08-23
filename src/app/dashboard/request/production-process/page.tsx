@@ -80,12 +80,15 @@ export default function Page() {
         <Link href={"/dashboard/request/laboratory"}>
           <div className="flex gap-6">
             <Button
-              htmlType="submit"
-              type="primary"
+              className="w-full management-info-form-submit btn-filter"
               size="large"
-              className="w-full py-3"
+              type="primary"
+              htmlType="submit"
+
             >
-              ذخیره و ادامه
+              <span className="flex gap-3 justify-center ">
+                ذخیره و ادامه
+              </span>
             </Button>
           </div>
         </Link>
