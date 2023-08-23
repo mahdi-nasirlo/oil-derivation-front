@@ -49,16 +49,13 @@ function getItem(
   } as MenuItem;
 }
 
-
-const MakeRequest = () =>
-(<>
-  <div className='flex justify-between items-center'>
-    <Link href="/dashboard/request/personnel-info">
-      ثبت درخواست
-    </Link>
-    <Badge style={{ marginLeft: "1px", boxShadow: "none" }} count={5} />
-  </div>
-</>
+const MakeRequest = () => (
+  <>
+    <div className="flex justify-between items-center">
+      <Link href="/dashboard/request/personnel-info">ثبت درخواست</Link>
+      <Badge style={{ marginLeft: "1px", boxShadow: "none" }} count={5} />
+    </div>
+  </>
 );
 
 const RequestList = () => (
@@ -118,27 +115,31 @@ const items: MenuProps["items"] = [
     null,
     [
       getItem(
-        <Link href="/dashboard/base-info">اطلاعات واحدتولیدی</Link>,
+        <Link href="/dashboard/base-info/creator-peoduction">
+          اطلاعات واحدتولیدی
+        </Link>,
         "/creator-peoduction",
         <Cog6ToothIcon width={16} height={16} />
       ),
       getItem(
-        <Link href="/dashboard/base-info">اطلاعات مدیریتی</Link>,
+        <Link href="/dashboard/base-info/management-info">
+          اطلاعات مدیریتی
+        </Link>,
         "/management-info",
         <ListBulletIcon width={16} height={16} />
       ),
       getItem(
-        <Link href="/dashboard/base-info">اطلاعات پرسنلی</Link>,
+        <Link href="/dashboard/base-info/personnel-info">اطلاعات پرسنلی</Link>,
         "/personnel-info",
         <ListBulletIcon width={16} height={16} />
       ),
       getItem(
-        <Link href="/dashboard/base-info">اطلاعات مجوز</Link>,
+        <Link href="/dashboard/base-info/license-info">اطلاعات مجوز</Link>,
         "/license-info",
         <ListBulletIcon width={16} height={16} />
       ),
       getItem(
-        <Link href="/dashboard/base-info">اطلاعات تماس</Link>,
+        <Link href="/dashboard/base-info/contact-info">اطلاعات تماس</Link>,
         "/contact-info",
         <ListBulletIcon width={16} height={16} />
       ),
