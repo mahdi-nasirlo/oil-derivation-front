@@ -119,7 +119,7 @@ const items: MenuProps["items"] = [
     null,
     [
       getItem(
-        <Link href="/dashboard/base-info/creator-peoduction">
+        <Link href="/dashboard/base-info/creator-production">
           اطلاعات واحدتولیدی
         </Link>,
         "/creator-peoduction",
