@@ -1,19 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Button,
-  Col,
-  Divider,
-  Form,
-  FormItemProps,
-  Input,
-  Row,
-  Select,
-  Typography,
-} from "../../../../../lib/antd";
+import {Button, Col, Divider, Form, FormItemProps, Input, Row, Select, Typography,} from "../../../../../lib/antd";
 import React from "react";
-import type { SelectProps } from '../../../../../lib/antd';
 
 export default function Page() {
 
@@ -93,11 +82,16 @@ export default function Page() {
 
       <Divider />
       <Link href={"/dashboard/request/formulacion"}>
-        <div className="flex gap-6">
-          <Button type="primary" size="large" className="w-full py-3">
+        <Button
+            className="w-full management-info-form-submit btn-filter"
+            size="large"
+            type="primary"
+            htmlType="submit"
+        >
+          <span className="flex gap-3 justify-center ">
             ذخیره و ادامه
-          </Button>
-        </div>
+          </span>
+        </Button>
       </Link>
     </>
   );

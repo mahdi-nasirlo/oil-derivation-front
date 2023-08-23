@@ -1,21 +1,7 @@
 "use clinet";
-import { SvgIcon } from "@/components/layout/sidebar";
-import axios from "axios";
-import {
-  Button,
-  Checkbox,
-  Col,
-  Divider,
-  Form,
-  Row,
-  Select,
-  Space,
-  Table,
-  Typography,
-} from "../../../../../lib/antd";
+import {Button, Checkbox, Divider, Table, Typography,} from "../../../../../lib/antd";
 import React from "react";
-import Link from "next/link";
-import { ColumnsType } from "antd/es/table";
+import {ColumnsType} from "antd/es/table";
 import PrimaryProductForm from "./components/primary-product-form";
 
 // async function getAllProduct() {
@@ -64,10 +50,10 @@ export default function Page() {
       <Divider />
       <div className="flex gap-6">
         <Button
-          className="w-full management-info-form-submit btn-filter"
-          size="large"
-          type="primary"
-          htmlType="submit"
+            className="w-full management-info-form-submit btn-filter"
+            size="large"
+            type="primary"
+            htmlType="submit"
         >
           <span className="flex gap-3 justify-center ">
             ذخیره

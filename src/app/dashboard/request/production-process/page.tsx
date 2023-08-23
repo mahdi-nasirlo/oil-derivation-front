@@ -1,25 +1,18 @@
 "use client";
 
-import {
-  Button,
-  Col,
-  Divider,
-  Form,
-  Input,
-  Row,
-  Typography,
-  Upload,
-} from "../../../../../lib/antd";
+import {Button, Col, Divider, Form, Input, Row, Typography, Upload,} from "../../../../../lib/antd";
 import React from "react";
-import { UploadOutlined } from "@ant-design/icons";
-import { useRouter } from "next/navigation";
-import { createRequestMaster } from "../../../../../units/RequestMaster/createRequestMaster";
-import Link from "next/link";
+import {UploadOutlined} from "@ant-design/icons";
+import {useRouter} from "next/navigation";
+import {createRequestMaster} from "../../../../../units/RequestMaster/createRequestMaster";
 
 export default function Page() {
   const router = useRouter();
 
   const onFinish = (values: RequestMasterForm) => {
+
+    router.push("/dashboard/request/laboratory")
+
     let data: RequestMaster = {
       ...values,
       fileName: values.fileName.file.name,
@@ -50,7 +43,7 @@ export default function Page() {
       >
         <Row gutter={32}>
           <Col span={24}>
-            <Form.Item name="processDescription" label="شرح فرآیند تولید">
+            <Form.Item rules={[{required: true, message: "لطفا فیلد را وارد نمایید"}]} name="processDescription" label="شرح فرآیند تولید">
               <Input.TextArea
                 maxLength={100}
                 style={{
@@ -62,7 +55,7 @@ export default function Page() {
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={32}>
+        <Row className="mt-3" gutter={32}>
           <Col span={24}>
             <Form.Item name="fileName" label="نمودار شماتیک فرآیند">
               <Upload
@@ -77,18 +70,18 @@ export default function Page() {
           </Col>
         </Row>
         <Divider />
-        <Link href={"/dashboard/request/laboratory"}>
           <div className="flex gap-6">
             <Button
-              htmlType="submit"
-              type="primary"
-              size="large"
-              className="w-full py-3"
+                className="w-full management-info-form-submit btn-filter"
+                size="large"
+                type="primary"
+                htmlType="submit"
             >
-              ذخیره و ادامه
+          <span className="flex gap-3 justify-center ">
+            ذخیره و ادامه
+          </span>
             </Button>
           </div>
-        </Link>
       </Form>
     </>
   );
