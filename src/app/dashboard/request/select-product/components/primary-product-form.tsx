@@ -1,10 +1,15 @@
 "use client";
 
 import { SvgIcon } from "@/components/layout/sidebar";
-import { Button, Col, Form, Row, Select } from "../../../../../../lib/antd";
+import { Button, Col, Form, Input, Row, Select } from "../../../../../../lib/antd";
 import React from "react";
 
 export default function PrimaryProductForm() {
+
+  const handleChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
+
   return (
     <>
       <Form name="form_item_path" layout="vertical">
@@ -12,6 +17,11 @@ export default function PrimaryProductForm() {
           <Col span={12}>
             <Form.Item name="year-establishment" label="دانسیته محصول ">
               <Select
+                mode="tags"
+                placeholder="انتخاب نمایید"
+                onChange={handleChange}
+                tokenSeparators={[',']}
+                options={Character}
                 size="large"
                 // options={product}
                 // options={product}
@@ -21,7 +31,7 @@ export default function PrimaryProductForm() {
           </Col>
           <Col span={12}>
             <Form.Item name="lastName" label="نام محصول">
-              <Select size="large" />
+              <Input size="large" />
             </Form.Item>
           </Col>
         </Row>
@@ -52,3 +62,16 @@ export default function PrimaryProductForm() {
 // }: {
 //   product: Product[];
 // }
+
+
+
+const Character = [
+  {
+    is_Active: "1",
+    Name: "بالا تر از 7/4"
+  },
+  {
+    is_Active: "2",
+    Name: "پایین تر از 7/4"
+  },
+]

@@ -53,7 +53,7 @@ function getItem(
 const MakeRequest = () =>
 (<>
   <div className='flex justify-between items-center'>
-    <Link href="/dashboard/request/personnel-info">
+    <Link href="/dashboard/request/production-process">
       ثبت درخواست
     </Link>
     <Badge style={{ marginLeft: "1px", boxShadow: "none" }} count={5} />
@@ -99,7 +99,7 @@ const items: MenuProps["items"] = [
     [
       getItem(
         <MakeRequest />,
-        "/dashboard/request/personnel-info",
+        "/dashboard/request/production-process",
         <PencilIcon width={16} height={16} />
       ),
       getItem(

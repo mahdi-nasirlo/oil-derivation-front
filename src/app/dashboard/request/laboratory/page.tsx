@@ -13,8 +13,15 @@ import {
   Typography,
 } from "../../../../../lib/antd";
 import React from "react";
+import type { SelectProps } from '../../../../../lib/antd';
 
 export default function Page() {
+
+  const handleChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
+
+
   return (
     <>
       <Typography className="text-right font-medium text-base">
@@ -30,7 +37,14 @@ export default function Page() {
                   name="year-establishment"
                   label=" تجهیزات آزمایشگاه"
                 >
-                  <Select size="large" />
+                  <Select size="large"
+                    mode="tags"
+                    placeholder="انتخاب نمایید"
+                    onChange={handleChange}
+                    tokenSeparators={[',']}
+                    options={LaboratoryEquipment}
+                    fieldNames={{ label: "name", value: "key" }}
+                  />
                 </MyFormItem>
               </Col>
             </Row>
@@ -40,12 +54,26 @@ export default function Page() {
                   name="company-registratuon-num"
                   label="کشورهای مقصد صادراتی محصول"
                 >
-                  <Select size="large" />
+                  <Select size="large"
+                    mode="tags"
+                    placeholder="انتخاب نمایید"
+                    onChange={handleChange}
+                    tokenSeparators={[',']}
+                    options={ProductExportCountries}
+                    fieldNames={{ label: "name", value: "key" }}
+                  />
                 </MyFormItem>
               </Col>
               <Col span={12}>
                 <MyFormItem name="license-establish" label="ضایعات">
-                  <Select size="large" />
+                  <Select size="large"
+                    mode="tags"
+                    placeholder="انتخاب نمایید"
+                    onChange={handleChange}
+                    tokenSeparators={[',']}
+                    options={OilWaste}
+                    fieldNames={{ label: "name", value: "key" }}
+                  />
                 </MyFormItem>
               </Col>
             </Row>
@@ -109,3 +137,130 @@ const MyFormItem = ({ name, ...props }: FormItemProps) => {
 
   return <Form.Item name={concatName} {...props} />;
 };
+
+
+const ProductExportCountries = [
+  {
+    key: "1",
+    name: "امارات"
+  },
+  {
+    key: "2",
+    name: "چین"
+  },
+  {
+    key: "3",
+    name: "عراق"
+  },
+  {
+    key: "4",
+    name: "روسیه"
+  },
+  {
+    key: "5",
+    name: "هند"
+  },
+  {
+    key: "6",
+    name: "روسیه"
+  },
+  {
+    key: "7",
+    name: "پاکستان"
+  },
+  {
+    key: "8",
+    name: "کویت"
+  },
+  {
+    key: "9",
+    name: "لبنان"
+  },
+  {
+    key: "10",
+    name: "ترکیه"
+  },
+  {
+    key: "11",
+    name: "لبنان"
+  },
+]
+
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+
+const LaboratoryEquipment = [
+  {
+    key: "1",
+    name: "دستگاه تقطیر"
+  },
+  {
+    key: "2",
+    name: "دستگاه نقطه ریزش"
+  },
+  {
+    key: "3",
+    name: "گام تستر"
+  },
+  {
+    key: "4",
+    name: "ویسکومتر"
+  },
+  {
+    key: "5",
+    name: "مادون قرمز FITR"
+  },
+  {
+    key: "6",
+    name: "حمام سیرکلاسیون"
+  },
+  {
+    key: "7",
+    name: "اکسیژن متر"
+  },
+  {
+    key: "8",
+    name: "چگالی سنج"
+  },
+  {
+    key: "9",
+    name: "دستگاه آنالیز H2S"
+  },
+]
+
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+
+
+const OilWaste = [
+  {
+    key: "1",
+    name: "گوگرد"
+  },
+  {
+    key: "2",
+    name: "نمونه بنزین"
+  },
+  {
+    key: "3",
+    name: "نمونه نفت چراغ"
+  },
+  {
+    key: "4",
+    name: "آسفالت"
+  },
+  {
+    key: "5",
+    name: "روغن موتور"
+  },
+  {
+    key: "6",
+    name: "نمونه سوخت دیزل(گازوئیل)"
+  },
+  {
+    key: "7",
+    name: "ال‌پی‌جی در سیلندر گاز"
+  },
+]

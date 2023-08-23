@@ -35,18 +35,22 @@ export default function PrimaryProductForm({
 }: {
   material: Material[];
 }) {
-  const [api, contextHolder] = notification.useNotification();
-  const onFinish = (values: MaterialRequest) => {
-    values.requestMasterUid = `${getCookie("requestMasterUid")}`;
-    values.materialSupplyPersonTypeId = 1;
-    values.materialSupplyMethodId = 1;
+  const handleChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
 
-    return axios
-      .post("http://192.168.52.102:97/api/RequestDetail/CreateMaterial", values)
-      .then((response: any) => {
-        console.log(response.data.message);
-      })
-      .catch(() => {});
+  // const [api, contextHolder] = notification.useNotification();
+  const onFinish = (values: MaterialRequest) => {
+    // values.requestMasterUid = `${getCookie("requestMasterUid")}`;
+    // values.materialSupplyPersonTypeId = 1;
+    // values.materialSupplyMethodId = 1;
+
+    // return axios
+    //   .post("http://192.168.52.102:97/api/RequestDetail/CreateMaterial", values)
+    //   .then((response: any) => {
+    //     console.log(response.data.message);
+    //   })
+    //   .catch(() => {});
   };
 
   return (
@@ -57,16 +61,18 @@ export default function PrimaryProductForm({
             <Form.Item
               name="materialUid"
               label="نام مواد اولیه"
-              //   rules={[
-              //     { required: true, message: "نام مواد اولیه اجباری است" },
-              //     { type: "string" },
-              //   ]}
+            //   rules={[
+            //     { required: true, message: "نام مواد اولیه اجباری است" },
+            //     { type: "string" },
+            //   ]}
             >
               <Select
                 fieldNames={{ value: "Uid", label: "Name" }}
-                options={material}
                 size="large"
                 placeholder="انتخاب نمایید"
+                onChange={handleChange}
+                tokenSeparators={[',']}
+                options={RawMaterials}
               />
             </Form.Item>
           </Col>
@@ -129,12 +135,19 @@ export default function PrimaryProductForm({
             <Form.Item
               name="materialSupplyMethodId"
               label="نحوه تامین"
-              //   rules={[
-              //     { required: true, message: "نحوه تامین اجبار است" },
-              //     { type: "number" },
-              //   ]}
+            //   rules={[
+            //     { required: true, message: "نحوه تامین اجبار است" },
+            //     { type: "number" },
+            //   ]}
             >
-              <Select size="large" placeholder="انتخاب نمایید" />
+              <Select
+                fieldNames={{ value: "Uid", label: "Name" }}
+                size="large"
+                placeholder="انتخاب نمایید"
+                onChange={handleChange}
+                tokenSeparators={[',']}
+                options={HowToSupply}
+              />
             </Form.Item>
           </Col>
           <Col span={12}>
@@ -223,12 +236,18 @@ export default function PrimaryProductForm({
             <Form.Item
               name="materialSupplyPersonTypeId"
               label="شخصیت"
-              //   rules={[
-              //     { required: true, message: "شخصیت اجباری است" },
-              //     { type: "number" },
-              //   ]}
+            //   rules={[
+            //     { required: true, message: "شخصیت اجباری است" },
+            //     { type: "number" },
+            //   ]}
             >
-              <Select size="large" placeholder="انتخاب نمایید" />
+              <Select
+                fieldNames={{ value: "Uid", label: "Name" }}
+                size="large"
+                placeholder="انتخاب نمایید"
+                onChange={handleChange}
+                tokenSeparators={[',']}
+                options={Character} />
             </Form.Item>
           </Col>
           <Col span={8}>
@@ -322,3 +341,65 @@ export type MaterialRequest = {
   materialSupplyIranCode: string;
   materialSupplyAddress: string;
 };
+
+
+
+const RawMaterials = [
+  {
+    Uid: "1",
+    Name: "کلر"
+  },
+  {
+    Uid: "2",
+    Name: "بوتادیین"
+  },
+  {
+    Uid: "3",
+    Name: "پروپیلن"
+  },
+  {
+    Uid: "4",
+    Name: "اتیلن"
+  },
+  {
+    Uid: "5",
+    Name: "آمونیاک"
+  },
+  {
+    Uid: "6",
+    Name: "سولفور"
+  },
+  {
+    Uid: "7",
+    Name: "تولوئن "
+  },
+]
+
+
+
+const HowToSupply = [
+  {
+    Uid: "1",
+    Name: "کراکینگ کاتالیزی"
+  },
+  {
+    Uid: "2",
+    Name: "هیدروکراکینگ کاتالیستی"
+  },
+  {
+    Uid: "3",
+    Name: "آلکیلاسیون"
+  },
+]
+
+
+const Character = [
+  {
+    Uid: "1",
+    Name: "حقوقی"
+  },
+  {
+    Uid: "2",
+    Name: "حقیقی"
+  },
+]
