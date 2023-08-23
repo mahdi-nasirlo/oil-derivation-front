@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   Button,
   Col,
@@ -63,11 +64,13 @@ export default function Page() {
       </Form>
 
       <Divider />
-      <div className="flex gap-6">
-        <Button type="primary" size="large" className="w-full py-3">
-          ذخیره و ادامه
-        </Button>
-      </div>
+      <Link href={"/dashboard/request/formulacion"}>
+        <div className="flex gap-6">
+          <Button type="primary" size="large" className="w-full py-3">
+            ذخیره و ادامه
+          </Button>
+        </div>
+      </Link>
     </>
   );
 }
