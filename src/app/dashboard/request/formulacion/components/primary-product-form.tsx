@@ -4,7 +4,7 @@ import {SvgIcon} from "@/components/layout/sidebar";
 import useSWR from "swr";
 import {getAllMaterial} from "../../../../../../units/Material/getAllMaterial";
 import {getCookie} from "cookies-next";
-import {createMaterial} from "../../../../../../units/RequestDetail/createMaterial";
+import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createMaterial";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 
@@ -41,7 +41,7 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
         values.materialSupplyPersonTypeId = 1;
         values.materialSupplyMethodId = 1;
 
-        createMaterial(values, setLoading, () => {
+        createRequestDetailProduct(values, setLoading, () => {
             router.push("/dashboard/request/select-product")
         })
 

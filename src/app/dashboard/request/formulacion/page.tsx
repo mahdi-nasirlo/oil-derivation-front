@@ -3,7 +3,7 @@
 import {Button, Divider, Typography} from "../../../../../lib/antd";
 import React, {useState} from "react";
 import PrimaryProductTable from "@/app/dashboard/request/formulacion/components/primary-product-table";
-import PrimaryProductForm, {MaterialRequest,} from "./components/primary-product-form";
+import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
 import {getAllRequestDetailMaterial} from "../../../../../units/RequestDetail/getAllRequestDetailMaterial";
 
@@ -17,21 +17,6 @@ export default function Formulacion() {
         isLoading: requestMasterMaterialLoading
     } = useSWR("/RequestDetail/GetPageMaterial", getAllRequestDetailMaterial)
 
-    const onFinish = (values: MaterialRequest) => {
-        console.log(values)
-        // mutate(values)
-        // values.requestMasterUid = localStorage.getItem("requestMasterUid");
-        // values.materialUid = "5f1fd82b-92fc-4f36-8c24-07a0baf45211";
-        // values.materialSupplyPersonTypeId = 1;
-        // values.materialSupplyMethodId = 1;
-        //
-        //
-        // return createMaterial(values, isLoading)
-    };
-
-    // const data: { records: []; count: number } = await getAllRequestMaster();
-
-    // const material: Material[] = await getAllMaterial();
 
     return (
         <>

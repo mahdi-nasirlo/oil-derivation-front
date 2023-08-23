@@ -1,29 +1,16 @@
-"use clinet";
+"use client";
 import {Button, Checkbox, Divider, Table, Typography,} from "../../../../../lib/antd";
 import React from "react";
 import {ColumnsType} from "antd/es/table";
 import PrimaryProductForm from "./components/primary-product-form";
-import axios from "axios";
+import useSWR from "swr";
+import {getAllProduct} from "../../../../../units/RequestDetail/getAllProduct";
 
-async function getAllProduct() {
-    return await axios
-        .request({
-            method: "get",
-            url: `http://192.168.52.102:97/api/Product/GetAll`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            data: {
-                name: null,
-                is_Active: true,
-            },
-        })
-        .then((res: any) => res.data.data);
-}
 
 export default function Page() {
-    // const product: Product[] = await getAllProduct();
-    // const product: Product[] = await getAllMaterial();
+
+    const {data: product, mutate} = useSWR("/api/RequestDetail/GetAllProduct", getAllProduct)
+
     return (
         <>
             <Typography className="text-right font-medium text-base">
@@ -33,13 +20,13 @@ export default function Page() {
             <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary mb-10">
                 محصول تولیدی
             </Typography>
-            <PrimaryProductForm/>
+            <PrimaryProductForm mute={mutate}/>
 
             <Table
                 pagination={false}
                 className="mt-6"
                 columns={columns}
-                dataSource={data}
+                dataSource={product || null}
             />
             <Divider/>
             <div className="flex">
