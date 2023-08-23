@@ -1,3 +1,4 @@
+"use clinet";
 import { SvgIcon } from "@/components/layout/sidebar";
 import axios from "axios";
 import {
@@ -17,23 +18,23 @@ import Link from "next/link";
 import { ColumnsType } from "antd/es/table";
 import PrimaryProductForm from "./components/primary-product-form";
 
-async function getAllProduct() {
-  return await axios
-    .request({
-      method: "get",
-      url: `http://192.168.52.102:97/api/Product/GetAll`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        name: null,
-        is_Active: true,
-      },
-    })
-    .then((res: any) => res.data.data);
-}
+// async function getAllProduct() {
+//   return await axios
+//     .request({
+//       method: "get",
+//       url: `http://192.168.52.102:97/api/Product/GetAll`,
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       data: {
+//         name: null,
+//         is_Active: true,
+//       },
+//     })
+//     .then((res: any) => res.data.data);
+// }
 
-export default async function Page() {
+export default function Page() {
   // const product: Product[] = await getAllProduct();
   // const product: Product[] = await getAllMaterial();
   return (
@@ -45,7 +46,7 @@ export default async function Page() {
       <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary mb-10">
         محصول تولیدی
       </Typography>
-      {/* <PrimaryProductForm product={product} /> */}
+      <PrimaryProductForm />
 
       <Table
         pagination={false}
@@ -101,13 +102,13 @@ const columns: ColumnsType<DataType> = [
   {
     title: "جزئیات",
     key: "جزئیات",
-    render: (_, record) => (
-      <Space size="middle">
-        <Link href={""} className="action-btn-delete">
-          حذف
-        </Link>
-      </Space>
-    ),
+    // render: (_, record) => (
+    //   <Space size="middle">
+    //     <Link href={""} className="action-btn-delete">
+    //       حذف
+    //     </Link>
+    //   </Space>
+    // ),
   },
 ];
 

@@ -6,6 +6,7 @@ import PrimaryProductForm, {
   MaterialRequest,
 } from "./components/primary-product-form";
 import { cookies } from "next/headers";
+import Link from "next/link";
 
 export default async function Formulacion() {
   const onChange = (value: number | string | null) => {
@@ -39,9 +40,9 @@ export default async function Formulacion() {
       .catch(() => {});
   };
 
-  const data: { records: []; count: number } = await getAllRequestMaster();
+  // const data: { records: []; count: number } = await getAllRequestMaster();
 
-  const material: Material[] = await getAllMaterial();
+  // const material: Material[] = await getAllMaterial();
 
   return (
     <>
@@ -54,9 +55,10 @@ export default async function Formulacion() {
       </Typography>
 
       <Divider />
-      <PrimaryProductForm material={material} />
-      <PrimaryProductTable data={data.records} />
+      <PrimaryProductForm material={[]} />
+      <PrimaryProductTable data={[]} />
       <Divider />
+      <Link href={"/dashboard/request/select-product"}>test</Link>
       <Button
         type="primary"
         size="large"

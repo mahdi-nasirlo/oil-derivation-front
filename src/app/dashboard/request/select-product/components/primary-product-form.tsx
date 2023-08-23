@@ -1,9 +1,8 @@
 "use client";
 
 import { SvgIcon } from "@/components/layout/sidebar";
-import { Button, Col, Form, Row, Select } from "antd";
+import { Button, Col, Form, Row, Select } from "../../../../../../lib/antd";
 import React from "react";
-import axios from "axios";
 
 export default function PrimaryProductForm() {
   return (
