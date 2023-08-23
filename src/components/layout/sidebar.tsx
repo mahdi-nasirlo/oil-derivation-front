@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import type { MenuProps } from "antd";
-import { Badge, Menu } from "antd";
+import type {MenuProps} from "antd";
+import {Badge, Menu} from "../../../lib/antd";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import {usePathname} from "next/navigation";
 import {
     ChatBubbleLeftEllipsisIcon,
     Cog6ToothIcon,
@@ -15,7 +15,7 @@ import {
     UserCircleIcon,
     UsersIcon,
 } from "@heroicons/react/24/outline";
-import { ListBulletIcon } from "@heroicons/react/24/solid";
+import {ListBulletIcon} from "@heroicons/react/24/solid";
 
 export default function LayoutSidebar() {
     const pathname = usePathname();
@@ -114,7 +114,7 @@ const items: MenuProps["items"] = [
     { type: "divider" },
 
     getItem(
-        "مدیریت",
+        "اطلاعات پایه",
         "management",
         null,
         [

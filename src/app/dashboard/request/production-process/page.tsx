@@ -5,11 +5,14 @@ import React from "react";
 import {UploadOutlined} from "@ant-design/icons";
 import {useRouter} from "next/navigation";
 import {createRequestMaster} from "../../../../../units/RequestMaster/createRequestMaster";
+import {getCookie, setCookie} from "cookies-next";
 
 export default function Page() {
   const router = useRouter();
 
   const onFinish = (values: RequestMasterForm) => {
+
+    setCookie("processDescription", values.processDescription)
 
     router.push("/dashboard/request/laboratory")
 
@@ -22,8 +25,6 @@ export default function Page() {
       router.push("/dashboard/request/formulacion");
     });
   };
-  // localStorage.setItem("requestMasterUid", res.data.data)
-  // router.push("/dashboard/request/formulacion")
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
@@ -36,6 +37,9 @@ export default function Page() {
       </Typography>
       <Divider />
       <Form
+          initialValues={{
+            processDescription: getCookie("processDescription") || ""
+          }}
         onFinishFailed={onFinishFailed}
         onFinish={onFinish}
         name="form_item_path"
