@@ -115,28 +115,28 @@ const items: MenuProps["items"] = [
     null,
     [
       getItem(
-        "اطلاعات واحد تولیدی",
-        "profile-setting",
+        <Link href="/dashboard/base-info">اطلاعات واحدتولیدی</Link>,
+        "/creator-peoduction",
         <Cog6ToothIcon width={16} height={16} />
       ),
       getItem(
-        "اطلاعات مدیریتی",
-        "request_list",
+        <Link href="/dashboard/base-info">اطلاعات مدیریتی</Link>,
+        "/management-info",
         <ListBulletIcon width={16} height={16} />
       ),
       getItem(
-        "اطلاعات پرسنلی",
-        "request_list",
+        <Link href="/dashboard/base-info">اطلاعات پرسنلی</Link>,
+        "/personnel-info",
         <ListBulletIcon width={16} height={16} />
       ),
       getItem(
-        "اطلاعات مجوز",
-        "request_list",
+        <Link href="/dashboard/base-info">اطلاعات مجوز</Link>,
+        "/license-info",
         <ListBulletIcon width={16} height={16} />
       ),
       getItem(
-        "اطلاعات تماس",
-        "request_list",
+        <Link href="/dashboard/base-info">اطلاعات تماس</Link>,
+        "/contact-info",
         <ListBulletIcon width={16} height={16} />
       ),
     ],
