@@ -8,10 +8,10 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
         <>
             <ProgressBar
-                height="1.5px"
+                height="3px"
                 color="#18948a"
                 options={{showSpinner: false}}
-                shallowRouting
+                shallowRouting={false}
             />
             <AppLayout>
                 {children}
