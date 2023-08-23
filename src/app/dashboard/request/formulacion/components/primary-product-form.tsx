@@ -6,11 +6,10 @@ import {
   Form,
   Input,
   InputNumber,
+  notification,
   Row,
   Select,
   Typography,
-  message,
-  notification,
 } from "../../../../../../lib/antd";
 import { SvgIcon } from "@/components/layout/sidebar";
 import { getCookie } from "cookies-next";
@@ -35,12 +34,13 @@ export default function PrimaryProductForm({
 }: {
   material: Material[];
 }) {
+
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
 
   // const [api, contextHolder] = notification.useNotification();
-  const onFinish = (values: MaterialRequest) => {
+  const onFinish = (values: any) => {
     // values.requestMasterUid = `${getCookie("requestMasterUid")}`;
     // values.materialSupplyPersonTypeId = 1;
     // values.materialSupplyMethodId = 1;

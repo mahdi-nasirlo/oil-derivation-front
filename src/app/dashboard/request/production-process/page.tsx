@@ -25,10 +25,8 @@ export default function Page() {
       fileName: values.fileName.file.name,
     };
 
-    createRequestMaster(data).then((res) => {
-      if (res.data.success) {
-        router.push("/dashboard/request/formulacion");
-      }
+    return createRequestMaster(data, () => {
+      router.push("/dashboard/request/formulacion");
     });
   };
   // localStorage.setItem("requestMasterUid", res.data.data)

@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Alert,
   Button,
   Col,
   Divider,
@@ -9,57 +8,79 @@ import {
   FormItemProps,
   Input,
   Row,
+  Typography,
 } from "../../../../../lib/antd";
 import React from "react";
-import staticMessages from "../../../../../lib/staticMessages";
-import Link from "next/link";
 
-export default function NewRequest() {
+export default function Page() {
   return (
     <>
-      <Alert
-        className="border-none w-full text-right text-base font-normal text-red-500"
-        message={staticMessages.formAlert}
-        type="error"
-      />
+      <Typography className="text-right font-medium text-base">
+        لطفا اطلاعات را با دقت بررسی کرده و سپس در صورت صحیح بودن باقی مراحل را
+        کامل نمایید.
+      </Typography>
       <Divider />
       <Form name="form_item_path" layout="vertical">
         <MyFormItemGroup prefix={["user"]}>
           <MyFormItemGroup prefix={["name"]}>
             <Row gutter={32}>
               <Col span={12}>
-                <MyFormItem name="lastName" label="مدیرعامل">
+                <MyFormItem name="year-establishment" label="سال تاسیس">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
               <Col span={12}>
-                <MyFormItem name="lastName" label="شناسه ملی">
+                <MyFormItem name="lastName" label="نام شرکت ثبت شده">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
             </Row>
             <Row gutter={32}>
               <Col span={12}>
-                <MyFormItem name="lastName" label="نام واحد تولیدی">
+                <MyFormItem
+                  name="company-registratuon-num"
+                  label=" شماره ثبت شرکت"
+                >
                   <Input size="large" />
                 </MyFormItem>
               </Col>
               <Col span={12}>
-                <MyFormItem name="lastName" label="نوع مالکیت">
+                <MyFormItem
+                  name="license-establish"
+                  label="شماره پروانه بهره برداری / جواز تاسیس"
+                >
+                  <Input size="large" />
+                </MyFormItem>
+              </Col>
+            </Row>
+            <Row gutter={32}>
+              <Col span={12}>
+                <MyFormItem
+                  name="operation-license"
+                  label="تاریخ صدور پروانه بهره برداری / جواز تاسیس"
+                >
+                  <Input size="large" />
+                </MyFormItem>
+              </Col>
+              <Col span={12}>
+                <MyFormItem name={"phone_number"} label="شناسه کسب و کار">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
             </Row>
           </MyFormItemGroup>
         </MyFormItemGroup>
-
-        <Divider />
-        <Link href={"/dashboard/request/management-info"}>
-          <Button type="primary" size="large" className="w-full py-3">
-            ثبت
-          </Button>
-        </Link>
       </Form>
+
+      <Divider />
+      <div className="flex gap-6">
+        <Button type="primary" size="large" className="w-full py-3">
+          ثبت
+        </Button>
+        {/* <Button type="primary" size="large" className="w-full py-3  btn-error">
+          گزارش اطلاعات اشتباه
+        </Button> */}
+      </div>
     </>
   );
 }
