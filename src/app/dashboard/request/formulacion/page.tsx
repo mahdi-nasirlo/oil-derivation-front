@@ -37,7 +37,7 @@ export default async function Formulacion() {
       .then((response) => {
         console.log(response.data.message);
       })
-      .catch(() => {});
+      .catch(() => { });
   };
 
   // const data: { records: []; count: number } = await getAllRequestMaster();
@@ -60,12 +60,14 @@ export default async function Formulacion() {
       <Divider />
       <Link href={"/dashboard/request/select-product"}>
         <Button
-          type="primary"
+          className="w-full management-info-form-submit btn-filter"
           size="large"
-          className="w-full py-3"
+          type="primary"
           htmlType="submit"
         >
-          ذخیره و ادامه
+          <span className="flex gap-3 justify-center ">
+            ذخیره و ادامه
+          </span>
         </Button>
       </Link>
     </>

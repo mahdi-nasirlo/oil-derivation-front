@@ -63,8 +63,15 @@ export default function Page() {
       </div>
       <Divider />
       <div className="flex gap-6">
-        <Button type="primary" size="large" className="w-full py-3">
-          ذخیره و ادامه
+        <Button
+          className="w-full management-info-form-submit btn-filter"
+          size="large"
+          type="primary"
+          htmlType="submit"
+        >
+          <span className="flex gap-3 justify-center ">
+            ذخیره
+          </span>
         </Button>
       </div>
     </>
