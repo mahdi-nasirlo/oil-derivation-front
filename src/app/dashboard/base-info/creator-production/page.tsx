@@ -55,8 +55,13 @@ export default function NewRequest() {
 
         <Divider />
         <Link href={"/dashboard/request/management-info"}>
-          <Button type="primary" size="large" className="w-full py-3">
-            ثبت
+          <Button
+            className="w-full management-info-form-submit btn-filter"
+            size="large"
+            type="primary"
+            htmlType="submit"
+          >
+            <span className="flex gap-3 justify-center "> ثبت</span>
           </Button>
         </Link>
       </Form>

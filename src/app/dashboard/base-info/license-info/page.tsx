@@ -74,8 +74,13 @@ export default function Page() {
 
       <Divider />
       <div className="flex gap-6">
-        <Button type="primary" size="large" className="w-full py-3">
-          ثبت
+        <Button
+          className="w-full management-info-form-submit btn-filter"
+          size="large"
+          type="primary"
+          htmlType="submit"
+        >
+          <span className="flex gap-3 justify-center "> ثبت</span>
         </Button>
         {/* <Button type="primary" size="large" className="w-full py-3  btn-error">
           گزارش اطلاعات اشتباه
