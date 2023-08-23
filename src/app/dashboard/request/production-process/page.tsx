@@ -1,14 +1,22 @@
 "use client";
 
 import {Button, Col, Divider, Form, Input, Row, Typography, Upload,} from "../../../../../lib/antd";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {UploadOutlined} from "@ant-design/icons";
 import {useRouter} from "next/navigation";
-import {getCookie, setCookie} from "cookies-next";
 import {createRequestMaster} from "../../../../../units/RequestMaster/createRequestMaster";
+import {hasCookie} from "cookies-next";
 
 export default function Page() {
     const router = useRouter();
+
+    const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        if (hasCookie("requestMasterUid")) {
+            router.push("/dashboard/request/laboratory")
+        }
+    })
 
     const onFinish = (values: RequestMasterForm) => {
 
@@ -17,19 +25,12 @@ export default function Page() {
             fileName: values.fileName?.file.name,
         };
 
-        setCookie("processDescription", values.processDescription)
-
-        createRequestMaster(data, () => {
-            router.push("/dashboard/request/formulacion");
+        return createRequestMaster(data, setIsLoading, () => {
+            router.push("/dashboard/request/laboratory")
         })
 
-        router.push("/dashboard/request/laboratory")
-        
     };
 
-    const onFinishFailed = (errorInfo: any) => {
-        console.log("Failed:", errorInfo);
-    };
 
     return (
         <>
@@ -38,10 +39,6 @@ export default function Page() {
             </Typography>
             <Divider/>
             <Form
-                initialValues={{
-                    processDescription: getCookie("processDescription") || ""
-                }}
-                onFinishFailed={onFinishFailed}
                 onFinish={onFinish}
                 name="form_item_path"
                 layout="vertical"
@@ -66,6 +63,7 @@ export default function Page() {
                         <Form.Item name="fileName" label="نمودار شماتیک فرآیند">
                             <Upload
                                 multiple={false}
+                                maxCount={1}
                                 action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                                 listType="picture"
                                 className="w-full"
@@ -78,14 +76,15 @@ export default function Page() {
                 <Divider/>
                 <div className="flex gap-6">
                     <Button
+                        loading={isLoading}
                         className="w-full management-info-form-submit btn-filter"
                         size="large"
                         type="primary"
                         htmlType="submit"
                     >
-          <span className="flex gap-3 justify-center ">
-            ذخیره و ادامه
-          </span>
+                         <span className="flex gap-3 justify-center ">
+                                ذخیره و ادامه
+                        </span>
                     </Button>
                 </div>
             </Form>

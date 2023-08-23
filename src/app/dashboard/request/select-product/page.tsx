@@ -3,127 +3,128 @@ import {Button, Checkbox, Divider, Table, Typography,} from "../../../../../lib/
 import React from "react";
 import {ColumnsType} from "antd/es/table";
 import PrimaryProductForm from "./components/primary-product-form";
+import axios from "axios";
 
-// async function getAllProduct() {
-//   return await axios
-//     .request({
-//       method: "get",
-//       url: `http://192.168.52.102:97/api/Product/GetAll`,
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       data: {
-//         name: null,
-//         is_Active: true,
-//       },
-//     })
-//     .then((res: any) => res.data.data);
-// }
+async function getAllProduct() {
+    return await axios
+        .request({
+            method: "get",
+            url: `http://192.168.52.102:97/api/Product/GetAll`,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: {
+                name: null,
+                is_Active: true,
+            },
+        })
+        .then((res: any) => res.data.data);
+}
 
 export default function Page() {
-  // const product: Product[] = await getAllProduct();
-  // const product: Product[] = await getAllMaterial();
-  return (
-    <>
-      <Typography className="text-right font-medium text-base">
-        لطفا اطلاعات خواسته شده را با دقت وارد نمایید.
-      </Typography>
-      <Divider />
-      <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary mb-10">
-        محصول تولیدی
-      </Typography>
-      <PrimaryProductForm />
+    // const product: Product[] = await getAllProduct();
+    // const product: Product[] = await getAllMaterial();
+    return (
+        <>
+            <Typography className="text-right font-medium text-base">
+                لطفا اطلاعات خواسته شده را با دقت وارد نمایید.
+            </Typography>
+            <Divider/>
+            <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary mb-10">
+                محصول تولیدی
+            </Typography>
+            <PrimaryProductForm/>
 
-      <Table
-        pagination={false}
-        className="mt-6"
-        columns={columns}
-        dataSource={data}
-      />
-      <Divider />
-      <div className="flex">
-        <Checkbox></Checkbox>
-        <Typography className="mr-3 font-medium">
-          شرایط و قوانین را خوانده و می پذیرم!
-        </Typography>
-      </div>
-      <Divider />
-      <div className="flex gap-6">
-        <Button
-            className="w-full management-info-form-submit btn-filter"
-            size="large"
-            type="primary"
-            htmlType="submit"
-        >
+            <Table
+                pagination={false}
+                className="mt-6"
+                columns={columns}
+                dataSource={data}
+            />
+            <Divider/>
+            <div className="flex">
+                <Checkbox></Checkbox>
+                <Typography className="mr-3 font-medium">
+                    شرایط و قوانین را خوانده و می پذیرم!
+                </Typography>
+            </div>
+            <Divider/>
+            <div className="flex gap-6">
+                <Button
+                    className="w-full management-info-form-submit btn-filter"
+                    size="large"
+                    type="primary"
+                    htmlType="submit"
+                >
           <span className="flex gap-3 justify-center ">
             ذخیره
           </span>
-        </Button>
-      </div>
-    </>
-  );
+                </Button>
+            </div>
+        </>
+    );
 }
 
 interface DataType {
-  key: string;
-  name: string;
-  row: number;
-  nationalcode: number;
-  productname: string;
-  density: string;
+    key: string;
+    name: string;
+    row: number;
+    nationalcode: number;
+    productname: string;
+    density: string;
 
-  role: string;
+    role: string;
 }
 
 const columns: ColumnsType<DataType> = [
-  {
-    title: "ردیف",
-    dataIndex: "row",
-    key: "1",
-  },
-  {
-    title: "نام محصول",
-    dataIndex: "productname",
-    key: "2",
-  },
-  {
-    title: "دانسیته",
-    dataIndex: "density",
-    key: "2",
-  },
+    {
+        title: "ردیف",
+        dataIndex: "row",
+        key: "1",
+    },
+    {
+        title: "نام محصول",
+        dataIndex: "productname",
+        key: "2",
+    },
+    {
+        title: "دانسیته",
+        dataIndex: "density",
+        key: "2",
+    },
 
-  {
-    title: "جزئیات",
-    key: "جزئیات",
-    // render: (_, record) => (
-    //   <Space size="middle">
-    //     <Link href={""} className="action-btn-delete">
-    //       حذف
-    //     </Link>
-    //   </Space>
-    // ),
-  },
+    {
+        title: "جزئیات",
+        key: "جزئیات",
+        // render: (_, record) => (
+        //   <Space size="middle">
+        //     <Link href={""} className="action-btn-delete">
+        //       حذف
+        //     </Link>
+        //   </Space>
+        // ),
+    },
 ];
 
 const data: DataType[] = [
-  {
-    key: "1",
-    row: 1,
-    name: "مهدی نصیرلو",
-    nationalcode: 1111111111,
-    role: "مدیرعامل",
-    productname: "هیدروکربن سبک",
-    density: "بالا تر از 900gr/cm3",
-  },
-  {
-    key: "2",
-    row: 2,
-    name: "امیر منصوری ",
-    nationalcode: 2222222222,
-    role: "مدیرعامل",
-    productname: " هیدروکربن سنگین",
-    density: "پایین تر از 900gr/cm3",
-  },
+    {
+        key: "1",
+        row: 1,
+        name: "مهدی نصیرلو",
+        nationalcode: 1111111111,
+        role: "مدیرعامل",
+        productname: "هیدروکربن سبک",
+        density: "بالا تر از 900gr/cm3",
+    },
+    {
+        key: "2",
+        row: 2,
+        name: "امیر منصوری ",
+        nationalcode: 2222222222,
+        role: "مدیرعامل",
+        productname: " هیدروکربن سنگین",
+        density: "پایین تر از 900gr/cm3",
+    },
 ];
 // const MyFormItemContext = React.createContext<(string | number)[]>([]);
 
