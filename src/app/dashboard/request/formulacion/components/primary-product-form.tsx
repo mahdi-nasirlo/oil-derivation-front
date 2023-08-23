@@ -45,25 +45,8 @@ export default function PrimaryProductForm({
       .post("http://192.168.52.102:97/api/RequestDetail/CreateMaterial", values)
       .then((response: any) => {
         console.log(response.data.message);
-        if (response.data.success === true) {
-          notification.success({
-            message: "succes",
-            description: "با موفقیت انجام شد",
-          });
-        } else {
-          notification.error({
-            message: "error",
-            description: "خطا در ورودی اطلاعات",
-          });
-        }
       })
-      .catch((error) => {
-        notification.error({
-          message: "error",
-          description: "خطا در ورودی اطلاعات",
-        });
-        console.log(error.message);
-      });
+      .catch(() => {});
   };
 
   return (

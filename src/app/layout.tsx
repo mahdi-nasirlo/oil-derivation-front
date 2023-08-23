@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import StyledComponentsRegistry from "../../lib/AntdRegistry";
 import { ConfigProvider } from "../../lib/antd";
 import theme from "../../theme/themeConfig";
+import fa_IR from "antd/locale/fa_IR";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
     <html lang="fa">
       <body className={inter.className}>
         <StyledComponentsRegistry>
-          <ConfigProvider direction="rtl" theme={theme}>
+          <ConfigProvider direction="rtl" theme={theme} locale={fa_IR}>
             {children}
           </ConfigProvider>
         </StyledComponentsRegistry>

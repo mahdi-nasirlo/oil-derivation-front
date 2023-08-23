@@ -1,25 +1,44 @@
-import {
-  Button,
-  Col,
-  Divider,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-  Typography,
-} from "../../../../../lib/antd";
-import React, { ChangeEvent } from "react";
-import { SvgIcon } from "@/components/layout/sidebar";
+import { Button, Divider, Typography } from "../../../../../lib/antd";
+import React from "react";
 import PrimaryProductTable from "@/app/dashboard/request/formulacion/components/primary-product-table";
 import axios from "axios";
 import PrimaryProductForm, {
   MaterialRequest,
 } from "./components/primary-product-form";
 import { cookies } from "next/headers";
-import Link from "next/link";
 
 export default async function Formulacion() {
+  const onChange = (value: number | string | null) => {
+    if (typeof value === "string") {
+      // Remove the percent symbol and convert the remaining value to a number
+      const numericValue = parseFloat(value.replace("%", ""));
+
+      if (!isNaN(numericValue) && numericValue >= 0 && numericValue <= 100) {
+        // Now you have the numeric value without the percent symbol
+        console.log("Numeric Value:", numericValue);
+      }
+    }
+  };
+
+  const onFinish = (values: MaterialRequest) => {
+    values.requestMasterUid = localStorage.getItem("requestMasterUid");
+    values.materialUid = "5f1fd82b-92fc-4f36-8c24-07a0baf45211";
+    values.materialSupplyPersonTypeId = 1;
+    values.materialSupplyMethodId = 1;
+
+    console.log(values);
+
+    return axios
+      .post(
+        `${process.env["NEXT_PUBLIC_API_URL"]}/api/RequestDetail/CreateMaterial`,
+        values
+      )
+      .then((response) => {
+        console.log(response.data.message);
+      })
+      .catch(() => {});
+  };
+
   const data: { records: []; count: number } = await getAllRequestMaster();
 
   const material: Material[] = await getAllMaterial();
@@ -38,18 +57,14 @@ export default async function Formulacion() {
       <PrimaryProductForm material={material} />
       <PrimaryProductTable data={data.records} />
       <Divider />
-      <Link href={"/dashboard/request/select-produt"}>
-        <div className="flex gap-6">
-          <Button
-            type="primary"
-            size="large"
-            className="w-full py-3  "
-            htmlType="submit"
-          >
-            <div className="save-btn">ذخیره و ادامه</div>
-          </Button>
-        </div>
-      </Link>
+      <Button
+        type="primary"
+        size="large"
+        className="w-full py-3"
+        htmlType="submit"
+      >
+        ذخیره و ادامه
+      </Button>
     </>
   );
 }
@@ -61,7 +76,7 @@ async function getAllRequestMaster() {
   return await axios
     .request({
       method: "get",
-      url: `http://192.168.52.102:97/api/RequestDetail/GetPageMaterial`,
+      url: `${process.env["NEXT_PUBLIC_API_URL"]}/api/RequestDetail/GetPageMaterial`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -78,7 +93,7 @@ async function getAllMaterial() {
   return await axios
     .request({
       method: "get",
-      url: `http://192.168.52.102:97/api/Material/GetAll`,
+      url: `${process.env["NEXT_PUBLIC_API_URL"]}/api/Material/GetAll`,
       headers: {
         "Content-Type": "application/json",
       },

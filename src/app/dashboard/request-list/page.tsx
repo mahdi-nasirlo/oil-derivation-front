@@ -10,12 +10,11 @@ import {
   Select,
   Space,
   Table,
-  Typography
+  Tag,
 } from "../../../../lib/antd";
 import React from "react";
 import Link from "next/link";
 import { ColumnsType } from "antd/es/table";
-import { Pagination, Tag } from 'antd';
 
 
 export default function Page() {
@@ -65,17 +64,18 @@ export default function Page() {
           </MyFormItemGroup>
         </Form>
       </div>
-      <Table pagination={false} className='mt-8' columns={columns} dataSource={data} />
-      <div className="flex flex-row-reverse justify-end items-center">
-        <Pagination
-          defaultCurrent={1}
-          total={120}
-          defaultPageSize={10}
-          hideOnSinglePage
-          className="flex flex-row-reverse justify-end my-4"
-        />
-        <Typography className="font-normal text-xs">تعداد نمایش ردیف در صفحه</Typography>
-      </div>
+      <Table
+        className='mt-8'
+        columns={columns}
+        dataSource={data}
+        pagination={{
+          defaultPageSize: 10,
+          showSizeChanger: true,
+          pageSizeOptions: ['10', '20', '50'],
+          defaultCurrent: 1,
+          style: { display: "flex", flexDirection: "row", justifyContent: "flex-start", margin: "16px 0", },
+        }}
+      />
     </>
   );
 }

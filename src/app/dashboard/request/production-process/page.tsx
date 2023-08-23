@@ -25,9 +25,11 @@ export default function Page() {
       fileName: values.fileName.file.name,
     };
 
-    createRequestMaster(data).then(() =>
-      router.push("/dashboard/request/formulacion")
-    );
+    createRequestMaster(data).then((res) => {
+      if (res.data.success) {
+        router.push("/dashboard/request/formulacion");
+      }
+    });
   };
   // localStorage.setItem("requestMasterUid", res.data.data)
   // router.push("/dashboard/request/formulacion")

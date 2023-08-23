@@ -123,6 +123,11 @@ body {
     border-radius: 8px !important;
     text-align: right !important;
 }
+
+.ant-select:not(.ant-select-customize-input) 
+.ant-select-selector{
+  background-color: theme("backgroundColor.white") !important;
+}
 .ant-form-item-explain-error {
   color: red !important; 
   font-size: 14px !important;
@@ -192,8 +197,12 @@ body {
     color: theme("colors.white") !important;
 }
 
-.ant-table-row {
+.ant-table-row:nth-child(odd) {
   background-color: theme("backgroundColor.gray.50") !important;
+}
+
+.ant-table-row:nth-child(even) {
+  background-color: theme("backgroundColor.white") !important;
 }
 
 .ant-table-cell {
@@ -241,20 +250,35 @@ body {
 
 
 .ant-modal-mask {
-    background-color: rgb(255 255 255 / 0%) !important;
-    backdrop-filter: blur(1px);
+  background-color: rgb(255 255 255 / 0%) !important;
+  backdrop-filter: blur(1px);
 }
 .ant-pagination
 .ant-pagination-item-active {
   background-color: theme("colors.primary.500") !important;
   border-color: theme("colors.gray.900") !important; 
 }
-.ant-pagination .ant-pagination-item-active a {color: theme("colors.white") !important;}
-
-.ant-pagination-item-link-icon {
-    color: theme("colors.primary.500") !important;
+.ant-pagination 
+.ant-pagination-item-active a { 
+  color: theme("colors.white") !important;
 }
 
+.ant-pagination 
+.ant-pagination-next 
+.ant-pagination-item-link {
+  background-color: theme("backgroundColor.gray.50") !important;
+}
+
+.ant-pagination 
+.ant-pagination-prev 
+.ant-pagination-item-link {
+  background-color: theme("backgroundColor.gray.50") !important;
+}
+
+.ant-pagination-item {
+  color: theme("colors.primary.500") !important;
+  background-color: theme("backgroundColor.gray.50")!important;
+}
 
 /*production-process*/
 .message-info {
@@ -269,11 +293,6 @@ body {
 .ant-upload button {
     @apply w-full bg-gray-50 rounded-b-xl h-[73px] flex flex-row-reverse justify-between items-center
 }
-
-.ant-upload button .ant-btn-icon {
-}
-
-
 
 
 /*form style*/
