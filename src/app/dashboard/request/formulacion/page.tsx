@@ -58,15 +58,16 @@ export default async function Formulacion() {
       <PrimaryProductForm material={[]} />
       <PrimaryProductTable data={[]} />
       <Divider />
-      <Link href={"/dashboard/request/select-product"}>test</Link>
-      <Button
-        type="primary"
-        size="large"
-        className="w-full py-3"
-        htmlType="submit"
-      >
-        ذخیره و ادامه
-      </Button>
+      <Link href={"/dashboard/request/select-product"}>
+        <Button
+          type="primary"
+          size="large"
+          className="w-full py-3"
+          htmlType="submit"
+        >
+          ذخیره و ادامه
+        </Button>
+      </Link>
     </>
   );
 }

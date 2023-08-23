@@ -85,7 +85,7 @@ export default function Page() {
       <Divider />
       <div className="flex gap-6">
         <Button type="primary" size="large" className="w-full py-3">
-          ذخیره و ادامه
+          ثبت
         </Button>
       </div>
     </>
