@@ -1,22 +1,28 @@
 import axios, {AxiosResponse} from "axios";
 import {RequestMaster} from "@/app/dashboard/request/production-process/page";
 
-export async function createRequestMaster(data: RequestMaster, callback: any) {
+export async function createRequestMaster(data: RequestMaster, setLoading: any, callback: any) {
     try {
+
+        setLoading(true)
+
         const res: AxiosResponse = await axios.post(
             `${process.env["NEXT_PUBLIC_API_URL"]}/api/RequestMaster/Create`,
             data
         );
 
+        setLoading(false)
+
         const requestMasterUid = res.data.data;
 
         // Set the cookie with the requestMasterUid
-        setCookie("requestMasterUid", requestMasterUid, 7); // Set the expiry as desired
+        setCookie("requestMasterUid", requestMasterUid, 7);
 
         if (res.data.success) {
             callback()
         }
     } catch (error) {
+        setLoading(false)
         console.error("Error:", error);
     }
 }
