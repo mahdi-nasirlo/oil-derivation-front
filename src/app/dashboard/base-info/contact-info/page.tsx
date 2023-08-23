@@ -23,37 +23,37 @@ export default function Page() {
       <Form name="form_item_path" layout="vertical">
         <MyFormItemGroup prefix={["user"]}>
           <MyFormItemGroup prefix={["name"]}>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="year-establishment" label="استان ">
                   <Select size="large" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="شهرستان">
                   <Select size="large" />
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="company-registratuon-num" label="شهرک">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="license-establish" label="خیابان اصلی">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="operation-license" label="خیابان فرعی">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name={"phone_number"} label="کوچه">
                   <Input size="large" />
                 </MyFormItem>
@@ -66,13 +66,13 @@ export default function Page() {
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="operation-license" label="تلفن دفتر مرکزی">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name={"phone_number"} label="تلفن تماس کارخانه">
                   <Input size="large" />
                 </MyFormItem>

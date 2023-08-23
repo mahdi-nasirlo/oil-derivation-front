@@ -26,25 +26,26 @@ export default function NewRequest() {
       <Form name="form_item_path" layout="vertical">
         <MyFormItemGroup prefix={["user"]}>
           <MyFormItemGroup prefix={["name"]}>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="مدیرعامل">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="شناسه ملی">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="نام واحد تولیدی">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="نوع مالکیت">
                   <Input size="large" />
                 </MyFormItem>
