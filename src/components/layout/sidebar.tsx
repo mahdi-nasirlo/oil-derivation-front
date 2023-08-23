@@ -49,13 +49,16 @@ function getItem(
   } as MenuItem;
 }
 
-const MakeRequest = () => (
-  <>
-    <div className="flex justify-between items-center">
-      <Link href="/dashboard/request/personnel-info">ثبت درخواست</Link>
-      <Badge style={{ marginLeft: "1px", boxShadow: "none" }} count={5} />
-    </div>
-  </>
+
+const MakeRequest = () =>
+(<>
+  <div className='flex justify-between items-center'>
+    <Link href="/dashboard/request/personnel-info">
+      ثبت درخواست
+    </Link>
+    <Badge style={{ marginLeft: "1px", boxShadow: "none" }} count={5} />
+  </div>
+</>
 );
 
 const RequestList = () => (
