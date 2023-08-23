@@ -90,7 +90,7 @@ export default function Page() {
 
       <Divider />
       <Button type="primary" size="large" className="w-full py-3">
-        ذخیره و ادامه
+        ثبت
       </Button>
     </>
   );
