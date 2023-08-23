@@ -56,7 +56,7 @@ export default function NewRequest() {
         <Divider />
         <Link href={"/dashboard/request/management-info"}>
           <Button type="primary" size="large" className="w-full py-3">
-            ذخیره و ادامه
+            ثبت
           </Button>
         </Link>
       </Form>
