@@ -307,3 +307,18 @@ body {
 
   }
  }
+
+
+
+
+
+ /*btn*/
+ /* .export-btn-excel{
+  color: theme("colors.primary.500") !important;
+ } */
+
+
+
+ .action-btn-info{
+  color: theme("colors.primary.500") !important;
+ }

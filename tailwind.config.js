@@ -22,6 +22,9 @@ module.exports = {
         300: "#D1D5DB",
         900: "#F9FAFB",
       },
+      Emerald: {
+        500: "#10B9811",
+      },
     },
     backgroundColor: {
       white: "#FFFFFF",
