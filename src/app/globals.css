@@ -322,3 +322,10 @@ body {
  .action-btn-info{
   color: theme("colors.primary.500") !important;
  }
+
+
+
+
+ .reject-btn{
+  color: theme("colors.white")!important;
+ }

@@ -170,9 +170,27 @@ const items: MenuProps["items"] = [
         "connect-support",
         <ChatBubbleLeftEllipsisIcon width={16} height={16} />
       ),
+    ],
+    "group"
+  ),
+
+  { type: "divider" },
+
+  getItem(
+    "پنل رِِییس اجرایی",
+    "management",
+    null,
+    [
       getItem(
         <Link href={"/dashboard/manufacturer-list"}> لیست تولید کننده ها</Link>,
         "msnufscturer-list",
+        <ChatBubbleLeftEllipsisIcon width={16} height={16} />
+      ),
+      getItem(
+        <Link href={"/dashboard/manufacturer-info"}>
+          اطلاعات تولید کننده ها
+        </Link>,
+        "msnufscturer-info",
         <ChatBubbleLeftEllipsisIcon width={16} height={16} />
       ),
     ],
