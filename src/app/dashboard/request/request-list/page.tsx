@@ -11,7 +11,7 @@ import {
   Space,
   Table,
   Tag,
-} from "../../../../lib/antd";
+} from "../../../../../lib/antd";
 import React from "react";
 import Link from "next/link";
 import { ColumnsType } from "antd/es/table";

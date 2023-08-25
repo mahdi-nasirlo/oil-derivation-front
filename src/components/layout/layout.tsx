@@ -7,9 +7,10 @@ import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/ic
 import LayoutHeader from './header'
 import LayoutSidebar from './sidebar';
 import LayoutBreadcrumb from './breadcrumb';
+import {AppProgressBar as ProgressBar} from 'next-nprogress-bar';
 
 
-export default function AppLayout({children}: { children: React.ReactNode }) {
+export default function AppLayout({children, sidebarItems}: { children: React.ReactNode, sidebarItems: MenuProps["items"] }) {
     const contentStyle: React.CSSProperties = {
         textAlign: 'center',
         minHeight: 120,
@@ -18,21 +19,29 @@ export default function AppLayout({children}: { children: React.ReactNode }) {
     };
 
     return (
-        <Space direction="vertical" style={{width: '100%'}} size={[0, 48]}>
-            <Layout style={{minHeight: "100vh"}}>
-                <LayoutHeader />
-                <Layout className='bg-gray-50' hasSider>
-                    <LayoutSidebar />
-                    <Layout className='mt-6 mx-10 bg-gray-50'>
+        <>
+            <ProgressBar
+                height="3px"
+                color="#18948a"
+                options={{showSpinner: false}}
+                shallowRouting={false}
+            />
+            <Space direction="vertical" style={{width: '100%'}} size={[0, 48]}>
+                <Layout style={{minHeight: "100vh"}}>
+                    <LayoutHeader />
+                    <Layout className='bg-gray-50' hasSider>
+                        <LayoutSidebar menu={sidebarItems}/>
+                        <Layout className='mt-6 mx-10 bg-gray-50'>
                         <span>
                             <LayoutBreadcrumb />
                         </span>
-                        <Divider className='my-8' />
-                        <Content style={contentStyle}>{children}</Content>
+                            <Divider className='my-8' />
+                            <Content style={contentStyle}>{children}</Content>
+                        </Layout>
                     </Layout>
                 </Layout>
-            </Layout>
-        </Space>
+            </Space>
+        </>
     )
 }
 

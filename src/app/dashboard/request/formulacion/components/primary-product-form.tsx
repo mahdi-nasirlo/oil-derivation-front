@@ -17,7 +17,7 @@ import { getCookie } from "cookies-next";
 // import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createMaterial";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createRequestDetailProduct } from "../../../../../../units/RequestDetail/createRequestDetailProduct";
+// import { createRequestDetailProduct } from "../../../../../../units/RequestDetail/createRequestDetailProduct";
 
 const onChange = (value: number | string | null) => {
   if (typeof value === "string") {
@@ -51,9 +51,9 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
     values.materialSupplyPersonTypeId = 1;
     values.materialSupplyMethodId = 1;
 
-    createRequestDetailProduct(values, setLoading, () => {
-      router.push("/dashboard/request/select-product");
-    });
+    // createRequestDetailProduct(values, setLoading, () => {
+    //   router.push("/dashboard/request/select-product");
+    // });
 
     mute();
   };

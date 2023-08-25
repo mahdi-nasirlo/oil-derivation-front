@@ -1,5 +1,6 @@
-import { cookies } from "next/headers";
 import DisplayData from "@/app/dashboard/components/showData";
+import {Typography} from "../../../lib/antd";
+import Link from "next/link";
 
 
 export default async function Home() {
@@ -10,7 +11,18 @@ export default async function Home() {
     return (
         <>
             <div className="box-border w-full mt-8 p-6">
-                <DisplayData data={data} />
+                <DisplayData data={data}/>
+                <div className="flex">
+                    <Typography className="text-1xl">
+                        ورود به پنل
+                    </Typography>
+                    <Typography>
+                        <Link className="mx-2 underline-offset-2 text-primary-500 text-1xl font-extrabold"
+                              href="/manufacturer">
+                            تولید کننده
+                        </Link>
+                    </Typography>
+                </div>
             </div>
         </>
     )
