@@ -21,17 +21,17 @@ export default function RootLayout({
 
 const items: MenuProps["items"] = [
   getMenuItem(
-    "پنل رِِییس اجرایی",
+    " پنل ادمین",
     "management",
     null,
     [
       getMenuItem(
-        <Link href={"/manufacturer/list"}> لیست تولید کننده ها</Link>,
-        "msnufscturer-list",
+        <Link href={"/manufacturer/product-category"}> دسته بندی محصول</Link>,
+        "product-category",
         <ChatBubbleLeftEllipsisIcon width={16} height={16} />
       ),
       getMenuItem(
-        <Link href={"/manufacturer/info"}>اطلاعات تولید کننده ها</Link>,
+        <Link href={"/manufacturer/info"}> افزودن محصول</Link>,
         "msnufscturer-info",
         <ChatBubbleLeftEllipsisIcon width={16} height={16} />
       ),
