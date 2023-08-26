@@ -17,12 +17,13 @@ import { getAllMaterial } from "../../../../../../units/Material/getAllMaterial"
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getCookie } from "cookies-next";
-import { createRequestDetailProduct } from "../../../../../../units/RequestDetail/createRequestDetailProduct";
 import {
   IconType,
   NotificationPlacement,
 } from "antd/es/notification/interface";
 import { notification } from "antd";
+import { useForm } from "antd/lib/form/Form";
+import { createRequestDetailProduct } from "../../../../../../units/RequestDetail/createRequestDetailProduct";
 // import { createRequestDetailProduct } from "../../../../../../units/RequestDetail/createRequestDetailProduct";
 
 const onChange = (value: number | string | null) => {
@@ -40,6 +41,8 @@ const onChange = (value: number | string | null) => {
 type NotificationType = "success" | "info" | "warning" | "error";
 
 export default function PrimaryProductForm({ mute }: { mute: any }) {
+  const [form] = useForm();
+
   const router = useRouter();
 
   const { data: material } = useSWR("/Material/GetAll", getAllMaterial);
@@ -65,7 +68,6 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
   };
 
   const onFinish = (values: MaterialRequest) => {
-    console.log(values);
     values.requestMasterUid = `${getCookie("requestMasterUid")}`;
     values.materialImportDeclarationNumber =
       values.materialImportDeclarationNumber.toString();
@@ -75,11 +77,11 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
     values.materialSupplyPersonTypeId = 1;
     values.materialSupplyMethodId = 1;
 
-    console.log(values.materialUid);
     createRequestDetailProduct(
       values,
       setLoading,
       () => {
+        form.resetFields();
         mute();
         openNotification("top", "success", "شرح فرایند با موفقیت ثبت شد.");
         // router.push("/dashboard/request/select-product");
@@ -102,6 +104,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
     <>
       {contextHolder}
       <Form
+        form={form}
         disabled={isLoading}
         name="form_item_path"
         layout="vertical"
