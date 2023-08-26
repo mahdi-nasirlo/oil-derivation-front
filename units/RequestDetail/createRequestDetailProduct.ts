@@ -1,7 +1,8 @@
 import {AxiosResponse} from "axios";
 import {customRequest} from "../../lib/customRequest";
+import {MaterialRequest} from "@/app/dashboard/request/formulacion/components/primary-product-form";
 
-export async function createRequestDetailProduct(data: { productUid: string }, setLoading: any, callback: any = null) {
+export async function createRequestDetailProduct(data: MaterialRequest, setLoading: any, callback: any = null) {
 
     try {
 
