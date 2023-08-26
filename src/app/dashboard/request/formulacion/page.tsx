@@ -7,6 +7,7 @@ import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
 import {getAllRequestDetailMaterial} from "../../../../../units/RequestDetail/getAllRequestDetailMaterial";
 import {useRouter} from "next/navigation";
+import Link from "next/link";
 
 export default function Formulacion() {
 
@@ -35,18 +36,17 @@ export default function Formulacion() {
             <PrimaryProductForm mute={mutate}/>
             <PrimaryProductTable data={requestMasterMaterial} loading={requestMasterMaterialLoading}/>
             <Divider/>
-            <Button
-                className="w-full management-info-form-submit btn-filter"
-                size="large"
-                type="primary"
-                onClick={() => {
-                    router.push("/dashboard/request/select-product")
-                }}
-            >
+            <Link href="/dashboard/request/select-product">
+                <Button
+                    className="w-full management-info-form-submit btn-filter"
+                    size="large"
+                    type="primary"
+                >
           <span className="flex gap-3 justify-center ">
             ذخیره و ادامه
           </span>
-            </Button>
+                </Button>
+            </Link>
         </>
     );
 }
