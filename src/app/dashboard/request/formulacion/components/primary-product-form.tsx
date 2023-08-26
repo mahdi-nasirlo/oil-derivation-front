@@ -4,7 +4,7 @@ import {SvgIcon} from "@/components/layout/sidebar";
 import useSWR from "swr";
 import {getAllMaterial} from "../../../../../../units/Material/getAllMaterial";
 // import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createMaterial";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 import {getCookie} from "cookies-next";
 import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createRequestDetailProduct";
@@ -49,6 +49,12 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
 
         mute();
     };
+
+    useEffect(() => {
+        if (!getCookie("requestMasterUid")) {
+            return router.push("/dashboard/request/production-process")
+        }
+    })
 
     return (
         <>
