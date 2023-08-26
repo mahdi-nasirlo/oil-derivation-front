@@ -29,20 +29,20 @@ export default function Home() {
       <Form name="form_item_path" layout="vertical">
         <MyFormItemGroup prefix={["user"]}>
           <MyFormItemGroup prefix={["name"]}>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="نام و نام خانوادگی">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="کد ملی / کد اتباع">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="تاریخ تولد">
                   <DatePicker
                     className="w-full"
@@ -51,21 +51,21 @@ export default function Home() {
                   />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="سمت">
                   <Select size="large" />
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name={"phone_number"} label="شماره تماس">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
             </Row>
             <Row dir="ltr">
-              <Col span={2}>
+              <Col xs={10} md={3} lg={2}>
                 <Button
                   className="w-full management-info-form-submit"
                   size="large"
@@ -73,7 +73,7 @@ export default function Home() {
                 >
                   <span
                     style={{ display: "flex" }}
-                    className="flex gap-3 justify-center"
+                    className="flex gap-2 justify-center"
                   >
                     ذخیره
                     <SvgIcon src="/static/save.svg" />

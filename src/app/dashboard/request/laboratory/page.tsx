@@ -1,15 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import {Button, Col, Divider, Form, FormItemProps, Input, Row, Select, Typography,} from "../../../../../lib/antd";
+import {
+  Button,
+  Col,
+  Divider,
+  Form,
+  FormItemProps,
+  Input,
+  Row,
+  Select,
+  Typography,
+} from "../../../../../lib/antd";
 import React from "react";
 
 export default function Page() {
-
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
-
 
   return (
     <>
@@ -21,53 +29,56 @@ export default function Page() {
         <MyFormItemGroup prefix={["user"]}>
           <MyFormItemGroup prefix={["name"]}>
             <Row gutter={32}>
-              <Col span={24}>
+              <Col xs={24} md={24}>
                 <MyFormItem
                   name="year-establishment"
                   label=" تجهیزات آزمایشگاه"
                 >
-                  <Select size="large"
+                  <Select
+                    size="large"
                     mode="tags"
                     placeholder="انتخاب نمایید"
                     onChange={handleChange}
-                    tokenSeparators={[',']}
+                    tokenSeparators={[","]}
                     options={LaboratoryEquipment}
                     fieldNames={{ label: "name", value: "key" }}
                   />
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem
                   name="company-registratuon-num"
                   label="کشورهای مقصد صادراتی محصول"
                 >
-                  <Select size="large"
+                  <Select
+                    size="large"
                     mode="tags"
                     placeholder="انتخاب نمایید"
                     onChange={handleChange}
-                    tokenSeparators={[',']}
+                    tokenSeparators={[","]}
                     options={ProductExportCountries}
                     fieldNames={{ label: "name", value: "key" }}
                   />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="license-establish" label="ضایعات">
-                  <Select size="large"
+                  <Select
+                    size="large"
                     mode="tags"
                     placeholder="انتخاب نمایید"
                     onChange={handleChange}
-                    tokenSeparators={[',']}
+                    tokenSeparators={[","]}
                     options={OilWaste}
                     fieldNames={{ label: "name", value: "key" }}
                   />
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem
                   name="operation-license"
                   label="محل فروش و یا دفن ضایعات"
@@ -83,14 +94,12 @@ export default function Page() {
       <Divider />
       <Link href={"/dashboard/request/formulacion"}>
         <Button
-            className="w-full management-info-form-submit btn-filter"
-            size="large"
-            type="primary"
-            htmlType="submit"
+          className="w-full management-info-form-submit btn-filter"
+          size="large"
+          type="primary"
+          htmlType="submit"
         >
-          <span className="flex gap-3 justify-center ">
-            ذخیره و ادامه
-          </span>
+          <span className="flex gap-2 justify-center ">ذخیره و ادامه</span>
         </Button>
       </Link>
     </>
@@ -132,53 +141,52 @@ const MyFormItem = ({ name, ...props }: FormItemProps) => {
   return <Form.Item name={concatName} {...props} />;
 };
 
-
 const ProductExportCountries = [
   {
     key: "1",
-    name: "امارات"
+    name: "امارات",
   },
   {
     key: "2",
-    name: "چین"
+    name: "چین",
   },
   {
     key: "3",
-    name: "عراق"
+    name: "عراق",
   },
   {
     key: "4",
-    name: "روسیه"
+    name: "روسیه",
   },
   {
     key: "5",
-    name: "هند"
+    name: "هند",
   },
   {
     key: "6",
-    name: "روسیه"
+    name: "روسیه",
   },
   {
     key: "7",
-    name: "پاکستان"
+    name: "پاکستان",
   },
   {
     key: "8",
-    name: "کویت"
+    name: "کویت",
   },
   {
     key: "9",
-    name: "لبنان"
+    name: "لبنان",
   },
   {
     key: "10",
-    name: "ترکیه"
+    name: "ترکیه",
   },
   {
     key: "11",
-    name: "لبنان"
+    name: "لبنان",
   },
-]
+];
 
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
@@ -187,74 +195,73 @@ const ProductExportCountries = [
 const LaboratoryEquipment = [
   {
     key: "1",
-    name: "دستگاه تقطیر"
+    name: "دستگاه تقطیر",
   },
   {
     key: "2",
-    name: "دستگاه نقطه ریزش"
+    name: "دستگاه نقطه ریزش",
   },
   {
     key: "3",
-    name: "گام تستر"
+    name: "گام تستر",
   },
   {
     key: "4",
-    name: "ویسکومتر"
+    name: "ویسکومتر",
   },
   {
     key: "5",
-    name: "مادون قرمز FITR"
+    name: "مادون قرمز FITR",
   },
   {
     key: "6",
-    name: "حمام سیرکلاسیون"
+    name: "حمام سیرکلاسیون",
   },
   {
     key: "7",
-    name: "اکسیژن متر"
+    name: "اکسیژن متر",
   },
   {
     key: "8",
-    name: "چگالی سنج"
+    name: "چگالی سنج",
   },
   {
     key: "9",
-    name: "دستگاه آنالیز H2S"
+    name: "دستگاه آنالیز H2S",
   },
-]
+];
 
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
-
 
 const OilWaste = [
   {
     key: "1",
-    name: "گوگرد"
+    name: "گوگرد",
   },
   {
     key: "2",
-    name: "نمونه بنزین"
+    name: "نمونه بنزین",
   },
   {
     key: "3",
-    name: "نمونه نفت چراغ"
+    name: "نمونه نفت چراغ",
   },
   {
     key: "4",
-    name: "آسفالت"
+    name: "آسفالت",
   },
   {
     key: "5",
-    name: "روغن موتور"
+    name: "روغن موتور",
   },
   {
     key: "6",
-    name: "نمونه سوخت دیزل(گازوئیل)"
+    name: "نمونه سوخت دیزل(گازوئیل)",
   },
   {
     key: "7",
-    name: "ال‌پی‌جی در سیلندر گاز"
+    name: "ال‌پی‌جی در سیلندر گاز",
   },
-]
+];

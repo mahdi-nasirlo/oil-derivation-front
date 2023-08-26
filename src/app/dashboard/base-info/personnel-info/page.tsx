@@ -28,8 +28,8 @@ export default function Page() {
       <Form name="form_item_path" layout="vertical">
         <MyFormItemGroup prefix={["user"]}>
           <MyFormItemGroup prefix={["name"]}>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem
                   name="lastName"
                   label="تعداد کارکنان تولیدی (برحسب نفر)"
@@ -37,19 +37,19 @@ export default function Page() {
                   <Input size="large" placeholder="مطابق لیست تامین اجتماعی" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="کد ملی ">
                   <Input size="large" placeholder="وارد کنید" />
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="نام و نام خانوادگی">
                   <Input size="large" placeholder="وارد کنید" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="تاریخ تولد">
                   <DatePicker
                     className="w-full"
@@ -61,7 +61,7 @@ export default function Page() {
             </Row>
 
             <Row dir="ltr">
-              <Col span={2}>
+              <Col xs={10} md={3} lg={2}>
                 <Button
                   className="w-full management-info-form-submit"
                   size="large"
@@ -69,7 +69,7 @@ export default function Page() {
                 >
                   <span
                     style={{ display: "flex" }}
-                    className="flex gap-3 justify-center"
+                    className="flex gap-2 justify-center"
                   >
                     ثبت
                     <SvgIcon src="/static/save.svg" />

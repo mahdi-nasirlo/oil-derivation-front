@@ -66,8 +66,8 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
         layout="vertical"
         onFinish={onFinish}
       >
-        <Row gutter={32}>
-          <Col span={12}>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
             <Form.Item
               name="materialUid"
               label="نام مواد اولیه"
@@ -86,7 +86,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
               />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} md={12}>
             <Form.Item
               name={"materialUnitConsumption"}
               label="میزان مصرف برای تولید یک واحد"
@@ -102,8 +102,8 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={32}>
-          <Col span={12}>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
             <Form.Item
               name={"materialUsagePercentage"}
               label={"درصد استفاده"}
@@ -127,7 +127,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
               />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} md={12}>
             <Form.Item
               name={"materialTotalConsumption"}
               label={"میزان مصرف کل"}
@@ -140,8 +140,8 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={32}>
-          <Col span={12}>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
             <Form.Item
               name="materialSupplyMethodId"
               label="نحوه تامین"
@@ -160,7 +160,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
               />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} md={12}>
             <Form.Item
               name={"materialImportDeclarationNumber"}
               label="شماره اظهارنامه واردات"
@@ -184,8 +184,8 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
         <Typography className="mt-3 mb-6 text-right font-medium text-base text-secondary-500 text-secondary">
           منابع عمده تامین
         </Typography>
-        <Row gutter={32}>
-          <Col span={12}>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
             <Form.Item
               name="materialInternalSupplyPercentage"
               label="درصد تامین داخلی"
@@ -204,7 +204,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
               />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} md={12}>
             <Form.Item
               name="materialForeignSupplyPercentage"
               label="درصد تامین خارجی"
@@ -229,8 +229,8 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
         <Typography className="mt-3 mb-6 text-right font-medium text-base text-secondary-500 text-secondary">
           مشخصات تامین کننده مواد اولیه
         </Typography>
-        <Row gutter={32}>
-          <Col span={8}>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={8}>
             <Form.Item
               name="materialSupplyName"
               label="نام"
@@ -242,7 +242,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
               <Input size="large" placeholder="وارد نمایید" />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xs={24} md={8}>
             <Form.Item
               name="materialSupplyPersonTypeId"
               label="شخصیت"
@@ -261,7 +261,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
               />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xs={24} md={8}>
             <Form.Item
               name="materialSupplyNationalCode"
               label="کد ملی / شناسه ملی"
@@ -281,8 +281,8 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={32}>
-          <Col span={12}>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
             <Form.Item
               name="materialSupplyIranCode"
               label="ایرانکد"
@@ -300,7 +300,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
               />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col xs={24} md={12}>
             <Form.Item
               name="materialSupplyAddress"
               label="آدرس"
@@ -314,7 +314,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
           </Col>
         </Row>
         <Row dir="ltr">
-          <Col span={2}>
+          <Col xs={10} md={3} lg={2}>
             <Button
               loading={isLoading}
               className="w-full management-info-form-submit"
@@ -324,7 +324,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
             >
               <span
                 style={{ display: "flex" }}
-                className="flex gap-3 justify-center"
+                className="flex gap-2 justify-center"
               >
                 ذخیره
                 <SvgIcon src="/static/save.svg" />

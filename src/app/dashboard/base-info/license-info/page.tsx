@@ -23,20 +23,20 @@ export default function Page() {
       <Form name="form_item_path" layout="vertical">
         <MyFormItemGroup prefix={["user"]}>
           <MyFormItemGroup prefix={["name"]}>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="year-establishment" label="سال تاسیس">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name="lastName" label="نام شرکت ثبت شده">
                   <Input size="large" />
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem
                   name="company-registratuon-num"
                   label=" شماره ثبت شرکت"
@@ -44,7 +44,7 @@ export default function Page() {
                   <Input size="large" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem
                   name="license-establish"
                   label="شماره پروانه بهره برداری / جواز تاسیس"
@@ -53,8 +53,8 @@ export default function Page() {
                 </MyFormItem>
               </Col>
             </Row>
-            <Row gutter={32}>
-              <Col span={12}>
+            <Row gutter={[16, 16]}>
+              <Col xs={24} md={12}>
                 <MyFormItem
                   name="operation-license"
                   label="تاریخ صدور پروانه بهره برداری / جواز تاسیس"
@@ -62,7 +62,7 @@ export default function Page() {
                   <Input size="large" />
                 </MyFormItem>
               </Col>
-              <Col span={12}>
+              <Col xs={24} md={12}>
                 <MyFormItem name={"phone_number"} label="شناسه کسب و کار">
                   <Input size="large" />
                 </MyFormItem>

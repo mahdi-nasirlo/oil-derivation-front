@@ -62,7 +62,7 @@ export default function NewRequest() {
             type="primary"
             htmlType="submit"
           >
-            <span className="flex gap-3 justify-center "> ثبت</span>
+            <span className="flex gap-2 justify-center "> ثبت</span>
           </Button>
         </Link>
       </Form>
