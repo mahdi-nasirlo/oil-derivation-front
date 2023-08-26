@@ -1,39 +1,55 @@
 "use client";
 
 import {Button, Col, Divider, Form, Input, Row, Typography, Upload,} from "../../../../../lib/antd";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {UploadOutlined} from "@ant-design/icons";
 import {useRouter} from "next/navigation";
+import {notification} from "antd";
+import {IconType, NotificationPlacement} from "antd/es/notification/interface";
 import {createRequestMaster} from "../../../../../units/RequestMaster/createRequestMaster";
-import {hasCookie} from "cookies-next";
 
 export default function Page() {
     const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false)
 
-    useEffect(() => {
-        if (hasCookie("requestMasterUid")) {
-            router.push("/dashboard/request/laboratory")
-        }
-    })
+    const [api, contextHolder] = notification.useNotification();
 
-    const onFinish = (values: RequestMasterForm) => {
+    // useEffect(() => {
+    //     if (hasCookie("requestMasterUid")) {
+    //         router.push("/dashboard/request/laboratory")
+    //     }
+    // })
+
+    const openNotification = (placement: NotificationPlacement, type: IconType, msg: string) => {
+        api.open({
+            type: type,
+            message: msg,
+            placement,
+        });
+    };
+
+    const onFinish = async (values: RequestMasterForm) => {
 
         let data: RequestMaster = {
             ...values,
             fileName: values.fileName?.file.name,
         };
 
-        return createRequestMaster(data, setIsLoading, () => {
-            router.push("/dashboard/request/laboratory")
-        })
+        await createRequestMaster(data, setIsLoading, () => {
+                openNotification("top", "success", "شرح فرایند با موفقیت ثبت شد.")
+                setTimeout(() => {
+                    router.push("/dashboard/request/laboratory")
+                }, 1000);
+            },
+        )
 
     };
 
 
     return (
         <>
+            {contextHolder}
             <Typography className="text-right font-medium text-base">
                 لطفا اطلاعات خواسته شده را با دقت وارد نمایید.
             </Typography>

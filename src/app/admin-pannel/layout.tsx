@@ -2,40 +2,51 @@
 
 import AppLayout from "@/components/layout/layout";
 import React from "react";
-import { getMenuItem } from "@/components/layout/sidebar";
+import {getMenuItem} from "@/components/layout/sidebar";
 import Link from "next/link";
-import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
-import { MenuProps } from "antd";
+import {ChatBubbleLeftEllipsisIcon} from "@heroicons/react/24/outline";
+import {MenuProps} from "antd";
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
+                                       children,
+                                   }: {
+    children: React.ReactNode;
 }) {
-  return (
-    <>
-      <AppLayout sidebarItems={items}>{children}</AppLayout>
-    </>
-  );
+    return (
+        <>
+            <AppLayout sidebarItems={items}>{children}</AppLayout>
+        </>
+    );
 }
 
 const items: MenuProps["items"] = [
-  getMenuItem(
-    " پنل ادمین",
-    "management",
-    null,
-    [
-      getMenuItem(
-        <Link href={"/manufacturer/product-category"}> دسته بندی محصول</Link>,
-        "product-category",
-        <ChatBubbleLeftEllipsisIcon width={16} height={16} />
-      ),
-      getMenuItem(
-        <Link href={"/manufacturer/info"}> افزودن محصول</Link>,
-        "msnufscturer-info",
-        <ChatBubbleLeftEllipsisIcon width={16} height={16} />
-      ),
-    ],
-    "group"
-  ),
+
+    getMenuItem(
+        <Link href={"/admin-pannel"}>خانه</Link>,
+        "admin-pannel",
+        <ChatBubbleLeftEllipsisIcon width={16} height={16}/>
+    ),
+
+    getMenuItem(
+        " پنل ادمین",
+        "management",
+        null,
+        [
+
+            getMenuItem(
+                <Link href={"/admin-pannel/product-category"}> دسته بندی محصول</Link>,
+                "product-category",
+                <ChatBubbleLeftEllipsisIcon width={16} height={16}/>
+            ),
+
+            getMenuItem(
+                <span>افزودن محصول</span>,
+                "msnufscturer-info",
+                <ChatBubbleLeftEllipsisIcon width={16} height={16}/>
+            ),
+        ],
+
+        "group"
+    ),
+
 ];

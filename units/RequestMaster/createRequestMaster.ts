@@ -1,7 +1,7 @@
 import axios, {AxiosResponse} from "axios";
 import {RequestMaster} from "@/app/dashboard/request/production-process/page";
 
-export async function createRequestMaster(data: RequestMaster, setLoading: any, callback: any) {
+export async function createRequestMaster(data: RequestMaster, setLoading: any, callback: any, notification: any = null) {
     try {
 
         setLoading(true)
@@ -19,11 +19,16 @@ export async function createRequestMaster(data: RequestMaster, setLoading: any, 
         setCookie("requestMasterUid", requestMasterUid, 7);
 
         if (res.data.success) {
+            // notification("top", "success")
             callback()
         }
+
     } catch (error) {
+
         setLoading(false)
+
         console.error("Error:", error);
+
     }
 }
 
