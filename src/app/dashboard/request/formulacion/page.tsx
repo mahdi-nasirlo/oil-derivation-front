@@ -6,8 +6,11 @@ import PrimaryProductTable from "@/app/dashboard/request/formulacion/components/
 import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
 import {getAllRequestDetailMaterial} from "../../../../../units/RequestDetail/getAllRequestDetailMaterial";
+import {useRouter} from "next/navigation";
 
 export default function Formulacion() {
+
+    const router = useRouter();
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -36,7 +39,9 @@ export default function Formulacion() {
                 className="w-full management-info-form-submit btn-filter"
                 size="large"
                 type="primary"
-                htmlType="submit"
+                onClick={() => {
+                    router.push("/dashboard/request/select-product")
+                }}
             >
           <span className="flex gap-3 justify-center ">
             ذخیره و ادامه
