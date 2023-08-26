@@ -2,7 +2,7 @@ import {AxiosResponse} from "axios";
 import {customRequest} from "../../lib/customRequest";
 import {MaterialRequest} from "@/app/dashboard/request/formulacion/components/primary-product-form";
 
-export async function createRequestDetailProduct(data: MaterialRequest, setLoading: any, callback: any = null) {
+export async function createRequestDetailProduct(data: MaterialRequest, setLoading: any, callback: any = null, errorCallback: any = null) {
 
     try {
 
@@ -12,14 +12,18 @@ export async function createRequestDetailProduct(data: MaterialRequest, setLoadi
 
         setLoading(false)
 
-        const requestMasterUid = res.data.data;
-
         if (res.data.success) {
             callback()
         }
+        
+        const requestMasterUid = res.data.data;
+
 
     } catch (error) {
         setLoading(false)
+
+        errorCallback()
+
         console.error("Error:", error);
     }
 

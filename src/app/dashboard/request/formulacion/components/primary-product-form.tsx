@@ -8,6 +8,8 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 import {getCookie} from "cookies-next";
 import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createRequestDetailProduct";
+import {IconType, NotificationPlacement} from "antd/es/notification/interface";
+import {notification} from "antd";
 // import { createRequestDetailProduct } from "../../../../../../units/RequestDetail/createRequestDetailProduct";
 
 const onChange = (value: number | string | null) => {
@@ -35,16 +37,32 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
         console.log(`selected ${value}`);
     };
 
-    // const [api, contextHolder] = notification.useNotification();
+    const [api, contextHolder] = notification.useNotification();
+
+    const openNotification = (placement: NotificationPlacement, type: IconType, msg: string) => {
+        api.open({
+            type: type,
+            message: msg,
+            placement,
+        });
+    };
+
     const onFinish = (values: MaterialRequest) => {
         console.log(values);
         values.requestMasterUid = `${getCookie("requestMasterUid")}`;
+        values.materialImportDeclarationNumber = values.materialImportDeclarationNumber.toString()
+        values.materialSupplyIranCode = values.materialSupplyIranCode.toString()
+        values.materialSupplyNationalCode = values.materialSupplyNationalCode.toString()
         values.materialSupplyPersonTypeId = 1;
         values.materialSupplyMethodId = 1;
 
         console.log(values.materialUid)
         createRequestDetailProduct(values, setLoading, () => {
-            router.push("/dashboard/request/select-product");
+            mute()
+            openNotification("top", "success", "شرح فرایند با موفقیت ثبت شد.")
+            // router.push("/dashboard/request/select-product");
+        }, () => {
+            openNotification("top", "error", "مواد اولیه تکراری می باشد")
         });
 
         mute();
@@ -58,6 +76,7 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
 
     return (
         <>
+            {contextHolder}
             <Form
                 disabled={isLoading}
                 name="form_item_path"
