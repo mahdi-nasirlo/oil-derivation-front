@@ -2,21 +2,21 @@
 
 import AppLayout from "@/components/layout/layout";
 import React from "react";
-import {getMenuItem} from "@/components/layout/sidebar";
+import { getMenuItem } from "@/components/layout/sidebar";
 import Link from "next/link";
-import {ChatBubbleLeftEllipsisIcon} from "@heroicons/react/24/outline";
-import {MenuProps} from "antd";
+import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
+import { MenuProps } from "antd";
 
 export default function RootLayout({
-                                       children,
-                                   }: {
-    children: React.ReactNode;
+  children,
+}: {
+  children: React.ReactNode;
 }) {
-    return (
-        <>
-            <AppLayout sidebarItems={items}>{children}</AppLayout>
-        </>
-    );
+  return (
+    <>
+      <AppLayout sidebarItems={items}>{children}</AppLayout>
+    </>
+  );
 }
 
 const items: MenuProps["items"] = [
