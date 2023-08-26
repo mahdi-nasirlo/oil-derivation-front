@@ -8,7 +8,7 @@ export async function createRequestDetailProduct(data: MaterialRequest, setLoadi
 
         setLoading(true)
 
-        const res: AxiosResponse = await customRequest.post(`/api/RequestDetail/CreateProduct`, data)
+        const res: AxiosResponse = await customRequest.post(`/api/RequestDetail/CreateMaterial`, data)
 
         setLoading(false)
 
