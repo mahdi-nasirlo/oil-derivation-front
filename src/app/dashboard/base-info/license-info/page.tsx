@@ -1,16 +1,22 @@
 "use client";
 
+import { SvgIcon } from "@/components/layout/sidebar";
 import {
   Button,
   Col,
+  DatePicker,
   Divider,
   Form,
   FormItemProps,
   Input,
   Row,
+  Space,
+  Table,
   Typography,
 } from "../../../../../lib/antd";
 import React from "react";
+import Link from "next/link";
+import { ColumnsType } from "antd/es/table";
 
 export default function Page() {
   return (
@@ -23,47 +29,63 @@ export default function Page() {
       <Form name="form_item_path" layout="vertical">
         <Row gutter={[16, 16]}>
           <Col xs={24} md={12}>
-            <Form.Item name="year-establishment" label="سال تاسیس">
-              <Input size="large" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={12}>
-            <Form.Item name="lastName" label="نام شرکت ثبت شده">
-              <Input size="large" />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={12}>
-            <Form.Item name="company-registratuon-num" label=" شماره ثبت شرکت">
-              <Input size="large" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={12}>
             <Form.Item
-              name="license-establish"
-              label="شماره پروانه بهره برداری / جواز تاسیس"
-            >
-              <Input size="large" />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={12}>
-            <Form.Item
-              name="operation-license"
-              label="تاریخ صدور پروانه بهره برداری / جواز تاسیس"
+              name="year-establishment"
+              label="نام مجوز"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "number", message: "باید به صورت عدد باشد" },
+              ]}
             >
               <Input size="large" />
             </Form.Item>
           </Col>
           <Col xs={24} md={12}>
-            <Form.Item name={"phone_number"} label="شناسه کسب و کار">
-              <Input size="large" />
+            <Form.Item name="lastName" label="تاریخ دریافت ">
+              <DatePicker
+                className="w-full"
+                placeholder="13**/**/**"
+                size="large"
+              />
             </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item name="company-registratuon-num" label="تاریخ اعتبار">
+              <DatePicker
+                className="w-full"
+                placeholder="13**/**/**"
+                size="large"
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row dir="ltr">
+          <Col xs={10} md={3} lg={2}>
+            <Button
+              htmlType="submit"
+              className="w-full management-info-form-submit"
+              size="large"
+              type="primary"
+            >
+              <span
+                style={{ display: "flex" }}
+                className="flex gap-2 justify-center"
+              >
+                ثبت
+                <SvgIcon src="/static/save.svg" />
+              </span>
+            </Button>
           </Col>
         </Row>
       </Form>
+      <Table
+        pagination={false}
+        className="mt-6"
+        columns={columns}
+        dataSource={data}
+      />
 
       <Divider />
       <div className="flex gap-6">
@@ -117,3 +139,64 @@ export default function Page() {
 
 //   return <Form.Item name={concatName} {...props} />;
 // };
+
+interface DataType {
+  key: string;
+  name: string;
+  row: number;
+  nationalcode: string;
+  phonenum: string;
+  brithdate: string;
+
+  role: string;
+}
+
+const columns: ColumnsType<DataType> = [
+  {
+    title: "ردیف",
+    dataIndex: "row",
+    key: "1",
+  },
+  {
+    title: "نام و نام خانوادگی",
+    dataIndex: "name",
+    key: "2",
+  },
+  {
+    title: "تاریخ دریافت",
+    dataIndex: "nationalcode",
+    key: "3",
+  },
+  {
+    title: "تاریخ اعتبار",
+    dataIndex: "brithdate",
+    key: "4",
+  },
+
+  {
+    title: "جزئیات",
+    key: "جزئیات",
+    render: () => (
+      <Space size="middle">
+        <Link href={""} className="action-btn-edit">
+          ویرایش
+        </Link>
+        <Link href={""} className="action-btn-delete">
+          حذف
+        </Link>
+      </Space>
+    ),
+  },
+];
+
+const data: DataType[] = [
+  {
+    key: "1",
+    row: 1,
+    name: "پروانه بهره برداری",
+    nationalcode: "1401/01/01",
+    phonenum: "09337161523",
+    role: "مدیرعامل",
+    brithdate: "1382/12/02",
+  },
+];

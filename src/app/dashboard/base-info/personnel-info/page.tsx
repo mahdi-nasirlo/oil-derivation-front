@@ -140,7 +140,6 @@ interface DataType {
   nationalcode: number;
   phonenum: string;
   brithdate: string;
-
   role: string;
 }
 
