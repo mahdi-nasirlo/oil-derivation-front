@@ -8,6 +8,7 @@ import {
   Form,
   FormItemProps,
   Input,
+  InputNumber,
   Row,
 } from "../../../../../lib/antd";
 import React from "react";
@@ -44,7 +45,7 @@ export default function NewRequest() {
           </Col>
           <Col xs={24} md={12}>
             <Form.Item
-              name="lastName"
+              name="national-code"
               label="شناسه ملی"
               rules={[
                 { required: true, message: "کد ملی اجباری است" },
@@ -58,7 +59,7 @@ export default function NewRequest() {
                 },
               ]}
             >
-              <Input size="large" />
+              <InputNumber size="large" className="w-full rounded-lg" />
             </Form.Item>
           </Col>
         </Row>
@@ -90,16 +91,15 @@ export default function NewRequest() {
           </Col>
         </Row>
         <Divider />
-        <Link href={"/dashboard/request/management-info"}>
-          <Button
-            className="w-full management-info-form-submit btn-filter"
-            size="large"
-            type="primary"
-            htmlType="submit"
-          >
-            <span className="flex gap-2 justify-center "> ثبت</span>
-          </Button>
-        </Link>
+
+        <Button
+          className="w-full management-info-form-submit btn-filter"
+          size="large"
+          type="primary"
+          htmlType="submit"
+        >
+          <span className="flex gap-2 justify-center "> ثبت</span>
+        </Button>
       </Form>
     </>
   );

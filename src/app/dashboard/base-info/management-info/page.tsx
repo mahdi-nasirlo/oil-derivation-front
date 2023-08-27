@@ -57,7 +57,7 @@ export default function Home() {
                 },
               ]}
             >
-              <InputNumber size="large" />
+              <InputNumber size="large" className="w-full rounded-lg" />
             </Form.Item>
           </Col>
         </Row>
@@ -94,13 +94,14 @@ export default function Home() {
                 { type: "number", message: "باید به صورت عدد باشد" },
               ]}
             >
-              <InputNumber size="large" />
+              <InputNumber className="w-full rounded-lg" size="large" />
             </Form.Item>
           </Col>
         </Row>
         <Row dir="ltr">
           <Col xs={10} md={3} lg={2}>
             <Button
+              htmlType="submit"
               className="w-full management-info-form-submit"
               size="large"
               type="primary"

@@ -9,6 +9,7 @@ import {
   Form,
   FormItemProps,
   Input,
+  InputNumber,
   Row,
   Space,
   Table,
@@ -26,59 +27,90 @@ export default function Page() {
       </Typography>
       <Divider />
       <Form name="form_item_path" layout="vertical">
-        <MyFormItemGroup prefix={["user"]}>
-          <MyFormItemGroup prefix={["name"]}>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem
-                  name="lastName"
-                  label="تعداد کارکنان تولیدی (برحسب نفر)"
-                >
-                  <Input size="large" placeholder="مطابق لیست تامین اجتماعی" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem name="lastName" label="کد ملی ">
-                  <Input size="large" placeholder="وارد کنید" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem name="lastName" label="نام و نام خانوادگی">
-                  <Input size="large" placeholder="وارد کنید" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem name="lastName" label="تاریخ تولد">
-                  <DatePicker
-                    className="w-full"
-                    placeholder="13**/**/**"
-                    size="large"
-                  />
-                </MyFormItem>
-              </Col>
-            </Row>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="lastName"
+              label="تعداد کارکنان تولیدی (برحسب نفر)"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "number", message: "باید به صورت عدد باشد" },
+              ]}
+            >
+              <InputNumber
+                className="w-full rounded-lg"
+                size="large"
+                placeholder="مطابق لیست تامین اجتماعی"
+              />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="lastName"
+              label="کد ملی "
+              rules={[
+                { required: true, message: "کد ملی اجباری است" },
+                { type: "number", message: "باید به صورت عدد باشد" },
+                {
+                  validator: (_, value) => {
+                    if (!value || value.length === 10) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject("کد ملی باید ۱۰ رقم باشد");
+                  },
+                },
+              ]}
+            >
+              <InputNumber
+                className="w-full rounded-lg"
+                size="large"
+                placeholder="وارد کنید"
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="lastName"
+              label="نام و نام خانوادگی"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "string", message: "باید به صورت متن باشد" },
+              ]}
+            >
+              <Input size="large" placeholder="وارد کنید" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item name="lastName" label="تاریخ تولد">
+              <DatePicker
+                className="w-full"
+                placeholder="13**/**/**"
+                size="large"
+              />
+            </Form.Item>
+          </Col>
+        </Row>
 
-            <Row dir="ltr">
-              <Col xs={10} md={3} lg={2}>
-                <Button
-                  className="w-full management-info-form-submit"
-                  size="large"
-                  type="primary"
-                >
-                  <span
-                    style={{ display: "flex" }}
-                    className="flex gap-2 justify-center"
-                  >
-                    ثبت
-                    <SvgIcon src="/static/save.svg" />
-                  </span>
-                </Button>
-              </Col>
-            </Row>
-          </MyFormItemGroup>
-        </MyFormItemGroup>
+        <Row dir="ltr">
+          <Col xs={10} md={3} lg={2}>
+            <Button
+              htmlType="submit"
+              className="w-full management-info-form-submit"
+              size="large"
+              type="primary"
+            >
+              <span
+                style={{ display: "flex" }}
+                className="flex gap-2 justify-center"
+              >
+                ثبت
+                <SvgIcon src="/static/save.svg" />
+              </span>
+            </Button>
+          </Col>
+        </Row>
       </Form>
 
       <Table
@@ -180,37 +212,37 @@ const data: DataType[] = [
   },
 ];
 
-const MyFormItemContext = React.createContext<(string | number)[]>([]);
+// const MyFormItemContext = React.createContext<(string | number)[]>([]);
 
-interface MyFormItemGroupProps {
-  prefix: string | number | (string | number)[];
-  children: React.ReactNode;
-}
+// interface MyFormItemGroupProps {
+//   prefix: string | number | (string | number)[];
+//   children: React.ReactNode;
+// }
 
-function toArr(
-  str: string | number | (string | number)[]
-): (string | number)[] {
-  return Array.isArray(str) ? str : [str];
-}
+// function toArr(
+//   str: string | number | (string | number)[]
+// ): (string | number)[] {
+//   return Array.isArray(str) ? str : [str];
+// }
 
-const MyFormItemGroup = ({ prefix, children }: MyFormItemGroupProps) => {
-  const prefixPath = React.useContext(MyFormItemContext);
-  const concatPath = React.useMemo(
-    () => [...prefixPath, ...toArr(prefix)],
-    [prefixPath, prefix]
-  );
+// const MyFormItemGroup = ({ prefix, children }: MyFormItemGroupProps) => {
+//   const prefixPath = React.useContext(MyFormItemContext);
+//   const concatPath = React.useMemo(
+//     () => [...prefixPath, ...toArr(prefix)],
+//     [prefixPath, prefix]
+//   );
 
-  return (
-    <MyFormItemContext.Provider value={concatPath}>
-      {children}
-    </MyFormItemContext.Provider>
-  );
-};
+//   return (
+//     <MyFormItemContext.Provider value={concatPath}>
+//       {children}
+//     </MyFormItemContext.Provider>
+//   );
+// };
 
-const MyFormItem = ({ name, ...props }: FormItemProps) => {
-  const prefixPath = React.useContext(MyFormItemContext);
-  const concatName =
-    name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
+// const MyFormItem = ({ name, ...props }: FormItemProps) => {
+//   const prefixPath = React.useContext(MyFormItemContext);
+//   const concatName =
+//     name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
 
-  return <Form.Item name={concatName} {...props} />;
-};
+//   return <Form.Item name={concatName} {...props} />;
+// };

@@ -21,55 +21,48 @@ export default function Page() {
       </Typography>
       <Divider />
       <Form name="form_item_path" layout="vertical">
-        <MyFormItemGroup prefix={["user"]}>
-          <MyFormItemGroup prefix={["name"]}>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem name="year-establishment" label="سال تاسیس">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem name="lastName" label="نام شرکت ثبت شده">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem
-                  name="company-registratuon-num"
-                  label=" شماره ثبت شرکت"
-                >
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem
-                  name="license-establish"
-                  label="شماره پروانه بهره برداری / جواز تاسیس"
-                >
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem
-                  name="operation-license"
-                  label="تاریخ صدور پروانه بهره برداری / جواز تاسیس"
-                >
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem name={"phone_number"} label="شناسه کسب و کار">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-          </MyFormItemGroup>
-        </MyFormItemGroup>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item name="year-establishment" label="سال تاسیس">
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item name="lastName" label="نام شرکت ثبت شده">
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item name="company-registratuon-num" label=" شماره ثبت شرکت">
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="license-establish"
+              label="شماره پروانه بهره برداری / جواز تاسیس"
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="operation-license"
+              label="تاریخ صدور پروانه بهره برداری / جواز تاسیس"
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item name={"phone_number"} label="شناسه کسب و کار">
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
       </Form>
 
       <Divider />
@@ -90,37 +83,37 @@ export default function Page() {
   );
 }
 
-const MyFormItemContext = React.createContext<(string | number)[]>([]);
+// const MyFormItemContext = React.createContext<(string | number)[]>([]);
 
-interface MyFormItemGroupProps {
-  prefix: string | number | (string | number)[];
-  children: React.ReactNode;
-}
+// interface MyFormItemGroupProps {
+//   prefix: string | number | (string | number)[];
+//   children: React.ReactNode;
+// }
 
-function toArr(
-  str: string | number | (string | number)[]
-): (string | number)[] {
-  return Array.isArray(str) ? str : [str];
-}
+// function toArr(
+//   str: string | number | (string | number)[]
+// ): (string | number)[] {
+//   return Array.isArray(str) ? str : [str];
+// }
 
-const MyFormItemGroup = ({ prefix, children }: MyFormItemGroupProps) => {
-  const prefixPath = React.useContext(MyFormItemContext);
-  const concatPath = React.useMemo(
-    () => [...prefixPath, ...toArr(prefix)],
-    [prefixPath, prefix]
-  );
+// const MyFormItemGroup = ({ prefix, children }: MyFormItemGroupProps) => {
+//   const prefixPath = React.useContext(MyFormItemContext);
+//   const concatPath = React.useMemo(
+//     () => [...prefixPath, ...toArr(prefix)],
+//     [prefixPath, prefix]
+//   );
 
-  return (
-    <MyFormItemContext.Provider value={concatPath}>
-      {children}
-    </MyFormItemContext.Provider>
-  );
-};
+//   return (
+//     <MyFormItemContext.Provider value={concatPath}>
+//       {children}
+//     </MyFormItemContext.Provider>
+//   );
+// };
 
-const MyFormItem = ({ name, ...props }: FormItemProps) => {
-  const prefixPath = React.useContext(MyFormItemContext);
-  const concatName =
-    name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
+// const MyFormItem = ({ name, ...props }: FormItemProps) => {
+//   const prefixPath = React.useContext(MyFormItemContext);
+//   const concatName =
+//     name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
 
-  return <Form.Item name={concatName} {...props} />;
-};
+//   return <Form.Item name={concatName} {...props} />;
+// };

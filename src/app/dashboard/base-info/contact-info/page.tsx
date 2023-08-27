@@ -7,6 +7,7 @@ import {
   Form,
   FormItemProps,
   Input,
+  InputNumber,
   Row,
   Select,
   Typography,
@@ -21,113 +22,171 @@ export default function Page() {
       </Typography>
       <Divider />
       <Form name="form_item_path" layout="vertical">
-        <MyFormItemGroup prefix={["user"]}>
-          <MyFormItemGroup prefix={["name"]}>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem name="year-establishment" label="استان ">
-                  <Select size="large" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem name="lastName" label="شهرستان">
-                  <Select size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem name="company-registratuon-num" label="شهرک">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem name="license-establish" label="خیابان اصلی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem name="operation-license" label="خیابان فرعی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem name={"phone_number"} label="کوچه">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row>
-              <Col span={24}>
-                <MyFormItem name="operation-license" label="نشانی دفتر مرکزی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem name="operation-license" label="تلفن دفتر مرکزی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem name={"phone_number"} label="تلفن تماس کارخانه">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-          </MyFormItemGroup>
-        </MyFormItemGroup>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="year-establishment"
+              label="استان "
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "string" },
+              ]}
+            >
+              <Select size="large" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="lastName"
+              label="شهرستان"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "string" },
+              ]}
+            >
+              <Select size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="company-registratuon-num"
+              label="شهرک"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "string", message: "باید به صورت متن باشد" },
+              ]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="license-establish"
+              label="خیابان اصلی"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "string", message: "باید به صورت متن باشد" },
+              ]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="operation-license"
+              label="خیابان فرعی"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "string", message: "باید به صورت متن باشد" },
+              ]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name={"phone_number"}
+              label="کوچه"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "string", message: "باید به صورت متن باشد" },
+              ]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24}>
+            <Form.Item
+              name="operation-license"
+              label="نشانی دفتر مرکزی"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "string", message: "باید به صورت متن باشد" },
+              ]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="operation-license"
+              label="تلفن دفتر مرکزی"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "number", message: "باید به صورت عدد باشد" },
+              ]}
+            >
+              <InputNumber className="w-full rounded-lg" size="large" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name={"phone_number"}
+              label="تلفن تماس کارخانه"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "number", message: "باید به صورت عدد باشد" },
+              ]}
+            >
+              <InputNumber className="w-full rounded-lg" size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Divider />
+        <div className="flex gap-6">
+          <Button
+            className="w-full management-info-form-submit btn-filter"
+            size="large"
+            type="primary"
+            htmlType="submit"
+          >
+            <span className="flex gap-3 justify-center "> ثبت</span>
+          </Button>
+        </div>
       </Form>
-
-      <Divider />
-      <div className="flex gap-6">
-        <Button
-          className="w-full management-info-form-submit btn-filter"
-          size="large"
-          type="primary"
-          htmlType="submit"
-        >
-          <span className="flex gap-3 justify-center "> ثبت</span>
-        </Button>
-      </div>
     </>
   );
 }
 
-const MyFormItemContext = React.createContext<(string | number)[]>([]);
+// const MyFormItemContext = React.createContext<(string | number)[]>([]);
 
-interface MyFormItemGroupProps {
-  prefix: string | number | (string | number)[];
-  children: React.ReactNode;
-}
+// interface MyFormItemGroupProps {
+//   prefix: string | number | (string | number)[];
+//   children: React.ReactNode;
+// }
 
-function toArr(
-  str: string | number | (string | number)[]
-): (string | number)[] {
-  return Array.isArray(str) ? str : [str];
-}
+// function toArr(
+//   str: string | number | (string | number)[]
+// ): (string | number)[] {
+//   return Array.isArray(str) ? str : [str];
+// }
 
-const MyFormItemGroup = ({ prefix, children }: MyFormItemGroupProps) => {
-  const prefixPath = React.useContext(MyFormItemContext);
-  const concatPath = React.useMemo(
-    () => [...prefixPath, ...toArr(prefix)],
-    [prefixPath, prefix]
-  );
+// const MyFormItemGroup = ({ prefix, children }: MyFormItemGroupProps) => {
+//   const prefixPath = React.useContext(MyFormItemContext);
+//   const concatPath = React.useMemo(
+//     () => [...prefixPath, ...toArr(prefix)],
+//     [prefixPath, prefix]
+//   );
 
-  return (
-    <MyFormItemContext.Provider value={concatPath}>
-      {children}
-    </MyFormItemContext.Provider>
-  );
-};
+//   return (
+//     <MyFormItemContext.Provider value={concatPath}>
+//       {children}
+//     </MyFormItemContext.Provider>
+//   );
+// };
 
-const MyFormItem = ({ name, ...props }: FormItemProps) => {
-  const prefixPath = React.useContext(MyFormItemContext);
-  const concatName =
-    name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
+// const MyFormItem = ({ name, ...props }: FormItemProps) => {
+//   const prefixPath = React.useContext(MyFormItemContext);
+//   const concatName =
+//     name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
 
-  return <Form.Item name={concatName} {...props} />;
-};
+//   return <Form.Item name={concatName} {...props} />;
+// };
