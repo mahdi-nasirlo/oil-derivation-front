@@ -9,14 +9,14 @@ const columns: ColumnsType<RequestDetail> = [
     {
         title: 'ردیف',
         width: 100,
-        dataIndex: 'Id',
-        key: 'id',
+        dataIndex: 'MaterialUid',
+        key: 'MaterialUid',
     },
     {
         title: 'نام مواد',
         width: 100,
-        dataIndex: 'ProductOrMaterialName',
-        key: 'productOrMaterialName',
+        dataIndex: 'MaterialName',
+        key: 'MaterialName',
     },
     {
         title: 'میزان مصرف برای یک واحد',

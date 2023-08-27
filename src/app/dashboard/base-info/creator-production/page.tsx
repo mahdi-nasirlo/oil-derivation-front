@@ -24,36 +24,71 @@ export default function NewRequest() {
       />
       <Divider />
       <Form name="form_item_path" layout="vertical">
-        <MyFormItemGroup prefix={["user"]}>
-          <MyFormItemGroup prefix={["name"]}>
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem name="lastName" label="مدیرعامل">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem name="lastName" label="شناسه ملی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="lastName"
+              label="مدیرعامل"
+              rules={[
+                {
+                  required: true,
+                  message: "این فیلد اجباری است",
+                },
+                {
+                  type: "string",
+                },
+              ]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="lastName"
+              label="شناسه ملی"
+              rules={[
+                { required: true, message: "کد ملی اجباری است" },
+                {
+                  validator: (_, value) => {
+                    if (!value || value.length === 10) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject("کد ملی باید ۱۰ رقم باشد");
+                  },
+                },
+              ]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
 
-            <Row gutter={[16, 16]}>
-              <Col xs={24} md={12}>
-                <MyFormItem name="lastName" label="نام واحد تولیدی">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-              <Col xs={24} md={12}>
-                <MyFormItem name="lastName" label="نوع مالکیت">
-                  <Input size="large" />
-                </MyFormItem>
-              </Col>
-            </Row>
-          </MyFormItemGroup>
-        </MyFormItemGroup>
-
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="lastName"
+              label="نام واحد تولیدی"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "string", message: "باید به صورت متن باشد" },
+              ]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item
+              name="lastName"
+              label="نوع مالکیت"
+              rules={[
+                { required: true, message: "این فیلد اجباری است" },
+                { type: "string" },
+              ]}
+            >
+              <Input size="large" />
+            </Form.Item>
+          </Col>
+        </Row>
         <Divider />
         <Link href={"/dashboard/request/management-info"}>
           <Button
@@ -70,37 +105,37 @@ export default function NewRequest() {
   );
 }
 
-const MyFormItemContext = React.createContext<(string | number)[]>([]);
+// const MyFormItemContext = React.createContext<(string | number)[]>([]);
 
-interface MyFormItemGroupProps {
-  prefix: string | number | (string | number)[];
-  children: React.ReactNode;
-}
+// interface MyFormItemGroupProps {
+//   prefix: string | number | (string | number)[];
+//   children: React.ReactNode;
+// }
 
-function toArr(
-  str: string | number | (string | number)[]
-): (string | number)[] {
-  return Array.isArray(str) ? str : [str];
-}
+// function toArr(
+//   str: string | number | (string | number)[]
+// ): (string | number)[] {
+//   return Array.isArray(str) ? str : [str];
+// }
 
-const MyFormItemGroup = ({ prefix, children }: MyFormItemGroupProps) => {
-  const prefixPath = React.useContext(MyFormItemContext);
-  const concatPath = React.useMemo(
-    () => [...prefixPath, ...toArr(prefix)],
-    [prefixPath, prefix]
-  );
+// const MyFormItemGroup = ({ prefix, children }: MyFormItemGroupProps) => {
+//   const prefixPath = React.useContext(MyFormItemContext);
+//   const concatPath = React.useMemo(
+//     () => [...prefixPath, ...toArr(prefix)],
+//     [prefixPath, prefix]
+//   );
 
-  return (
-    <MyFormItemContext.Provider value={concatPath}>
-      {children}
-    </MyFormItemContext.Provider>
-  );
-};
+//   return (
+//     <MyFormItemContext.Provider value={concatPath}>
+//       {children}
+//     </MyFormItemContext.Provider>
+//   );
+// };
 
-const MyFormItem = ({ name, ...props }: FormItemProps) => {
-  const prefixPath = React.useContext(MyFormItemContext);
-  const concatName =
-    name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
+// const MyFormItem = ({ name, ...props }: FormItemProps) => {
+//   const prefixPath = React.useContext(MyFormItemContext);
+//   const concatName =
+//     name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
 
-  return <Form.Item name={concatName} {...props} />;
-};
+//   return <Form.Item name={concatName} {...props} />;
+// };

@@ -6,8 +6,12 @@ import PrimaryProductTable from "@/app/dashboard/request/formulacion/components/
 import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
 import { getAllRequestDetailMaterial } from "../../../../../units/RequestDetail/getAllRequestDetailMaterial";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Formulacion() {
+  const router = useRouter();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const {
