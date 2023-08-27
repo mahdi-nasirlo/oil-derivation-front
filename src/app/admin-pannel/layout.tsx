@@ -20,33 +20,30 @@ export default function RootLayout({
 }
 
 const items: MenuProps["items"] = [
+  getMenuItem(
+    <Link href={"/admin-pannel"}>خانه</Link>,
+    "admin-pannel",
+    <ChatBubbleLeftEllipsisIcon width={16} height={16} />
+  ),
 
-    getMenuItem(
-        <Link href={"/admin-pannel"}>خانه</Link>,
-        "admin-pannel",
-        <ChatBubbleLeftEllipsisIcon width={16} height={16}/>
-    ),
+  getMenuItem(
+    " پنل ادمین",
+    "management",
+    null,
+    [
+      getMenuItem(
+        <Link href={"/admin-pannel/product-category"}> دسته بندی محصول</Link>,
+        "product-category",
+        <ChatBubbleLeftEllipsisIcon width={16} height={16} />
+      ),
 
-    getMenuItem(
-        " پنل ادمین",
-        "management",
-        null,
-        [
+      getMenuItem(
+        <Link href={"/admin-pannel/adding-product"}>افزودن محصول</Link>,
+        "msnufscturer-info",
+        <ChatBubbleLeftEllipsisIcon width={16} height={16} />
+      ),
+    ],
 
-            getMenuItem(
-                <Link href={"/admin-pannel/product-category"}> دسته بندی محصول</Link>,
-                "product-category",
-                <ChatBubbleLeftEllipsisIcon width={16} height={16}/>
-            ),
-
-            getMenuItem(
-                <span>افزودن محصول</span>,
-                "msnufscturer-info",
-                <ChatBubbleLeftEllipsisIcon width={16} height={16}/>
-            ),
-        ],
-
-        "group"
-    ),
-
+    "group"
+  ),
 ];

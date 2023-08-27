@@ -329,3 +329,11 @@ body {
  .reject-btn{
   color: theme("colors.white")!important;
  }
+ .action-btn-edit-admin{
+  color: theme("backgroundColor.orange.500");
+ }
+ 
+ .action-btn-delete-admin{
+  color: theme("colors.red.500");
+
+ }
