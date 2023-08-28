@@ -5,19 +5,23 @@ import { customRequest } from '../../lib/customRequest';
 
 
 
-export async function getPageProduct({}) {
+export async function getPageProduct( callback: any = null) {
     const requestMasterUid =getCookie("RequestMasterUid")
     
 
 try {
-    const res:AxiosResponse =await customRequest.post(`/api/RequestDetail/getPageProduct`,{requestMasterUid:requestMasterUid}
+    const res:AxiosResponse =await customRequest.post(`/api/RequestDetail/GetPageProduct`,{requestMasterUid:requestMasterUid}
 
     )
-     return res.data.data
+
+    
+     return res.data.data.records
     
 } catch (error) {
     console.error("Error:", error);
 }
+
+return null
 
 
 }

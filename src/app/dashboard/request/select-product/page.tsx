@@ -11,13 +11,12 @@ import { ColumnsType } from "antd/es/table";
 import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
 import { getAllProduct } from "../../../../../units/RequestDetail/getAllProduct";
+import { getPageProduct } from "../../../../../units/RequestDetail/getPageProduct";
 
 export default function Page() {
-  const { data: product, mutate };
-
   const { data: product, mutate } = useSWR(
-    "/api/RequestDetail/GetAllProduct",
-    getAllProduct
+    "/api/RequestDetail/GetPageProduct",
+    getPageProduct
   );
 
   return (
@@ -35,7 +34,7 @@ export default function Page() {
         pagination={false}
         className="mt-6"
         columns={columns}
-        dataSource={product || null}
+        dataSource={product || []}
       />
       <Divider />
       <div className="flex">
