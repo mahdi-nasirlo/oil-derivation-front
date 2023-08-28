@@ -1,11 +1,11 @@
 'use client'
-import { Steps } from "../../../../lib/antd"
-import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import {Steps} from "../../../../lib/antd"
+import {useEffect, useState} from "react";
+import {usePathname, useRouter} from "next/navigation";
 
 export default function RootLayout({
-    children,
-}: {
+                                       children,
+                                   }: {
     children: React.ReactNode
 }) {
     const pathname = usePathname()
@@ -32,7 +32,7 @@ export default function RootLayout({
             <Steps
                 current={current}
                 onChange={onChange}
-                className="pb-8"
+                className="pb-8 max-md:pb-2"
                 items={[
                     {
                         title: 'فرآیند تولید',
@@ -50,7 +50,7 @@ export default function RootLayout({
                         title: 'محصول نهایی',
                         description: 'انتخاب محصول نهایی'
                     },
-                ]} />
+                ]}/>
             <div className="box-border w-full mt-8 p-6">
                 {children}
             </div>
@@ -60,8 +60,8 @@ export default function RootLayout({
 
 
 const stepLinks: { number: number, href: string }[] = [
-    { number: 0, href: "/dashboard/request/production-process" },
-    { number: 1, href: "/dashboard/request/laboratory" },
-    { number: 2, href: "/dashboard/request/formulacion" },
-    { number: 3, href: "/dashboard/request/select-product" },
+    {number: 0, href: "/dashboard/request/production-process"},
+    {number: 1, href: "/dashboard/request/laboratory"},
+    {number: 2, href: "/dashboard/request/formulacion"},
+    {number: 3, href: "/dashboard/request/select-product"},
 ]
