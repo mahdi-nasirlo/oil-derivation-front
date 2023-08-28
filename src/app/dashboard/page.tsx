@@ -10,7 +10,7 @@ export default async function Home() {
 
     return (
         <>
-            <div className="box-border w-full mt-8 p-6">
+            <div className="box-border w-full mt-8 p-6 max-md:p-2 mt-3">
                 <DisplayData data={data}/>
                 <div className="flex">
                     <Typography className="text-1xl">
