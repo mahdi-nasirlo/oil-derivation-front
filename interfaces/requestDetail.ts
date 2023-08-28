@@ -20,3 +20,8 @@ export interface RequestDetail {
     MaterialSupplyAddress: string,
     ProductOrMaterialName: string
 }
+
+export interface selectableProduct{
+    uid:string
+    densityType:boolean
+}
