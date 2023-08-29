@@ -1,16 +1,24 @@
 "use client";
 import {
+
   Button,
+
   Checkbox,
+
   Divider,
+
   Table,
+
   Typography,
+
 } from "../../../../../lib/antd";
 import React from "react";
 import { ColumnsType } from "antd/es/table";
 import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
 import { getAllProduct } from "../../../../../units/RequestDetail/getAllProduct";
+import { getPageProduct } from "../../../../../units/RequestDetail/getPageProduct";
+
 
 export default function Page() {
 
@@ -30,11 +38,13 @@ export default function Page() {
       </Typography>
       <PrimaryProductForm mute={mutate} />
 
+
       <Table
         pagination={false}
         className="mt-6"
         columns={columns}
-        dataSource={product || null}
+
+        dataSource={product || []}
       />
       <Divider />
       <div className="flex">
