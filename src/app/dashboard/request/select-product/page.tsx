@@ -13,7 +13,6 @@ import useSWR from "swr";
 import { getAllProduct } from "../../../../../units/RequestDetail/getAllProduct";
 
 export default function Page() {
-  const { data: product, mutate };
 
   const { data: product, mutate } = useSWR(
     "/api/RequestDetail/GetAllProduct",

@@ -87,7 +87,7 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
           <Col xs={24} md={12}>
             <Form.Item name="lastName" label="نام محصول">
               <Select
-                fieldNames={{ value: "Uid", label: "densityType" }}
+                fieldNames={{ value: "Uid", label: "Name" }}
                 size="large"
                 placeholder="انتخاب نمایید"
                 onChange={handleChange}

@@ -33,6 +33,7 @@ export default function Formulacion() {
       <Divider />
       <PrimaryProductForm mute={mutate} />
       <PrimaryProductTable
+        mute={mutate}
         data={requestMasterMaterial}
         loading={requestMasterMaterialLoading}
       />
