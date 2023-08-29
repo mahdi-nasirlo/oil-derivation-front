@@ -26,10 +26,10 @@ export default function Page() {
     getPageProduct
   );
 
-  const { data: product, mutate } = useSWR(
-    "/api/RequestDetail/GetAllProduct",
-    getAllProduct
-  );
+  // const { data: product, mutate } = useSWR(
+  //   "/api/RequestDetail/GetAllProduct",
+  //   getAllProduct
+  // );
 
   return (
     <>
