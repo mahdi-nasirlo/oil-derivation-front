@@ -21,6 +21,10 @@ import { getPageProduct } from "../../../../../units/RequestDetail/getPageProduc
 
 
 export default function Page() {
+  const { data: product, mutate } = useSWR(
+    "/api/RequestDetail/GetPageProduct",
+    getPageProduct
+  );
 
   const { data: product, mutate } = useSWR(
     "/api/RequestDetail/GetAllProduct",
