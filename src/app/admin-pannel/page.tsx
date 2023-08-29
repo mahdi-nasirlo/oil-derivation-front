@@ -1,4 +1,4 @@
-import {Typography} from "../../../lib/antd";
+import {Typography} from "antd";
 
 export default async function Manufacturer() {
     return (

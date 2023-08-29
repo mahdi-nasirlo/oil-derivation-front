@@ -1,4 +1,4 @@
-import {Breadcrumb} from "../../../lib/antd";
+import {Breadcrumb} from "antd";
 
 export default function LayoutBreadcrumb() {
     return (

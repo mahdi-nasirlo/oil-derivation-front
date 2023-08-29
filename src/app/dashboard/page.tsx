@@ -1,5 +1,5 @@
 import DisplayData from "@/app/dashboard/components/showData";
-import {Typography} from "../../../lib/antd";
+import {Typography} from "antd";
 import Link from "next/link";
 
 

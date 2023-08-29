@@ -1,5 +1,5 @@
 'use client'
-import {Result, Spin, Typography} from "../../../../lib/antd";
+import {Result, Spin, Typography} from "antd";
 import {LoadingOutlined} from "@ant-design/icons";
 import {usePathname, useSearchParams} from "next/navigation";
 import {useEffect} from "react";

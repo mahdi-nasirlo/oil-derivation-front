@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import {SmileOutlined} from '@ant-design/icons'
-import {Dropdown, MenuProps, Modal, theme, Typography} from '../../../lib/antd'
+import {Dropdown, MenuProps, Modal, theme, Typography} from 'antd'
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 

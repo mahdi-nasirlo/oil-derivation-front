@@ -1,5 +1,5 @@
-import { Spin } from "../../../lib/antd";
+import {Spin} from "antd";
 
 export default function Loading() {
-  return <Spin size="large" />;
+    return <Spin size="large"/>;
 }

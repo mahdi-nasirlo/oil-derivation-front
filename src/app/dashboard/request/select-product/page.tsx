@@ -1,17 +1,5 @@
 "use client";
-import {
-
-  Button,
-
-  Checkbox,
-
-  Divider,
-
-  Table,
-
-  Typography,
-
-} from "../../../../../lib/antd";
+import {Button, Checkbox, Divider, Table, Typography,} from "antd";
 import React from "react";
 import { ColumnsType } from "antd/es/table";
 import PrimaryProductForm from "./components/primary-product-form";

@@ -1,11 +1,15 @@
-import { Button, Table } from "../../../../../../lib/antd";
-import { ColumnsType } from "antd/es/table";
-import React, { useState } from "react";
-import { RequestDetail } from "../../../../../../interfaces/requestDetail";
-import { DeleteProductRequestDetail } from "../../../../../../units/RequestDetail/deleteProduct";
+import {Button, Table} from "antd";
+import {ColumnsType} from "antd/es/table";
+import React, {useState} from "react";
+import {RequestDetail} from "../../../../../../interfaces/requestDetail";
+import {DeleteProductRequestDetail} from "../../../../../../units/RequestDetail/deleteProduct";
 
 
-export default function PrimaryProductTable({ data, loading = false, mute }: { data: RequestDetail[], loading: any, mute: any }) {
+export default function PrimaryProductTable({data, loading = false, mute}: {
+    data: RequestDetail[],
+    loading: any,
+    mute: any
+}) {
 
     const [isDeleting, setDeleting] = useState(false)
 
@@ -78,7 +82,8 @@ export default function PrimaryProductTable({ data, loading = false, mute }: { d
 
 
     return <>
-        <Table loading={loading || isDeleting} className={"mt-6"} pagination={false} columns={columns} dataSource={data || []}
-            scroll={{ x: 1500, y: 300 }} />
+        <Table loading={loading || isDeleting} className={"mt-6"} pagination={false} columns={columns}
+               dataSource={data || []}
+               scroll={{x: 1500, y: 300}}/>
     </>
 }

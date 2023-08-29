@@ -1,34 +1,33 @@
 "use client";
 
-import { Button, Divider, Typography } from "../../../../../lib/antd";
-import React, { useState } from "react";
+import {Button, Divider, Typography} from "antd";
+import React, {useState} from "react";
 import PrimaryProductTable from "@/app/dashboard/request/formulacion/components/primary-product-table";
 import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
-import { getAllRequestDetailMaterial } from "../../../../../units/RequestDetail/getAllRequestDetailMaterial";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import {getAllRequestDetailMaterial} from "../../../../../units/RequestDetail/getAllRequestDetailMaterial";
+import {useRouter} from "next/navigation";
 
 export default function Formulacion() {
-  const router = useRouter();
+    const router = useRouter();
 
-  const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-  const {
-    mutate,
-    data: requestMasterMaterial,
-    isLoading: requestMasterMaterialLoading,
-  } = useSWR("/RequestDetail/GetPageMaterial", getAllRequestDetailMaterial);
+    const {
+        mutate,
+        data: requestMasterMaterial,
+        isLoading: requestMasterMaterialLoading,
+    } = useSWR("/RequestDetail/GetPageMaterial", getAllRequestDetailMaterial);
 
-  return (
-    <>
-      <Typography className="text-right font-medium text-base">
-        لطفا اطلاعات خواسته شده را با دقت وارد نمایید.
-      </Typography>
-      <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary">
-        * برای وارد کردن درصد مواد اولیه تمامی اعداد را با حجمی یا وزنی وارد
-        نمایید.
-      </Typography>
+    return (
+        <>
+            <Typography className="text-right font-medium text-base">
+                لطفا اطلاعات خواسته شده را با دقت وارد نمایید.
+            </Typography>
+            <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary">
+                * برای وارد کردن درصد مواد اولیه تمامی اعداد را با حجمی یا وزنی وارد
+                نمایید.
+            </Typography>
 
       <Divider />
       <PrimaryProductForm mute={mutate} />

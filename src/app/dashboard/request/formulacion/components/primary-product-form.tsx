@@ -1,5 +1,5 @@
 "use client";
-import {Button, Col, Divider, Form, Input, InputNumber, Row, Select, Typography,} from "../../../../../../lib/antd";
+import {Button, Col, Divider, Form, Input, InputNumber, notification, Row, Select, Typography,} from "antd";
 import {SvgIcon} from "@/components/layout/sidebar";
 import useSWR from "swr";
 import {getAllMaterial} from "../../../../../../units/Material/getAllMaterial";
@@ -8,7 +8,6 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 import {getCookie} from "cookies-next";
 import {IconType, NotificationPlacement,} from "antd/es/notification/interface";
-import {notification} from "antd";
 import {useForm} from "antd/lib/form/Form";
 import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createRequestDetailProduct";
 

@@ -1,5 +1,5 @@
 'use client'
-import {Descriptions} from "../../../../lib/antd";
+import {Descriptions} from "antd";
 
 export default function DisplayData({data}: {
     data: null | { success: boolean, message: string | null, data: string }
