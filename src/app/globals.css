@@ -122,6 +122,10 @@ body {
     display: none !important;
 }
 
+.ant-menu{
+    @apply border-e-0 lg:border-e-[1px] !important
+}
+
 
 .ant-menu-item {
     margin-right: 0 !important;
@@ -144,6 +148,10 @@ body {
     background-color: theme("backgroundColor.primary.500") !important;
     color: theme("colors.white") !important;
     /* filter: brightness(0) invert(1); */
+}
+
+.ant-drawer-mask{
+    @apply opacity-75 !important
 }
 
 .ant-alert-error .ant-alert-content .ant-alert-message {
