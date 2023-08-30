@@ -1,5 +1,5 @@
 "use client";
-import {Button, Checkbox, Divider, Table, Typography,} from "antd";
+import { Button, Checkbox, Divider, Table, Typography, Form } from "antd";
 import React from "react";
 import { ColumnsType } from "antd/es/table";
 import PrimaryProductForm from "./components/primary-product-form";
@@ -9,6 +9,14 @@ import { getPageProduct } from "../../../../../units/RequestDetail/getPageProduc
 
 
 export default function Page() {
+
+  const [form] = Form.useForm();
+
+  const onFinish = (values: any) => {
+    console.log('Received values of form: ', values);
+  };
+
+
   const { data: product, mutate } = useSWR(
     "/api/RequestDetail/GetPageProduct",
     getPageProduct
@@ -39,23 +47,38 @@ export default function Page() {
         dataSource={product || []}
       />
       <Divider />
-      <div className="flex">
-        <Checkbox></Checkbox>
-        <Typography className="mr-3 font-medium">
-          شرایط و قوانین را خوانده و می پذیرم!
-        </Typography>
-      </div>
-      <Divider />
-      <div className="flex gap-6">
-        <Button
-          className="w-full management-info-form-submit btn-filter"
-          size="large"
-          type="primary"
-          htmlType="submit"
+      <Form
+        form={form}
+        name="register"
+        onFinish={onFinish}
+      >
+        <Form.Item
+          className=" mr-3 font-medium"
+          name="agreement"
+          valuePropName="checked"
+          rules={[
+            {
+              validator: (_, value) =>
+                value ? Promise.resolve() : Promise.reject(new Error('پذیرش شرایط و قوانین برای ثبت درخواست ضروری می باشد')),
+            },
+          ]}
         >
-          <span className="flex gap-3 justify-center ">ذخیره</span>
-        </Button>
-      </div>
+          <Checkbox>
+            شرایط و <a href="https://google.com" target="_blank" className="text-primary-500">قوانین</a> را خوانده و می پذیرم!
+          </Checkbox>
+        </Form.Item>
+        <Divider />
+        <div className="flex gap-6">
+          <Button
+            className="w-full management-info-form-submit btn-filter"
+            size="large"
+            type="primary"
+            htmlType="submit"
+          >
+            <span className="flex gap-3 justify-center ">ذخیره</span>
+          </Button>
+        </div>
+      </Form>
     </>
   );
 }

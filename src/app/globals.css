@@ -318,3 +318,6 @@ body {
     direction: rtl;
     font-family: IRANSans !important;
 }
+.ant-form-item-control-input-content{
+    @apply flex
+}
