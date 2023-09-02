@@ -1,22 +1,22 @@
 "use client";
-import {Button, Col, Divider, Form, Input, InputNumber, notification, Row, Select, Typography,} from "antd";
-import {SvgIcon} from "@/components/layout/sidebar";
+import { Button, Col, Divider, Form, Input, InputNumber, notification, Row, Select, Typography, } from "antd";
+import { SvgIcon } from "@/components/layout/sidebar";
 import useSWR from "swr";
-import {getAllMaterial} from "../../../../../../units/Material/getAllMaterial";
+import { getAllMaterial } from "../../../../../../units/Material/getAllMaterial";
 // import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createMaterial";
-import {useEffect, useState} from "react";
-import {useRouter} from "next/navigation";
-import {getCookie} from "cookies-next";
-import {IconType, NotificationPlacement,} from "antd/es/notification/interface";
-import {useForm} from "antd/lib/form/Form";
-import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createRequestDetailProduct";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { getCookie } from "cookies-next";
+import { IconType, NotificationPlacement, } from "antd/es/notification/interface";
+import { useForm } from "antd/lib/form/Form";
+import { createRequestDetailProduct } from "../../../../../../units/RequestDetail/createRequestDetailProduct";
 
-export default function PrimaryProductForm({mute}: { mute: any }) {
+export default function PrimaryProductForm({ mute }: { mute: any }) {
     const [form] = useForm();
 
     const router = useRouter();
 
-    const {data: material, isLoading: isLoadingMaterial} = useSWR("/Material/GetAll", getAllMaterial);
+    const { data: material, isLoading: isLoadingMaterial } = useSWR("/Material/GetAll", getAllMaterial);
 
     const [isLoading, setLoading] = useState(false);
 
@@ -87,13 +87,13 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             name="materialUid"
                             label="نام مواد اولیه"
                             rules={[
-                                {required: true, message: "نام مواد اولیه اجباری است"},
-                                {type: "string"},
+                                { required: true, message: "نام مواد اولیه اجباری است" },
+                                { type: "string" },
                             ]}
                         >
                             <Select
                                 loading={isLoadingMaterial}
-                                fieldNames={{value: "Uid", label: "Name"}}
+                                fieldNames={{ value: "Uid", label: "Name" }}
                                 size="large"
                                 placeholder="انتخاب نمایید"
                                 onChange={handleChange}
@@ -111,10 +111,10 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                                     required: true,
                                     message: "میزان مصرف برای تولید یک واحد اجباری است",
                                 },
-                                {type: "string"},
+                                { type: "string" },
                             ]}
                         >
-                            <Input size="large" type={"number"} placeholder={"وارد نمایید"}/>
+                            <Input size="large" type={"number"} placeholder={"وارد نمایید"} />
                         </Form.Item>
                     </Col>
                 </Row>
@@ -124,7 +124,7 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             name={"materialUsagePercentage"}
                             label={"درصد استفاده"}
                             rules={[
-                                {required: true, message: " درصد استفاده اجباری است"},
+                                { required: true, message: " درصد استفاده اجباری است" },
                                 {
                                     type: "number",
                                     min: 0,
@@ -139,7 +139,7 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                                 min={0}
                                 max={100}
                                 formatter={(value) => `${value}%`}
-                                placeholder={"وارد نمایید"}
+                                placeholder="وارد کنید"
                             />
                         </Form.Item>
                     </Col>
@@ -148,11 +148,11 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             name={"materialTotalConsumption"}
                             label={"میزان مصرف کل"}
                             rules={[
-                                {required: true, message: "میزان مصرف کل اجباری است"},
-                                {type: "string"},
+                                { required: true, message: "میزان مصرف کل اجباری است" },
+                                { type: "string" },
                             ]}
                         >
-                            <Input size="large" type={"number"} placeholder={"وارد نمایید"}/>
+                            <Input size="large" type={"number"} placeholder="وارد کنید" />
                         </Form.Item>
                     </Col>
                 </Row>
@@ -161,13 +161,13 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                         <Form.Item
                             name="materialSupplyMethodId"
                             label="نحوه تامین"
-                            //   rules={[
-                            //     { required: true, message: "نحوه تامین اجبار است" },
-                            //     { type: "number" },
-                            //   ]}
+                        //   rules={[
+                        //     { required: true, message: "نحوه تامین اجبار است" },
+                        //     { type: "number" },
+                        //   ]}
                         >
                             <Select
-                                fieldNames={{value: "Uid", label: "Name"}}
+                                fieldNames={{ value: "Uid", label: "Name" }}
                                 size="large"
                                 placeholder="انتخاب نمایید"
                                 onChange={handleChange}
@@ -185,18 +185,17 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                                     required: true,
                                     message: "شماره اظهارنامه واردات اجباری است",
                                 },
-                                {type: "number"},
+                                { type: "number" },
                             ]}
                         >
                             <InputNumber
                                 className="w-full rounded-lg"
                                 size="large"
-                                placeholder={"وارد نمایید"}
-                            />
+                                placeholder="وارد کنید" />
                         </Form.Item>
                     </Col>
                 </Row>
-                <Divider/>
+                <Divider />
                 <Typography className="mt-3 mb-6 text-right font-medium text-base text-secondary-500 text-secondary">
                     منابع عمده تامین
                 </Typography>
@@ -206,8 +205,8 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             name="materialInternalSupplyPercentage"
                             label="درصد تامین داخلی"
                             rules={[
-                                {required: true, message: "درصد تامین داخلی اجباری است"},
-                                {type: "number", min: 0, max: 100, message: "بین 0 تا 100"},
+                                { required: true, message: "درصد تامین داخلی اجباری است" },
+                                { type: "number", min: 0, max: 100, message: "بین 0 تا 100" },
                             ]}
                         >
                             <InputNumber
@@ -216,7 +215,7 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                                 min={0}
                                 max={100}
                                 formatter={(value) => `${value}%`}
-                                placeholder={"وارد نمایید"}
+                                placeholder="وارد کنید"
                             />
                         </Form.Item>
                     </Col>
@@ -225,8 +224,8 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             name="materialForeignSupplyPercentage"
                             label="درصد تامین خارجی"
                             rules={[
-                                {required: true, message: "درصد تامین خارجی اجباری است"},
-                                {type: "number", min: 0, max: 100},
+                                { required: true, message: "درصد تامین خارجی اجباری است" },
+                                { type: "number", min: 0, max: 100 },
                             ]}
                         >
                             <InputNumber
@@ -235,13 +234,13 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                                 min={0}
                                 max={100}
                                 formatter={(value) => `${value}%`}
-                                placeholder={"وارد نمایید"}
-                                // onChange={onChange}
+                                placeholder="وارد کنید"
+                            // onChange={onChange}
                             />
                         </Form.Item>
                     </Col>
                 </Row>
-                <Divider/>
+                <Divider />
                 <Typography className="mt-3 mb-6 text-right font-medium text-base text-secondary-500 text-secondary">
                     مشخصات تامین کننده مواد اولیه
                 </Typography>
@@ -251,24 +250,24 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             name="materialSupplyName"
                             label="نام"
                             rules={[
-                                {required: true, message: "نام اجباری است"},
-                                {type: "string"},
+                                { required: true, message: "نام اجباری است" },
+                                { type: "string" },
                             ]}
                         >
-                            <Input size="large" placeholder="وارد نمایید"/>
+                            <Input size="large" placeholder="وارد نمایید" />
                         </Form.Item>
                     </Col>
                     <Col xs={24} md={8}>
                         <Form.Item
                             name="materialSupplyPersonTypeId"
                             label="شخصیت"
-                            //   rules={[
-                            //     { required: true, message: "شخصیت اجباری است" },
-                            //     { type: "number" },
-                            //   ]}
+                        //   rules={[
+                        //     { required: true, message: "شخصیت اجباری است" },
+                        //     { type: "number" },
+                        //   ]}
                         >
                             <Select
-                                fieldNames={{value: "Uid", label: "Name"}}
+                                fieldNames={{ value: "Uid", label: "Name" }}
                                 size="large"
                                 placeholder="انتخاب نمایید"
                                 onChange={handleChange}
@@ -282,7 +281,7 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             name="materialSupplyNationalCode"
                             label="کد ملی / شناسه ملی"
                             rules={[
-                                {required: true, message: "کد ملی اجباری است"},
+                                { required: true, message: "کد ملی اجباری است" },
                                 {
                                     validator: (_, value) => {
                                         if (!value || value.length === 10) {
@@ -293,7 +292,7 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                                 },
                             ]}
                         >
-                            <Input size="large" type={"number"} placeholder="انتخاب نمایید"/>
+                            <Input size="large" type={"number"} placeholder="انتخاب نمایید" />
                         </Form.Item>
                     </Col>
                 </Row>
@@ -303,8 +302,8 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             name="materialSupplyIranCode"
                             label="ایرانکد"
                             rules={[
-                                {required: true, message: "ایرانکد اجباری است"},
-                                {type: "number"},
+                                { required: true, message: "ایرانکد اجباری است" },
+                                { type: "number" },
                             ]}
                         >
                             <InputNumber
@@ -320,11 +319,11 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             name="materialSupplyAddress"
                             label="آدرس"
                             rules={[
-                                {required: true, message: "آدرس اجباری است"},
-                                {type: "string"},
+                                { required: true, message: "آدرس اجباری است" },
+                                { type: "string" },
                             ]}
                         >
-                            <Input size="large" placeholder="انتخاب نمایید"/>
+                            <Input size="large" placeholder="انتخاب نمایید" />
                         </Form.Item>
                     </Col>
                 </Row>
@@ -337,13 +336,13 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             type="primary"
                             htmlType="submit"
                         >
-              <span
-                  style={{display: "flex"}}
-                  className="flex gap-2 justify-center"
-              >
-                ذخیره
-                <SvgIcon src="/static/save.svg"/>
-              </span>
+                            <span
+                                style={{ display: "flex" }}
+                                className="flex gap-2 justify-center"
+                            >
+                                ذخیره
+                                <SvgIcon src="/static/save.svg" />
+                            </span>
                         </Button>
                     </Col>
                 </Row>

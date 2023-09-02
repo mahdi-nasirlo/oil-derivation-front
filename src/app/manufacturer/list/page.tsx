@@ -1,9 +1,9 @@
 "use client";
 
-import {Button, Col, Form, Input, Row, Select, Space, Table, Tag,} from "antd";
+import { Button, Col, Form, Input, Row, Select, Space, Table, Tag, } from "antd";
 import React from "react";
 import Link from "next/link";
-import {ColumnsType} from "antd/es/table";
+import { ColumnsType } from "antd/es/table";
 
 export default function Page() {
     return (
@@ -16,12 +16,12 @@ export default function Page() {
                                 name="year-establishment"
                                 label="نام واحد تولیدی محصول "
                             >
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
                             <Form.Item name="lastName" label="  نام مدیرعامل">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -31,17 +31,17 @@ export default function Page() {
                                 name="year-establishment"
                                 label="نام واحد تولیدی محصول "
                             >
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={8}>
                             <Form.Item name="lastName" label="  نوع مالکیت">
-                                <Select size="large"/>
+                                <Select size="large" placeholder="انتخاب کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={8}>
                             <Form.Item name="lastName" label="  وضعیت حساب کاربری">
-                                <Select size="large"/>
+                                <Select size="large" placeholder="انتخاب کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -60,9 +60,9 @@ export default function Page() {
                                     size="large"
                                     type="primary"
                                 >
-                  <span className="flex gap-2 justify-center ">
-                    اعمال فیلتر
-                  </span>
+                                    <span className="flex gap-2 justify-center ">
+                                        اعمال فیلتر
+                                    </span>
                                 </Button>
                                 <Button
                                     className="w-full management-info-form-submit btn-delete-filter"
@@ -137,7 +137,7 @@ const columns: ColumnsType<DataType> = [
         title: " وضعیت حساب کاربری ",
         dataIndex: "ActivityStatus",
         key: "6",
-        render: (_, {ActivityStatus}) => (
+        render: (_, { ActivityStatus }) => (
             <>
                 {ActivityStatus.map((ActivityStatus) => {
                     let color = ActivityStatus.length > 16 ? "geekblue" : "red";

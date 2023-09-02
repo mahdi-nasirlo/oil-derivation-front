@@ -1,9 +1,11 @@
 "use client";
 
-import {Button, Col, Form, Input, Row, Select, Space, Switch, Table,} from "antd";
+import { Button, Col, Form, Input, Row, Select, Space, Switch, Table, } from "antd";
 import React from "react";
 import Link from "next/link";
-import {ColumnsType} from "antd/es/table";
+import { ColumnsType } from "antd/es/table";
+import { PlusIcon } from "@heroicons/react/24/outline";
+
 
 export default function Page() {
     return (
@@ -14,14 +16,14 @@ export default function Page() {
                         <Col xs={24} md={12}>
                             <Form.Item
                                 name="year-establishment"
-                                label="نام واحد تولیدی محصول "
+                                label="دسته بندی محصول"
                             >
-                                <Select size="large"/>
+                                <Select size="large" placeholder="انتخاب کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
-                            <Form.Item name="lastName" label="  نام مدیرعامل">
-                                <Input size="large"/>
+                            <Form.Item name="lastName" label="نام محصول">
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -34,9 +36,9 @@ export default function Page() {
                                     size="large"
                                     type="primary"
                                 >
-                  <span className="flex gap-2 justify-center ">
-                    اعمال فیلتر
-                  </span>
+                                    <span className="flex gap-2 justify-center ">
+                                        اعمال فیلتر
+                                    </span>
                                 </Button>
                                 <Button
                                     className="w-full management-info-form-submit btn-delete-filter"
@@ -53,14 +55,16 @@ export default function Page() {
             <div className="box-border w-full mt-4 p-6">
                 <div className="flex justify-end">
                     <Button
-                        className="max-md:w-full"
+                        className="max-md:w-full flex items-center gap-2"
                         size="large"
                         type="primary"
                         htmlType="submit"
                     >
-            <span className="flex gap-2 justify-center ">
-              افزودن دسته بندی محصول
-            </span>
+                        <span className="flex justify-center ">
+                            افزودن دسته بندی محصول
+                        </span>
+                        <PlusIcon width={24} height={24} />
+
                     </Button>
                 </div>
                 <Table
@@ -116,21 +120,25 @@ const columns: ColumnsType<DataType> = [
         title: "فعال/غیر فعال ",
         dataIndex: "ConfirmedRequestCode",
         key: "4",
-        render: (e, record) => <Switch defaultChecked/>,
+        render: (e, record) => <Switch defaultChecked />,
     },
 
     {
         title: "جزئیات",
         key: "جزئیات",
         render: (_, record) => (
-            <Space size="middle">
-                <Link href={""} className="action-btn-info">
-                    ویرایش
-                </Link>
-                <Link href={""} className="action-btn-info">
-                    حذف
-                </Link>
-            </Space>
+            <div className={"flex justify-start"}>
+                <Button type="link" className="text-secondary-500">ویرایش</Button>
+                <Button type="link" className={"text-red-500"}>حذف</Button>
+            </div>
+            // <Space size="middle">
+            //     <Link href={""} className="action-btn-info">
+            //         ویرایش
+            //     </Link>
+            //     <Link href={""} className="action-btn-info">
+            //         حذف
+            //     </Link>
+            // </Space>
         ),
     },
 ];

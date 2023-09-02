@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {Button, Col, Divider, Form, FormItemProps, Input, Row, Select, Typography,} from "antd";
+import { Button, Col, Divider, Form, FormItemProps, Input, Row, Select, Typography, } from "antd";
 import React from "react";
 
 export default function Page() {
@@ -14,7 +14,7 @@ export default function Page() {
             <Typography className="text-right font-medium text-base">
                 لطفا اطلاعات خواسته شده را با دقت وارد نمایید.
             </Typography>
-            <Divider/>
+            <Divider />
             <Form name="form_item_path" layout="vertical">
                 <MyFormItemGroup prefix={["user"]}>
                     <MyFormItemGroup prefix={["name"]}>
@@ -31,7 +31,7 @@ export default function Page() {
                                         onChange={handleChange}
                                         tokenSeparators={[","]}
                                         options={LaboratoryEquipment}
-                                        fieldNames={{label: "name", value: "key"}}
+                                        fieldNames={{ label: "name", value: "key" }}
                                     />
                                 </MyFormItem>
                             </Col>
@@ -49,7 +49,7 @@ export default function Page() {
                                         onChange={handleChange}
                                         tokenSeparators={[","]}
                                         options={ProductExportCountries}
-                                        fieldNames={{label: "name", value: "key"}}
+                                        fieldNames={{ label: "name", value: "key" }}
                                     />
                                 </MyFormItem>
                             </Col>
@@ -62,7 +62,7 @@ export default function Page() {
                                         onChange={handleChange}
                                         tokenSeparators={[","]}
                                         options={OilWaste}
-                                        fieldNames={{label: "name", value: "key"}}
+                                        fieldNames={{ label: "name", value: "key" }}
                                     />
                                 </MyFormItem>
                             </Col>
@@ -73,7 +73,7 @@ export default function Page() {
                                     name="operation-license"
                                     label="محل فروش و یا دفن ضایعات"
                                 >
-                                    <Input size="large"/>
+                                    <Input size="large" placeholder="وارد کنید" />
                                 </MyFormItem>
                             </Col>
                         </Row>
@@ -81,7 +81,7 @@ export default function Page() {
                 </MyFormItemGroup>
             </Form>
 
-            <Divider/>
+            <Divider />
             <Link href={"/dashboard/request/formulacion"}>
                 <Button
                     className="w-full management-info-form-submit btn-filter"
@@ -109,7 +109,7 @@ function toArr(
     return Array.isArray(str) ? str : [str];
 }
 
-const MyFormItemGroup = ({prefix, children}: MyFormItemGroupProps) => {
+const MyFormItemGroup = ({ prefix, children }: MyFormItemGroupProps) => {
     const prefixPath = React.useContext(MyFormItemContext);
     const concatPath = React.useMemo(
         () => [...prefixPath, ...toArr(prefix)],
@@ -123,7 +123,7 @@ const MyFormItemGroup = ({prefix, children}: MyFormItemGroupProps) => {
     );
 };
 
-const MyFormItem = ({name, ...props}: FormItemProps) => {
+const MyFormItem = ({ name, ...props }: FormItemProps) => {
     const prefixPath = React.useContext(MyFormItemContext);
     const concatName =
         name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;

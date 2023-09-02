@@ -1,9 +1,9 @@
 "use client";
 
-import {Button, Col, Form, Input, Row, Select, Space, Switch, Table,} from "antd";
+import { Button, Col, Form, Input, Row, Select, Space, Switch, Table, } from "antd";
 import React from "react";
 import Link from "next/link";
-import {ColumnsType} from "antd/es/table";
+import { ColumnsType } from "antd/es/table";
 
 export default function Page() {
     return (
@@ -13,24 +13,24 @@ export default function Page() {
                     <Row gutter={[16, 16]}>
                         <Col xs={24} md={12}>
                             <Form.Item name="year-establishment" label="نام محصول ">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
                             <Form.Item name="lastName" label="کد">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
                     <Row gutter={[16, 16]}>
                         <Col xs={24} md={12}>
                             <Form.Item name="year-establishment" label=" دانسیته">
-                                <Select size="large"/>
+                                <Select size="large" placeholder="انتخاب کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
                             <Form.Item name="lastName" label="  نوع دانسیته ">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -43,9 +43,9 @@ export default function Page() {
                                     size="large"
                                     type="primary"
                                 >
-                  <span className="flex gap-2 justify-center ">
-                    اعمال فیلتر
-                  </span>
+                                    <span className="flex gap-2 justify-center ">
+                                        اعمال فیلتر
+                                    </span>
                                 </Button>
                                 <Button
                                     className="w-full management-info-form-submit btn-delete-filter"
@@ -124,7 +124,7 @@ const columns: ColumnsType<DataType> = [
         title: " دانسیته",
         dataIndex: "ConfirmedRequestCode",
         key: "4",
-        render: (e, record) => <Switch defaultChecked/>,
+        render: (e, record) => <Switch defaultChecked />,
     },
     {
         title: " نوع دانسیته",
@@ -135,7 +135,7 @@ const columns: ColumnsType<DataType> = [
         title: "وضعیت",
         dataIndex: "status",
         key: "6",
-        render: (e, record) => <Switch defaultChecked/>,
+        render: (e, record) => <Switch defaultChecked />,
     },
 
     {

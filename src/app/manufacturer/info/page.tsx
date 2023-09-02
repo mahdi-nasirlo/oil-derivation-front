@@ -1,8 +1,8 @@
 "use client";
 
-import {Button, Col, Divider, Form, Input, Row, Select, Table, Typography,} from "antd";
+import { Button, Col, Divider, Form, Input, Row, Select, Table, Typography, } from "antd";
 import React from "react";
-import {ColumnsType} from "antd/es/table";
+import { ColumnsType } from "antd/es/table";
 
 export default function Page() {
     return (
@@ -12,29 +12,29 @@ export default function Page() {
                     <Row gutter={[16, 16]}>
                         <Col xs={24} md={12}>
                             <Form.Item name="year-establishment" label="نام واحد تولیدی">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
                             <Form.Item name="lastName" label="  شناسه ملی">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
                     <Row gutter={[16, 16]}>
                         <Col xs={24} md={12}>
                             <Form.Item name="year-establishment" label="نام مدیر عامل">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
                             <Form.Item name="lastName" label="   نوع مالکیت">
-                                <Select size="large"/>
+                                <Select size="large" placeholder="انتخاب کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
                 </Form>
-                <Divider/>
+                <Divider />
                 <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary mb-10">
                     اطلاعات اعضای هیئت مدیره و مدیرعامل
                 </Typography>
@@ -44,7 +44,7 @@ export default function Page() {
                     dataSource={data}
                     pagination={false}
                 />
-                <Divider/>
+                <Divider />
                 <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary mb-10">
                     اطلاعات کارکنان
                 </Typography>
@@ -54,7 +54,7 @@ export default function Page() {
                     dataSource={data2}
                     pagination={false}
                 />
-                <Divider/>
+                <Divider />
                 <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary mb-10">
                     اطلاعات مجوز
                 </Typography>
@@ -64,7 +64,7 @@ export default function Page() {
                     dataSource={data3}
                     pagination={false}
                 />
-                <Divider/>
+                <Divider />
                 <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary mb-10">
                     اطلاعات آدرس
                 </Typography>
@@ -73,58 +73,58 @@ export default function Page() {
                     <Row gutter={[16, 16]}>
                         <Col xs={24} md={8}>
                             <Form.Item name="year-establishment" label=" استان">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={8}>
                             <Form.Item name="lastName" label="   شهرستان">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={8}>
                             <Form.Item name="lastName" label="   شهرک">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
                     <Row gutter={[16, 16]}>
                         <Col xs={24} md={8}>
                             <Form.Item name="year-establishment" label=" خیابان اصلی">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={8}>
                             <Form.Item name="lastName" label="   خیابان فرعی ">
-                                <Select size="large"/>
+                                <Select size="large" placeholder="انتخاب کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={8}>
                             <Form.Item name="lastName" label="   کوچه">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
                     <Row gutter={[16, 16]}>
                         <Col span={24}>
                             <Form.Item name="year-establishment" label="  نشانی دفتر مرکزی">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
                     <Row gutter={[16, 16]}>
                         <Col xs={24} md={12}>
                             <Form.Item name="year-establishment" label="  تلفن دفتر مرکزی">
-                                <Input size="large"/>
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
                             <Form.Item name="lastName" label="  تلفن تماس کارخانه">
-                                <Select size="large"/>
+                                <Select size="large" placeholder="انتخاب کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
                 </Form>
-                <Divider/>
+                <Divider />
                 <Row gutter={[16, 16]}>
                     <Col xs={24} md={24}>
                         <div className="flex gap-4">

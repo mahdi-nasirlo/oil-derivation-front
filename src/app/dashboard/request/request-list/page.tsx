@@ -16,12 +16,12 @@ export default function Page() {
                             <Row gutter={[16, 16]}>
                                 <Col xs={24} md={12}>
                                     <MyFormItem name="year-establishment" label="نام محصول ">
-                                        <Input size="large" />
+                                        <Input size="large" placeholder="وارد کنید" />
                                     </MyFormItem>
                                 </Col>
                                 <Col xs={24} md={12}>
                                     <MyFormItem name="lastName" label=" وضعیت فعالیت">
-                                        <Select size="large" />
+                                        <Select size="large" placeholder="انتخاب کنید" />
                                     </MyFormItem>
                                 </Col>
                             </Row>
