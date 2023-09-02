@@ -32,7 +32,15 @@ export default function LayoutSidebar({
     return (
         <>
 
-            <div className="hidden lg:block">
+            <div className="hidden lg:block" style={{
+                position: "fixed",
+                bottom: 0,
+                top: 97,
+                left: "auto",
+                right: 0,
+                zIndex: 99,
+            }}
+            >
                 {isLgSize ?
                     <CommonMenu style={{
                         width: "270px",
