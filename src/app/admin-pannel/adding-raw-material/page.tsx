@@ -8,7 +8,7 @@ import React from 'react'
 export default function Page() {
     return (
         <>
-            <div className="box-border w-full mt-4 p-6">
+            <div className="box-border w-full p-6">
                 <Form name="form_item_path" layout="vertical">
                     <Row gutter={[16, 16]}>
                         <Col xs={24} md={12}>

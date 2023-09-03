@@ -52,6 +52,11 @@ const items: MenuProps["items"] = [
         "laboratory",
         <ChatBubbleLeftEllipsisIcon width={16} height={16} />
       ),
+      getMenuItem(
+        <Link href={"/admin-pannel/management-user"}>مدیریت کاربران</Link>,
+        "management-user",
+        <ChatBubbleLeftEllipsisIcon width={16} height={16} />
+      ),
     ],
     "group"
   ),
