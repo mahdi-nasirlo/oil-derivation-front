@@ -1,33 +1,48 @@
-"use client";
+"use client"
+import { PlusIcon } from '@heroicons/react/24/outline'
+import { Button, Col, Form, Input, Row, Table } from 'antd'
+import { ColumnsType } from 'antd/es/table'
+import React from 'react'
 
-import { Button, Col, Form, Input, Row, Select, Space, Switch, Table, } from "antd";
-import React from "react";
-import Link from "next/link";
-import { ColumnsType } from "antd/es/table";
-import { PlusIcon } from "@heroicons/react/24/outline";
-
-
-export default function Page() {
+export default function page() {
     return (
         <>
             <div className="box-border w-full mt-4 p-6">
                 <Form name="form_item_path" layout="vertical">
                     <Row gutter={[16, 16]}>
                         <Col xs={24} md={12}>
-                            <Form.Item
-                                name="year-establishment"
-                                label="دسته بندی محصول"
-                            >
-                                <Select size="large" placeholder="انتخاب کنید" />
+                            <Form.Item name="year-establishment" label="نام آزمایشگاه ">
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
-                            <Form.Item name="lastName" label="نام محصول">
+                            <Form.Item name="lastName" label="نام مدیرعامل">
                                 <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                     </Row>
-
+                    <Row gutter={[16, 16]}>
+                        <Col xs={24} md={12}>
+                            <Form.Item name="year-establishment" label="شماره تلفن آزمایشگاه">
+                                <Input size="large" placeholder="وارد کنید" />
+                            </Form.Item>
+                        </Col>
+                        <Col xs={24} md={12}>
+                            <Form.Item name="lastName" label="کد">
+                                <Input size="large" placeholder="وارد کنید" />
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Row gutter={[16, 16]}>
+                        <Col xs={24} md={12}>
+                            <Form.Item
+                                name="year-establishment"
+                                label="آدرس"
+                            >
+                                <Input size="large" placeholder="انتخاب کنید" />
+                            </Form.Item>
+                        </Col>
+                    </Row>
                     <Row dir="ltr">
                         <Col xs={10} md={3} lg={2}>
                             <div className="flex gap-4">
@@ -61,16 +76,17 @@ export default function Page() {
                         htmlType="submit"
                     >
                         <span className="flex justify-center ">
-                            افزودن دسته بندی محصول
+                            افزودن آزمایشگاه
                         </span>
                         <PlusIcon width={24} height={24} />
 
                     </Button>
                 </div>
                 <Table
+                    scroll={{ x: 1500, y: 300 }}
+                    dataSource={data || []}
                     className="mt-4"
                     columns={columns}
-                    dataSource={data}
                     pagination={{
                         defaultPageSize: 10,
                         showSizeChanger: true,
@@ -86,17 +102,18 @@ export default function Page() {
                 />
             </div>
         </>
-    );
+    )
 }
+
 
 interface DataType {
     key: string;
     Row: number;
-    ProductName: string;
-    TrackingCode: string;
-    ConfirmedRequestCode: string;
-    DateRegistration: string;
-    ActivityStatus: string[];
+    NameLaboratory: string;
+    NameCEO: string;
+    phoneLaboratory: string;
+    code: string;
+    Address: string;
 }
 
 const columns: ColumnsType<DataType> = [
@@ -106,39 +123,39 @@ const columns: ColumnsType<DataType> = [
         key: "1",
     },
     {
-        title: "  دسته بندی محصول",
-        dataIndex: "ProductName",
+        title: "نام آزمایشگاه",
+        dataIndex: "NameLaboratory",
         key: "2",
     },
     {
-        title: "  نام محصول",
-        dataIndex: "TrackingCode",
+        title: "نام مدیرعامل",
+        dataIndex: "NameCEO",
         key: "3",
     },
-
     {
-        title: "فعال/غیر فعال ",
-        dataIndex: "ConfirmedRequestCode",
+        title: "شماره تلفن آزمایشگاه",
+        dataIndex: "phoneLaboratory",
         key: "4",
-        render: (e, record) => <Switch defaultChecked />,
     },
-
     {
-        title: "جزئیات",
-        key: "جزئیات",
+        title: "کد",
+        dataIndex: "code",
+        key: "5",
+    },
+    {
+        title: "آدرس",
+        dataIndex: "Address",
+        key: "6",
+    },
+    {
+        title: "عملیات",
+        key: "عملیات",
+        fixed: 'right',
         render: (_, record) => (
             <div className={"flex justify-start"}>
                 <Button type="link" className="text-secondary-500">ویرایش</Button>
                 <Button type="link" className={"text-red-500"}>حذف</Button>
             </div>
-            // <Space size="middle">
-            //     <Link href={""} className="action-btn-info">
-            //         ویرایش
-            //     </Link>
-            //     <Link href={""} className="action-btn-info">
-            //         حذف
-            //     </Link>
-            // </Space>
         ),
     },
 ];
@@ -182,19 +199,21 @@ const data: DataType[] = [
     {
         key: "1",
         Row: 1,
-        ProductName: "   دسته اول",
-        TrackingCode: "بنزین پیرولیز",
-        ConfirmedRequestCode: "علی امیری",
-        DateRegistration: "خصوصی",
-        ActivityStatus: [" غیرفعال"],
+        NameLaboratory: "رازی",
+        NameCEO: "امیر خالویی",
+        phoneLaboratory: "021326846",
+        code: "32154421",
+        Address: "تهران, سهروردی شمالی, هویزه",
+
     },
     {
         key: "2",
         Row: 2,
-        ProductName: "   دسته دوم ",
-        TrackingCode: "بنزین پیرولیز",
-        ConfirmedRequestCode: "امیرحسام خالویی",
-        DateRegistration: "خصوصی",
-        ActivityStatus: ["  در انتظار بررسی"],
+        NameLaboratory: "رازی",
+        NameCEO: "امیرحسام خالویی",
+        phoneLaboratory: "021326846",
+        code: "32154421",
+        Address: "تهران, سهروردی شمالی, هویزه",
+
     },
 ];

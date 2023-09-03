@@ -55,7 +55,7 @@ export default function Page() {
                     </Row>
                 </Form>
             </div >
-            <div className="box-border w-full mt-4 p-6">
+            <div className="box-border w-full mt-8 p-6">
                 <div className="flex justify-end">
                     <Button
                         className="max-md:w-full flex items-center gap-2"
@@ -68,7 +68,7 @@ export default function Page() {
                     </Button>
                 </div>
                 <Table
-                    className="mt-8"
+                    className="mt-4"
                     columns={columns}
                     dataSource={data}
                     pagination={{
