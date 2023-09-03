@@ -32,6 +32,11 @@ const items: MenuProps["items"] = [
     null,
     [
       getMenuItem(
+        <Link href={"/admin-pannel/adding-raw-material"}>افزودن ماده اولیه</Link>,
+        "adding-raw-material",
+        <ChatBubbleLeftEllipsisIcon width={16} height={16} />
+      ),
+      getMenuItem(
         <Link href={"/admin-pannel/product-category"}> دسته بندی محصول</Link>,
         "product-category",
         <ChatBubbleLeftEllipsisIcon width={16} height={16} />
@@ -43,7 +48,6 @@ const items: MenuProps["items"] = [
         <ChatBubbleLeftEllipsisIcon width={16} height={16} />
       ),
     ],
-
     "group"
   ),
 ];
