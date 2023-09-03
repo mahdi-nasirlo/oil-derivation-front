@@ -57,6 +57,11 @@ const items: MenuProps["items"] = [
         "management-user",
         <ChatBubbleLeftEllipsisIcon width={16} height={16} />
       ),
+      getMenuItem(
+        <Link href={"/admin-pannel/management-user-role"}>مدیریت نقش کاربران</Link>,
+        "management-user-role",
+        <ChatBubbleLeftEllipsisIcon width={16} height={16} />
+      ),
     ],
     "group"
   ),
