@@ -5,7 +5,8 @@ import { Button, Col, Form, Row, Select } from "antd";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import { getAllProductSelectable } from "../../../../../../units/RequestDetail/getAllProductSelectable";
-import { createProduct } from "../../../../../../units/RequestDetail/createproduct";
+import { createProduct } from "../../../../../../units/RequestDetail/createProduct";
+
 
 export default function PrimaryProductForm({ mute }: { mute: any }) {
 
@@ -19,7 +20,6 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
     );
 
     const onFinish = (values: { productUid: string, densityType: boolean }) => {
-        console.log(values);
         createProduct(values.productUid, setLoading);
         mute();
     };
