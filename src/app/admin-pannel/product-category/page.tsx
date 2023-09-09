@@ -1,13 +1,36 @@
 "use client";
 
-import { Button, Col, Form, Input, Row, Select, Space, Switch, Table, } from "antd";
-import React from "react";
-import Link from "next/link";
+import { Button, Col, Form, Input, Modal, Row, Select, Switch, Table, } from "antd";
+import React, { useState } from "react";
 import { ColumnsType } from "antd/es/table";
 import { PlusIcon } from "@heroicons/react/24/outline";
-
+import { useForm } from "antd/lib/form/Form";
 
 export default function Page() {
+
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const [form] = useForm()
+
+    const showModal = () => {
+        setModalVisible(true);
+    };
+
+    const closeModal = () => {
+        setModalVisible(false);
+    };
+
+    const handleFormSubmit = async () => {
+        try {
+            const values = await form.validateFields();
+            console.log("Form values:", values); // Log the form values to the console
+            closeModal();
+        } catch (error) {
+            console.error("Form validation failed:", error);
+        }
+    };
+
+
     return (
         <>
             <div className="box-border w-full p-6">
@@ -55,10 +78,10 @@ export default function Page() {
             <div className="box-border w-full mt-8 p-6">
                 <div className="flex justify-end">
                     <Button
-                        className="max-md:w-full flex items-center gap-2"
+                        className="max-md:w-full flex items-center justify-center gap-2"
                         size="large"
                         type="primary"
-                        htmlType="submit"
+                        onClick={showModal}
                     >
                         <span className="flex justify-center ">
                             افزودن دسته بندی محصول
@@ -85,6 +108,72 @@ export default function Page() {
                     }}
                 />
             </div>
+            <Modal
+                width={800}
+                title={<div>
+                    <div className="text-base mb-2">افزودن محصول جدید</div>
+                    <div className="font-normal text-sm">لطفا اطلاعات را وارد نمایید.</div>
+                </div>}
+                visible={modalVisible}
+                onCancel={closeModal}
+                footer={[
+                    <Row key={"box"} gutter={[16, 16]} className="my-2">
+                        <Col xs={24} md={12}>
+                            <Button
+                                size="large"
+                                className="w-full"
+                                type="primary"
+                                onClick={handleFormSubmit}
+                                key={"submit"} >
+                                ثبت
+                            </Button >
+                        </Col>
+                        <Col xs={24} md={12}>
+                            <Button
+                                size="large"
+                                className="w-full"
+                                onClick={closeModal}
+                                key={"cancel"} >
+                                انصراف
+                            </Button >
+                        </Col>
+                    </Row>
+                ]}
+            >
+                <Form form={form} >
+                    <Row gutter={[32, 1]}>
+                        <Col xs={24} md={12}>
+                            <Form.Item
+                                labelCol={{ span: 24 }}
+                                wrapperCol={{ span: 24 }}
+                                name="year"
+                                label="نام"
+                            >
+                                <Select size="large" placeholder="انتخاب کنید" />
+                            </Form.Item>
+                        </Col>
+                        <Col xs={24} md={12}>
+                            <Form.Item labelCol={{ span: 24 }}
+                                wrapperCol={{ span: 24 }} name="lastName" label="نام محصول">
+                                <Input size="large" placeholder="وارد کنید" />
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Row gutter={[16, 16]}>
+                        <Col xs={24} md={12}>
+                            <Form.Item
+                                labelCol={{ span: 24 }}
+                                wrapperCol={{ span: 24 }}
+                                name="establishment"
+                                label="وضعیت محصول"
+                            >
+                                <Select size="large" placeholder="انتخاب کنید" />
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                </Form>
+
+            </Modal >
         </>
     );
 }
@@ -131,14 +220,6 @@ const columns: ColumnsType<DataType> = [
                 <Button type="link" className="text-secondary-500">ویرایش</Button>
                 <Button type="link" className={"text-red-500"}>حذف</Button>
             </div>
-            // <Space size="middle">
-            //     <Link href={""} className="action-btn-info">
-            //         ویرایش
-            //     </Link>
-            //     <Link href={""} className="action-btn-info">
-            //         حذف
-            //     </Link>
-            // </Space>
         ),
     },
 ];
