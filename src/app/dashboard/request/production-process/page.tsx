@@ -1,32 +1,17 @@
 "use client";
 
 import {Button, Col, Divider, Form, Input, notification, Row, Typography, Upload,} from "antd";
-import React, {useState} from "react";
+import React from "react";
 import {UploadOutlined} from "@ant-design/icons";
-import {useRouter} from "next/navigation";
-import {IconType, NotificationPlacement} from "antd/es/notification/interface";
 import {createRequestMaster} from "../../../../../units/RequestMaster/createRequestMaster";
+import useSWRMutation from "swr/mutation";
+import {useRouter} from "next/navigation";
 
 export default function Page() {
-    const router = useRouter();
 
-    const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
 
-    const [api, contextHolder] = notification.useNotification();
-
-    // useEffect(() => {
-    //     if (hasCookie("requestMasterUid")) {
-    //         router.push("/dashboard/request/laboratory")
-    //     }
-    // })
-
-    const openNotification = (placement: NotificationPlacement, type: IconType, msg: string) => {
-        api.open({
-            type: type,
-            message: msg,
-            placement,
-        });
-    };
+    const {trigger, isMutating} = useSWRMutation("/RequestMaster/Create", createRequestMaster)
 
     const onFinish = async (values: RequestMasterForm) => {
 
@@ -35,25 +20,28 @@ export default function Page() {
             fileName: values.fileName?.file.name,
         };
 
-        await createRequestMaster(data, setIsLoading, () => {
-                openNotification("top", "success", "شرح فرایند با موفقیت ثبت شد.")
-                setTimeout(() => {
-                    router.push("/dashboard/request/laboratory")
-                }, 1000);
-            },
-        )
+        // @ts-ignore
+        const res = await trigger(data)
+
+        notification.success({message: res?.message, placement: "bottomLeft"})
+
+        if (res?.success) {
+            setTimeout(() => {
+                router.push("/dashboard/request/laboratory")
+            }, 200);
+        }
 
     };
 
 
     return (
         <>
-            {contextHolder}
             <Typography className="text-right font-medium text-base">
                 لطفا اطلاعات خواسته شده را با دقت وارد نمایید.
             </Typography>
             <Divider/>
             <Form
+                disabled={isMutating}
                 onFinish={onFinish}
                 name="form_item_path"
                 layout="vertical"
@@ -91,15 +79,13 @@ export default function Page() {
                 <Divider/>
                 <div className="flex gap-6">
                     <Button
-                        loading={isLoading}
+                        loading={isMutating}
                         className="w-full management-info-form-submit btn-filter"
                         size="large"
                         type="primary"
                         htmlType="submit"
                     >
-                         <span className="flex gap-3 justify-center ">
-                                ذخیره و ادامه
-                        </span>
+                        ذخیره و ادامه
                     </Button>
                 </div>
             </Form>

@@ -1,31 +1,21 @@
-import axios, {AxiosResponse} from "axios";
 import {RequestMaster} from "@/app/dashboard/request/production-process/page";
+import axios, {AxiosResponse} from "axios";
 
-export async function createRequestMaster(data: RequestMaster, setLoading: any, callback: any, notification: any = null) {
+export async function createRequestMaster(url: string, {arg}: { arg: RequestMaster }) {
+
     try {
-
-        setLoading(true)
 
         const res: AxiosResponse = await axios.post(
             `${process.env["NEXT_PUBLIC_API_URL"]}/api/RequestMaster/Create`,
-            data
+            arg
         );
 
-        setLoading(false)
-
-        const requestMasterUid = res.data.data;
-
         // Set the cookie with the requestMasterUid
-        setCookie("requestMasterUid", requestMasterUid, 7);
+        setCookie("requestMasterUid", res.data.data, 7);
 
-        if (res.data.success) {
-            // notification("top", "success")
-            callback()
-        }
+        return res.data;
 
     } catch (error) {
-
-        setLoading(false)
 
         console.error("Error:", error);
 

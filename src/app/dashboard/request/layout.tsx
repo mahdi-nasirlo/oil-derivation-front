@@ -1,13 +1,13 @@
 "use client";
-import { Grid, Steps } from "antd";
-import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import {Grid, Steps} from "antd";
+import {useEffect, useState} from "react";
+import {usePathname, useRouter} from "next/navigation";
 
-const { useBreakpoint } = Grid;
+const {useBreakpoint} = Grid;
 
 export default function RootLayout({
-    children,
-}: {
+                                       children,
+                                   }: {
     children: React.ReactNode;
 }) {
     const pathname = usePathname();
@@ -24,10 +24,11 @@ export default function RootLayout({
         router.push(`${currentLink}`);
         setCurrent(value);
     };
+    
     const screens = useBreakpoint();
     const isLgSize = screens.lg;
 
-    const progressDot = (isLgSize === true) ? false : true;
+    const progressDot = (isLgSize !== true);
 
     useEffect(() => {
         setCurrent(currentNumber);
@@ -65,8 +66,8 @@ export default function RootLayout({
 }
 
 const stepLinks: { number: number; href: string }[] = [
-    { number: 0, href: "/dashboard/request/production-process" },
-    { number: 1, href: "/dashboard/request/laboratory" },
-    { number: 2, href: "/dashboard/request/formulacion" },
-    { number: 3, href: "/dashboard/request/select-product" },
+    {number: 0, href: "/dashboard/request/production-process"},
+    {number: 1, href: "/dashboard/request/laboratory"},
+    {number: 2, href: "/dashboard/request/formulacion"},
+    {number: 3, href: "/dashboard/request/select-product"},
 ];

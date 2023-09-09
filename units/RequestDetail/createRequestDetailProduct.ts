@@ -1,28 +1,20 @@
 import {AxiosResponse} from "axios";
 import {customRequest} from "../../lib/customRequest";
-import {MaterialRequest} from "@/app/dashboard/request/formulacion/components/primary-product-form";
+import {RequestDetail} from "../../interfaces/requestDetail";
+import {notification} from "antd";
 
-export async function createRequestDetailProduct(data: MaterialRequest, setLoading: any, callback: any = null, errorCallback: any = null) {
+export async function createRequestDetailProduct(url: string, {arg}: { arg: RequestDetail }) {
 
     try {
 
-        setLoading(true)
+        const res: AxiosResponse = await customRequest.post(`/api/RequestDetail/CreateMaterial`, arg)
 
-        const res: AxiosResponse = await customRequest.post(`/api/RequestDetail/CreateMaterial`, data)
+        notification.open({type: res.data?.success ? "success" : "error", message: res.data.message})
 
-        setLoading(false)
-
-        if (res.data.success) {
-            callback()
-        }
-
-        const requestMasterUid = res.data.data;
+        return res.data;
 
 
     } catch (error) {
-        setLoading(false)
-
-        errorCallback()
 
         console.error("Error:", error);
     }
