@@ -131,7 +131,7 @@ export default function Page() {
                         <Col xs={24} md={12}>
                             <Button
                                 size="large"
-                                className="w-full"
+                                className="w-full bg-gray-100 text-warmGray-500"
                                 onClick={closeModal}
                                 key={"cancel"} >
                                 انصراف
@@ -149,7 +149,7 @@ export default function Page() {
                                 name="year"
                                 label="نام"
                             >
-                                <Select size="large" placeholder="انتخاب کنید" />
+                                <Input size="large" placeholder="وارد کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
@@ -159,7 +159,7 @@ export default function Page() {
                             </Form.Item>
                         </Col>
                     </Row>
-                    <Row gutter={[16, 16]}>
+                    <Row gutter={[32, 1]}>
                         <Col xs={24} md={12}>
                             <Form.Item
                                 labelCol={{ span: 24 }}
