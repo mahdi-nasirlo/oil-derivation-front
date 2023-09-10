@@ -8,8 +8,8 @@ import {useRouter} from "next/navigation";
 import {getCookie} from "cookies-next";
 import {useForm} from "antd/lib/form/Form";
 import useSWRMutation from "swr/mutation";
-import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createRequestDetailProduct";
-import {updateRequestDetailProduct} from "../../../../../../units/RequestDetail/updateRequestDetailProduct";
+import {createRequestDetailMaterial} from "../../../../../../units/RequestDetail/createRequestDetailMaterial";
+import {updateRequestDetailMaterial} from "../../../../../../units/RequestDetail/updateRequestDetailMaterial";
 
 export default function PrimaryProductForm({mute, data, setData}: {
     mute: any,
@@ -25,12 +25,12 @@ export default function PrimaryProductForm({mute, data, setData}: {
     const {
         isMutating: isMutatingCreate,
         trigger: create
-    } = useSWRMutation("/RequestDetail/CreateMaterial", createRequestDetailProduct)
+    } = useSWRMutation("/RequestDetail/CreateMaterial", createRequestDetailMaterial)
 
     const {
         isMutating: isMutatingEdit,
         trigger: edit
-    } = useSWRMutation("/RequestDetail/UpdateMaterial", updateRequestDetailProduct)
+    } = useSWRMutation("/RequestDetail/UpdateMaterial", updateRequestDetailMaterial)
 
     const onFinish = async (values: MaterialRequest) => {
         values.requestMasterUid = `${getCookie("requestMasterUid")}`;

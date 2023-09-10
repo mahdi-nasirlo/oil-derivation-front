@@ -1,148 +1,150 @@
 "use client";
-import { Button, Checkbox, Divider, Table, Typography, Form } from "antd";
+import {Button, Checkbox, Divider, Form, Table, Typography} from "antd";
 import React from "react";
-import { ColumnsType } from "antd/es/table";
+import {ColumnsType} from "antd/es/table";
 import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
-import { getAllProduct } from "../../../../../units/RequestDetail/getAllProduct";
-import { getPageProduct } from "../../../../../units/RequestDetail/getPageProduct";
+import {getRequestDetailProduct} from "../../../../../units/RequestDetail/getRequestDetailProduct";
+import useSWRMutation from "swr/mutation";
+import {deleteRequestDetailProduct} from "../../../../../units/RequestDetail/deleteRequestDetailProduct";
 
 
 export default function Page() {
 
-  const [form] = Form.useForm();
+    const [form] = Form.useForm();
 
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
-  };
-
-
-  const { data: product, mutate } = useSWR(
-    "/api/RequestDetail/GetPageProduct",
-    getPageProduct
-  );
-
-  // const { data: product, mutate } = useSWR(
-  //   "/api/RequestDetail/GetAllProduct",
-  //   getAllProduct
-  // );
-
-  return (
-    <>
-      <Typography className="text-right font-medium text-base">
-        لطفا اطلاعات خواسته شده را با دقت وارد نمایید.
-      </Typography>
-      <Divider />
-      <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary mb-10">
-        محصول تولیدی
-      </Typography>
-      <PrimaryProductForm mute={mutate} />
+    const onFinish = (values: any) => {
+        console.log('Received values of form: ', values);
+    };
 
 
-      <Table
-        pagination={false}
-        className="mt-6"
-        columns={columns}
+    const {data: product, mutate, isLoading} = useSWR(
+        "/api/RequestDetail/GetPageProduct",
+        getRequestDetailProduct
+    );
 
-        dataSource={product || []}
-      />
-      <Divider />
-      <Form
-        form={form}
-        name="register"
-        onFinish={onFinish}
-      >
-        <Form.Item
-          className=" mr-3 font-medium"
-          name="agreement"
-          valuePropName="checked"
-          rules={[
-            {
-              validator: (_, value) =>
-                value ? Promise.resolve() : Promise.reject(new Error('پذیرش شرایط و قوانین برای ثبت درخواست ضروری می باشد')),
-            },
-          ]}
-        >
-          <Checkbox>
-            شرایط و <a href="https://google.com" target="_blank" className="text-primary-500">قوانین</a> را خوانده و می پذیرم!
-          </Checkbox>
-        </Form.Item>
-        <Divider />
-        <div className="flex gap-6">
-          <Button
-            className="w-full management-info-form-submit btn-filter"
-            size="large"
-            type="primary"
-            htmlType="submit"
-          >
-            <span className="flex gap-3 justify-center ">ذخیره</span>
-          </Button>
-        </div>
-      </Form>
-    </>
-  );
+    const {isMutating: isDeleting, trigger} = useSWRMutation("/RequestDetail/DeleteProduct", deleteRequestDetailProduct)
+
+    const columns: ColumnsType<DataType> = [
+        {
+            title: "ردیف",
+            dataIndex: "index",
+            key: "1",
+        },
+        {
+            title: "نام محصول",
+            dataIndex: "ProductName",
+            key: "2",
+        },
+        {
+            title: "دانسیته",
+            dataIndex: "density",
+            key: "3",
+        },
+
+        {
+            title: "جزئیات",
+            key: "جزئیات",
+            render: (_, record) => (
+                <Button onClick={async () => {
+                    //@ts-ignore
+                    await trigger(record.Uid)
+
+                    await mutate()
+                }} danger type="text">
+                    <Typography className="text-red-500"> حذف</Typography>
+                </Button>
+            ),
+        },
+    ];
+    return (
+        <>
+            <Typography className="text-right font-medium text-base">
+                لطفا اطلاعات خواسته شده را با دقت وارد نمایید.
+            </Typography>
+            <Divider/>
+            <Typography className="mt-3 text-right font-medium text-base text-secondary-500 text-secondary mb-10">
+                محصول تولیدی
+            </Typography>
+            <PrimaryProductForm mute={mutate}/>
+
+
+            <Table
+                loading={isLoading}
+                pagination={false}
+                className="mt-6"
+                columns={columns}
+                dataSource={product || []}
+            />
+            <Divider/>
+            <Form
+                form={form}
+                name="register"
+                onFinish={onFinish}
+            >
+                <Form.Item
+                    className=" mr-3 font-medium"
+                    name="agreement"
+                    valuePropName="checked"
+                    rules={[
+                        {
+                            validator: (_, value) =>
+                                value ? Promise.resolve() : Promise.reject(new Error('پذیرش شرایط و قوانین برای ثبت درخواست ضروری می باشد')),
+                        },
+                    ]}
+                >
+                    <Checkbox>
+                        شرایط و <a href="https://google.com" target="_blank" className="text-primary-500">قوانین</a> را
+                        خوانده و می پذیرم!
+                    </Checkbox>
+                </Form.Item>
+                <Divider/>
+                <div className="flex gap-6">
+                    <Button
+                        className="w-full management-info-form-submit btn-filter"
+                        size="large"
+                        type="primary"
+                        htmlType="submit"
+                    >
+                        <span className="flex gap-3 justify-center ">ذخیره</span>
+                    </Button>
+                </div>
+            </Form>
+        </>
+    );
 }
 
 interface DataType {
-  key: string;
-  name: string;
-  row: number;
-  nationalcode: number;
-  productname: string;
-  density: string;
+    key: string;
+    name: string;
+    row: number;
+    nationalcode: number;
+    productname: string;
+    density: string;
 
-  role: string;
+    role: string;
 }
 
-const columns: ColumnsType<DataType> = [
-  {
-    title: "ردیف",
-    dataIndex: "row",
-    key: "1",
-  },
-  {
-    title: "نام محصول",
-    dataIndex: "productname",
-    key: "2",
-  },
-  {
-    title: "دانسیته",
-    dataIndex: "density",
-    key: "2",
-  },
-
-  {
-    title: "جزئیات",
-    key: "جزئیات",
-    // render: (_, record) => (
-    //   <Space size="middle">
-    //     <Link href={""} className="action-btn-delete">
-    //       حذف
-    //     </Link>
-    //   </Space>
-    // ),
-  },
-];
 
 const data: DataType[] = [
-  {
-    key: "1",
-    row: 1,
-    name: "مهدی نصیرلو",
-    nationalcode: 1111111111,
-    role: "مدیرعامل",
-    productname: "هیدروکربن سبک",
-    density: "بالا تر از 900gr/cm3",
-  },
-  {
-    key: "2",
-    row: 2,
-    name: "امیر منصوری ",
-    nationalcode: 2222222222,
-    role: "مدیرعامل",
-    productname: " هیدروکربن سنگین",
-    density: "پایین تر از 900gr/cm3",
-  },
+    {
+        key: "1",
+        row: 1,
+        name: "مهدی نصیرلو",
+        nationalcode: 1111111111,
+        role: "مدیرعامل",
+        productname: "هیدروکربن سبک",
+        density: "بالا تر از 900gr/cm3",
+    },
+    {
+        key: "2",
+        row: 2,
+        name: "امیر منصوری ",
+        nationalcode: 2222222222,
+        role: "مدیرعامل",
+        productname: " هیدروکربن سنگین",
+        density: "پایین تر از 900gr/cm3",
+    },
 ];
 // const MyFormItemContext = React.createContext<(string | number)[]>([]);
 

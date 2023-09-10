@@ -3,7 +3,7 @@ import {RequestDetail} from "../../interfaces/requestDetail";
 import {notification} from "antd";
 import {AxiosResponse} from "axios";
 
-export async function updateRequestDetailProduct(url: string, {arg}: { arg: RequestDetail }) {
+export async function updateRequestDetailMaterial(url: string, {arg}: { arg: RequestDetail }) {
 
     try {
 

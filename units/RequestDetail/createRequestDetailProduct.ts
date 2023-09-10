@@ -1,22 +1,19 @@
 import {AxiosResponse} from "axios";
 import {customRequest} from "../../lib/customRequest";
-import {RequestDetail} from "../../interfaces/requestDetail";
-import {notification} from "antd";
+import {getCookie} from "cookies-next";
 
-export async function createRequestDetailProduct(url: string, {arg}: { arg: RequestDetail }) {
-
+export async function createRequestDetailProduct(url: string, {arg}: { arg: string }) {
     try {
 
-        const res: AxiosResponse = await customRequest.post(`/api/RequestDetail/CreateMaterial`, arg)
+        const requestMasterUid = getCookie("requestMasterUid");
 
-        notification.open({type: res.data?.success ? "success" : "error", message: res.data.message})
-
-        return res.data;
+        const res: AxiosResponse = await customRequest.post(
+            `/api/RequestDetail/CreateProduct`,
+            {requestMasterUid, productUid: arg}
+        );
 
 
     } catch (error) {
-
         console.error("Error:", error);
     }
-
 }

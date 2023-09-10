@@ -3,44 +3,47 @@
 import {Button, Col, Form, Row, Select} from "antd";
 import React, {useState} from "react";
 import {getAllProductSelectable} from "../../../../../../units/RequestDetail/getAllProductSelectable";
-import {createProduct} from "../../../../../../units/RequestDetail/createProduct";
+import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createRequestDetailProduct";
 import {SvgIcon} from "@/components/layout/sidebar";
 import useSWRMutation from "swr/mutation";
 
 
 export default function PrimaryProductForm({mute}: { mute: any }) {
 
-    const [isLoading, setLoading] = useState(false);
-
     const [dunsite, Setdunsite] = useState();
 
     const {
         data: selectableProduct,
         isMutating: isLDSelectable,
-        trigger
+        trigger: getSelectableProduct
     } = useSWRMutation("/RequestDetail/GetAllProductSelectable", getAllProductSelectable);
 
-    const onFinish = (values: { productUid: string, densityType: boolean }) => {
-        createProduct(values.productUid, setLoading);
-        mute();
-    };
+    const {
+        isMutating: isLDCreateProduct,
+        trigger: createProduct
+    } = useSWRMutation("/RequestDetail/CreateProduct", createRequestDetailProduct)
 
-    // const [secondSelectVisible, setSecondSelectVisible] = useState<
-    //     boolean | undefined
-    // >(undefined);
+
+    const onFinish = async (values: { productUid: string, densityType: boolean }) => {
+
+        await createProduct(values.productUid)
+
+        mute();
+
+    };
 
     const ChangeDunsite = async (value: any) => {
 
         Setdunsite(value)
-        
-        await trigger(value)
+
+        await getSelectableProduct(value)
 
     };
 
     return (
         <>
             <Form
-                disabled={isLoading}
+                disabled={isLDCreateProduct}
                 onFinish={onFinish}
                 name="form_item_path"
                 layout="vertical"
@@ -66,7 +69,7 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                                 fieldNames={{value: "Uid", label: "Name"}}
                                 size="large"
                                 placeholder="انتخاب نمایید"
-                                // disabled={typeof secondSelectVisible !== "boolean"}
+                                disabled={typeof dunsite !== "boolean"}
                                 tokenSeparators={[","]}
                                 options={selectableProduct || []}
                             />
@@ -75,10 +78,8 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                 </Row>
                 <Row dir="ltr">
                     <Button
-                        // disabled={typeof secondSelectVisible !== "boolean"}
                         icon={<SvgIcon src="/static/save.svg"/>}
-                        loading={isLoading}
-                        className="management-info-form-submit"
+                        danger
                         size="large"
                         type="primary"
                         htmlType="submit"
