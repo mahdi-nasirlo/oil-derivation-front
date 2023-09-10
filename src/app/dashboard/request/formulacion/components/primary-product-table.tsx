@@ -5,10 +5,11 @@ import {RequestDetail} from "../../../../../../interfaces/requestDetail";
 import {DeleteProductRequestDetail} from "../../../../../../units/RequestDetail/deleteProduct";
 
 
-export default function PrimaryProductTable({data, loading = false, mute}: {
+export default function PrimaryProductTable({data, loading = false, mute, setData}: {
     data: RequestDetail[],
     loading: any,
-    mute: any
+    mute: any,
+    setData: (arg: any) => void
 }) {
 
     const [isDeleting, setDeleting] = useState(false)
@@ -17,8 +18,8 @@ export default function PrimaryProductTable({data, loading = false, mute}: {
         {
             title: 'ردیف',
             width: 100,
-            dataIndex: 'MaterialUid',
-            key: 'MaterialUid',
+            dataIndex: 'Index',
+            key: 'Index',
         },
         {
             title: 'نام مواد',
@@ -28,8 +29,8 @@ export default function PrimaryProductTable({data, loading = false, mute}: {
         },
         {
             title: 'میزان مصرف برای یک واحد',
-            dataIndex: 'MaterialUsagePercentage',
-            key: 'MaterialUsagePercentage',
+            dataIndex: 'MaterialUnitConsumption',
+            key: 'MaterialUnitConsumption',
             width: 150,
         },
         {
@@ -50,13 +51,13 @@ export default function PrimaryProductTable({data, loading = false, mute}: {
                 {
                     title: "درصد تامین خارجی",
                     dataIndex: "MaterialInternalSupplyPercentage",
-                    key: '4',
+                    key: 'MaterialInternalSupplyPercentage',
                     align: "center",
                 },
                 {
                     title: "درصد تامین داخلی",
                     dataIndex: "MaterialInternalSupplyPercentage",
-                    key: '4',
+                    key: 'MaterialInternalSupplyPercentage',
                     align: "center",
                 },
             ],
@@ -68,7 +69,10 @@ export default function PrimaryProductTable({data, loading = false, mute}: {
             width: 150,
             render: (_, record) => <>
                 <div className={"flex justify-between"}>
-                    <Button type="link" className={"text-primary-500"}>ویرایش</Button>
+                    <Button onClick={() => {
+                        setData(record)
+                        window.scrollTo({top: 0, behavior: "smooth"})
+                    }} type="link" className={"text-primary-500"}>ویرایش</Button>
                     <Button loading={isDeleting} type="link" onClick={() => {
                         DeleteProductRequestDetail(
                             () => {
