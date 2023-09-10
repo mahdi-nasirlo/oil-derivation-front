@@ -43,9 +43,10 @@ export default function PrimaryProductForm({mute, data, setData}: {
         values.materialSupplyMethodId = 1;
 
 
-        let res; // Declare res variable outside of the if-else blocks
+        let res;
 
-        if (data) {
+        console.log(data?.uid)
+        if (data?.uid) {
 
             values.uid = data.uid;
             // @ts-ignore
