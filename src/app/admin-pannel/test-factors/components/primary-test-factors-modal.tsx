@@ -1,11 +1,10 @@
-"use client";
-
+"use client"
 
 import { Button, Col, Form, Input, Modal, Row } from 'antd'
 import { useForm } from 'antd/es/form/Form';
 import React from 'react'
 
-export default function PrimaryManagementUserRoleModal({ setModalVisible, modalVisible }: { setModalVisible: any, modalVisible: any }) {
+export default function PrimaryTestFactorsModal({ setModalVisible, modalVisible }: { setModalVisible: any, modalVisible: any }) {
 
     const [form] = useForm()
 
@@ -26,9 +25,9 @@ export default function PrimaryManagementUserRoleModal({ setModalVisible, modalV
 
     return (
         <Modal
-            width={800}
+            width={600}
             title={<div>
-                <div className="text-base mb-2">افزودن نقش جدید</div>
+                <div className="text-base mb-2">افزودن فاکتور جدید</div>
                 <div className="font-normal text-sm">لطفا اطلاعات را وارد نمایید.</div>
             </div>}
             visible={modalVisible}
@@ -59,22 +58,12 @@ export default function PrimaryManagementUserRoleModal({ setModalVisible, modalV
         >
             <Form form={form} >
                 <Row gutter={[32, 1]}>
-                    <Col xs={24} md={12}>
+                    <Col xs={24} md={24}>
                         <Form.Item
                             labelCol={{ span: 24 }}
                             wrapperCol={{ span: 24 }}
                             name="year"
-                            label="نام نقش"
-                        >
-                            <Input size="large" placeholder="وارد کنید" />
-                        </Form.Item>
-                    </Col>
-                    <Col xs={24} md={12}>
-                        <Form.Item
-                            labelCol={{ span: 24 }}
-                            wrapperCol={{ span: 24 }}
-                            name="years"
-                            label="نام و نام خانوادگی"
+                            label="نام فاکتور"
                         >
                             <Input size="large" placeholder="وارد کنید" />
                         </Form.Item>
