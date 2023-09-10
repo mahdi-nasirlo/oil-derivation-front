@@ -1,13 +1,16 @@
 "use client";
 
 import {Button, Divider, Row, Typography} from "antd";
-import React from "react";
+import React, {useState} from "react";
 import PrimaryProductTable from "@/app/dashboard/request/formulacion/components/primary-product-table";
 import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
 import {getAllRequestDetailMaterial} from "../../../../../units/RequestDetail/getAllRequestDetailMaterial";
+import {convertKeysToLowerCase} from "../../../../../lib/convertKeysToLowerCase";
 
 export default function Formulacion() {
+
+    const [data, setData] = useState(undefined)
 
     const {
         mutate,
@@ -26,8 +29,9 @@ export default function Formulacion() {
             </Typography>
 
             <Divider/>
-            <PrimaryProductForm mute={mutate}/>
+            <PrimaryProductForm mute={mutate} setData={setData} data={convertKeysToLowerCase(data)}/>
             <PrimaryProductTable
+                setData={setData}
                 mute={mutate}
                 data={requestMasterMaterial}
                 loading={requestMasterMaterialLoading}

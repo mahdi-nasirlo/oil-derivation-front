@@ -9,16 +9,28 @@ import {getCookie} from "cookies-next";
 import {useForm} from "antd/lib/form/Form";
 import useSWRMutation from "swr/mutation";
 import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createRequestDetailProduct";
+import {updateRequestDetailProduct} from "../../../../../../units/RequestDetail/updateRequestDetailProduct";
 
-export default function PrimaryProductForm({mute}: { mute: any }) {
+export default function PrimaryProductForm({mute, data, setData}: {
+    mute: any,
+    data: MaterialRequest | undefined,
+    setData: (arg: any) => void
+}) {
     const [form] = useForm();
 
     const router = useRouter();
 
     const {data: material, isLoading: isLoadingMaterial} = useSWR("/Material/GetAll", getAllMaterial);
 
-    const {isMutating, trigger} = useSWRMutation("/RequestDetail/CreateMaterial", createRequestDetailProduct)
+    const {
+        isMutating: isMutatingCreate,
+        trigger: create
+    } = useSWRMutation("/RequestDetail/CreateMaterial", createRequestDetailProduct)
 
+    const {
+        isMutating: isMutatingEdit,
+        trigger: edit
+    } = useSWRMutation("/RequestDetail/UpdateMaterial", updateRequestDetailProduct)
 
     const onFinish = async (values: MaterialRequest) => {
         values.requestMasterUid = `${getCookie("requestMasterUid")}`;
@@ -31,25 +43,47 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
         values.materialSupplyMethodId = 1;
 
 
-        // @ts-ignore
-        const res = await trigger(values);
+        let res; // Declare res variable outside of the if-else blocks
+
+        if (data) {
+
+            values.uid = data.uid;
+            // @ts-ignore
+            res = await edit(values);
+
+        } else {
+
+            // @ts-ignore
+            res = await create(values);
+
+        }
 
         if (res?.success) {
-            form.resetFields()
+            form.resetFields();
+            setData(undefined)
         }
+
+
+        await mute()
+
     };
 
     useEffect(() => {
+
         if (!getCookie("requestMasterUid")) {
             return router.push("/dashboard/request/production-process");
         }
-    });
+
+        form.setFieldsValue(data)
+
+    }, [data, form, router]);
+
 
     return (
         <>
             <Form
                 form={form}
-                disabled={isMutating}
+                disabled={isMutatingCreate || isMutatingEdit}
                 name="form_item_path"
                 layout="vertical"
                 onFinish={onFinish}
@@ -65,6 +99,9 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             ]}
                         >
                             <Select
+                                showSearch
+                                //@ts-ignore
+                                filterOption={filterOption}
                                 loading={isLoadingMaterial}
                                 fieldNames={{value: "Uid", label: "Name"}}
                                 size="large"
@@ -86,7 +123,8 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                                 {type: "string"},
                             ]}
                         >
-                            <Input size="large" type={"number"} placeholder={"وارد نمایید"}/>
+                            <Input size="large" type={"number"}
+                                   placeholder={"وارد نمایید"}/>
                         </Form.Item>
                     </Col>
                 </Row>
@@ -156,10 +194,9 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                                     required: true,
                                     message: "شماره اظهارنامه واردات اجباری است",
                                 },
-                                {type: "number"},
                             ]}
                         >
-                            <InputNumber
+                            <Input
                                 className="w-full rounded-lg"
                                 size="large"
                                 placeholder="وارد کنید"/>
@@ -273,10 +310,9 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                             label="ایرانکد"
                             rules={[
                                 {required: true, message: "ایرانکد اجباری است"},
-                                {type: "number"},
                             ]}
                         >
-                            <InputNumber
+                            <Input
                                 className="w-full rounded-lg"
                                 size="large"
                                 type={"number"}
@@ -300,7 +336,7 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
                 <Row dir="ltr">
                     <Button
                         icon={<SvgIcon src="/static/save.svg"/>}
-                        loading={isMutating}
+                        loading={isMutatingCreate || isMutatingEdit}
                         size="large"
                         danger
                         type="primary"
@@ -315,6 +351,7 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
 }
 
 export type MaterialRequest = {
+    uid: string;
     requestMasterUid: string | null;
     materialUid: string;
     materialSupplyMethodId: number;
@@ -331,36 +368,11 @@ export type MaterialRequest = {
     materialSupplyAddress: string;
 };
 
-const RawMaterials = [
-    {
-        Uid: "1",
-        Name: "کلر",
-    },
-    {
-        Uid: "2",
-        Name: "بوتادیین",
-    },
-    {
-        Uid: "3",
-        Name: "پروپیلن",
-    },
-    {
-        Uid: "4",
-        Name: "اتیلن",
-    },
-    {
-        Uid: "5",
-        Name: "آمونیاک",
-    },
-    {
-        Uid: "6",
-        Name: "سولفور",
-    },
-    {
-        Uid: "7",
-        Name: "تولوئن ",
-    },
-];
+const filterOption = (input: string, option: {
+    Uid: string;
+    Name: string,
+    ID: number
+}) => (option?.Name ?? '').toLowerCase().includes(input.toLowerCase());
 
 const HowToSupply = [
     {
@@ -387,3 +399,4 @@ const Character = [
         Name: "حقیقی",
     },
 ];
+
