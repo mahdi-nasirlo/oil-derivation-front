@@ -1,25 +1,25 @@
-import { AxiosResponse } from "axios";
-import { customRequest } from "../../lib/customRequest";
-import { getCookie } from "cookies-next";
+import {getCookie} from "cookies-next";
+import {AxiosResponse} from "axios";
+import {customRequest} from "../../lib/customRequest";
 
-export async function getAllProductSelectable(
-  densityType: boolean | undefined
-) {
-  const requestMasterUid = getCookie("requestMasterUid");
+export async function getAllProductSelectable(url: string, {arg}: { arg: boolean }) {
+    const requestMasterUid = getCookie("requestMasterUid");
 
-  try {
-    const res: AxiosResponse = await customRequest.post(
-      `/api/RequestDetail/GetAllProductSelectable`,
-      {
-        requestMasterUid: requestMasterUid,
-        densityType: densityType,
-      }
-    );
+    console.log(arg)
 
-    return res.data.data;
-  } catch (error) {
-    console.error("Error:", error);
-  }
+    try {
+        const res: AxiosResponse = await customRequest.post(
+            `/api/RequestDetail/GetAllProductSelectable`,
+            {
+                requestMasterUid: requestMasterUid,
+                densityType: arg,
+            }
+        );
 
-  return null;
+        return res.data.data;
+    } catch (error) {
+        console.error("Error:", error);
+    }
+
+    return [];
 }

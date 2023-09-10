@@ -1,23 +1,24 @@
 "use client";
 
-import { SvgIcon } from "@/components/layout/sidebar";
-import { Button, Col, Form, Row, Select } from "antd";
-import React, { useEffect, useState } from "react";
-import useSWR from "swr";
-import { getAllProductSelectable } from "../../../../../../units/RequestDetail/getAllProductSelectable";
-import { createProduct } from "../../../../../../units/RequestDetail/createProduct";
+import {Button, Col, Form, Row, Select} from "antd";
+import React, {useState} from "react";
+import {getAllProductSelectable} from "../../../../../../units/RequestDetail/getAllProductSelectable";
+import {createProduct} from "../../../../../../units/RequestDetail/createProduct";
+import {SvgIcon} from "@/components/layout/sidebar";
+import useSWRMutation from "swr/mutation";
 
 
-export default function PrimaryProductForm({ mute }: { mute: any }) {
+export default function PrimaryProductForm({mute}: { mute: any }) {
 
     const [isLoading, setLoading] = useState(false);
 
     const [dunsite, Setdunsite] = useState();
 
-    const { data: selectableProduct } = useSWR(
-        "/RequestDetail/GetAllProductSelectable",
-        () => { getAllProductSelectable(dunsite) }
-    );
+    const {
+        data: selectableProduct,
+        isMutating: isLDSelectable,
+        trigger
+    } = useSWRMutation("/RequestDetail/GetAllProductSelectable", getAllProductSelectable);
 
     const onFinish = (values: { productUid: string, densityType: boolean }) => {
         createProduct(values.productUid, setLoading);
@@ -28,8 +29,12 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
     //     boolean | undefined
     // >(undefined);
 
-    const ChangeDunsite = (value: any) => {
+    const ChangeDunsite = async (value: any) => {
+
         Setdunsite(value)
+        
+        await trigger(value)
+
     };
 
     return (
@@ -50,14 +55,15 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
                                 options={Character}
                                 size="large"
                                 value={dunsite}
-                                fieldNames={{ value: "is_Active", label: "Name" }}
+                                fieldNames={{value: "is_Active", label: "Name"}}
                             />
                         </Form.Item>
                     </Col>
                     <Col xs={24} md={12}>
                         <Form.Item name="productUid" label="نام محصول">
                             <Select
-                                fieldNames={{ value: "Uid", label: "Name" }}
+                                loading={isLDSelectable}
+                                fieldNames={{value: "Uid", label: "Name"}}
                                 size="large"
                                 placeholder="انتخاب نمایید"
                                 // disabled={typeof secondSelectVisible !== "boolean"}
@@ -68,24 +74,17 @@ export default function PrimaryProductForm({ mute }: { mute: any }) {
                     </Col>
                 </Row>
                 <Row dir="ltr">
-                    <Col xs={10} md={3} lg={2}>
-                        <Button
-                            // disabled={typeof secondSelectVisible !== "boolean"}
-                            loading={isLoading}
-                            className="w-full management-info-form-submit"
-                            size="large"
-                            type="primary"
-                            htmlType="submit"
-                        >
-                            <span
-                                style={{ display: "flex" }}
-                                className="flex gap-2 justify-center"
-                            >
-                                ذخیره
-                                <SvgIcon src="/static/save.svg" />
-                            </span>
-                        </Button>
-                    </Col>
+                    <Button
+                        // disabled={typeof secondSelectVisible !== "boolean"}
+                        icon={<SvgIcon src="/static/save.svg"/>}
+                        loading={isLoading}
+                        className="management-info-form-submit"
+                        size="large"
+                        type="primary"
+                        htmlType="submit"
+                    >
+                        ذخیره
+                    </Button>
                 </Row>
             </Form>
         </>
