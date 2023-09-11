@@ -1,7 +1,7 @@
 import { Space, Table, Tag } from 'antd'
 import { ColumnsType } from 'antd/es/table';
 import Link from 'next/link';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 interface DataType {
@@ -16,7 +16,29 @@ interface DataType {
 
 
 export default function PrimaryManufacturerListTable() {
+    const [data, setData] = useState<DataType[]>([]);
 
+    useEffect(() => {
+        // Make an HTTP request to fetch the data from the server
+        fetch('http://192.168.52.102:97/api/Page/ExeManagerProducers', { method: "POST" })
+            .then((response) => response.json())
+            .then((result) => {
+                if (result.success) {
+                    setData(result.data.persons.map((person: any, index: any) => ({
+                        key: index.toString(),
+                        Row: index + 1,
+                        name: person.name,
+                        nationalCode: person.nationalCode,
+                        ceoName: person.ceoName,
+                        companyOwnershipTypeName: person.companyOwnershipTypeName,
+                        status: [person.status],
+                    })));
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
 
     const columns: ColumnsType<DataType> = [
         {
@@ -26,45 +48,53 @@ export default function PrimaryManufacturerListTable() {
         },
         {
             title: "نام واحد تولیدی",
-            dataIndex: "ProductName",
+            dataIndex: "name",
             key: "2",
         },
         {
             title: " شناسه ملی",
-            dataIndex: "TrackingCode",
+            dataIndex: "nationalCode",
             key: "3",
         },
         {
             title: "نام مدیرعامل   ",
-            dataIndex: "ConfirmedRequestCode",
+            dataIndex: "ceoName",
             key: "4",
         },
         {
             title: "نوع مالکیت",
-            dataIndex: "DateRegistration",
+            dataIndex: "companyOwnershipTypeName",
             key: "5",
         },
         {
             title: " وضعیت حساب کاربری ",
-            dataIndex: "ActivityStatus",
+            dataIndex: "status",
             key: "6",
-            render: (_, { ActivityStatus }) => (
-                <>
-                    {ActivityStatus.map((ActivityStatus) => {
-                        let color = ActivityStatus.length > 16 ? "geekblue" : "red";
-                        if (ActivityStatus === "loser") {
-                            color = "volcano";
-                        }
-                        return (
-                            <Tag color={color} key={ActivityStatus}>
-                                {ActivityStatus.toUpperCase()}
-                            </Tag>
-                        );
-                    })}
-                </>
-            ),
-        },
+            render: (_, record: any) => {
+                console.log(record);
+                return (
+                    <>
+                        {record.status.map((item: any) => {
+                            let color = "";
 
+                            if (item === "غیرفعال") {
+                                color = "red";
+                            } else if (item === "فعال") {
+                                color = "green";
+                            } else {
+                                color = "yellow";
+                            }
+                            return (
+                                <Tag color={color} key={item}>
+                                    {item}
+                                </Tag>
+                            );
+                        })}
+                    </>
+                );
+            },
+
+        },
         {
             title: "جزئیات",
             key: "جزئیات",
@@ -97,115 +127,3 @@ export default function PrimaryManufacturerListTable() {
         />
     )
 }
-
-
-const data: DataType[] = [
-    {
-        key: "1",
-        Row: 1,
-        ProductName: "نام شرکت تولیدی تست",
-        TrackingCode: "351665168",
-        ConfirmedRequestCode: "علی امیری",
-        DateRegistration: "خصوصی",
-        ActivityStatus: [" غیرفعال"],
-    },
-    {
-        key: "2",
-        Row: 2,
-        ProductName: "نام شرکت تولیدی تست ",
-        TrackingCode: "351665168",
-        ConfirmedRequestCode: "امیرحسام خالویی",
-        DateRegistration: "خصوصی",
-        ActivityStatus: ["  در انتظار بررسی"],
-    },
-    {
-        key: "3",
-        Row: 3,
-        ProductName: " نام شرکت تولیدی تست",
-        TrackingCode: "351665168",
-        ConfirmedRequestCode: "علی امیری",
-        DateRegistration: "خصوصی",
-        ActivityStatus: ["  در انتظار بررسی"],
-    },
-    {
-        key: "4",
-        Row: 4,
-        ProductName: " نام شرکت تولیدی تست",
-        TrackingCode: "351995168",
-        ConfirmedRequestCode: "امیرحسام خالویی",
-        DateRegistration: "خصوصی",
-        ActivityStatus: ["  غیرفعال"],
-    },
-    {
-        key: "5",
-        Row: 5,
-        ProductName: " نام شرکت تولیدی تست",
-        TrackingCode: "351165168",
-        ConfirmedRequestCode: "علی امیری",
-        DateRegistration: "دولتی",
-        ActivityStatus: ["  در انتظار بررسی"],
-    },
-    {
-        key: "6",
-        Row: 6,
-        ProductName: " نام شرکت تولیدی تست",
-        TrackingCode: "351605168",
-        ConfirmedRequestCode: "امیرحسام خالویی",
-        DateRegistration: "خصوصی",
-        ActivityStatus: ["  غیرفعال"],
-    },
-    {
-        key: "7",
-        Row: 7,
-        ProductName: " نام شرکت تولیدی تست",
-        TrackingCode: "351665768",
-        ConfirmedRequestCode: "علی امیری",
-        DateRegistration: "خصوصی",
-        ActivityStatus: ["  در انتظار بررسی"],
-    },
-    {
-        key: "8",
-        Row: 8,
-        ProductName: "نام شرکت تولیدی تست",
-        TrackingCode: "351645168",
-        ConfirmedRequestCode: "امیرحسام خالویی",
-        DateRegistration: "خصوصی",
-        ActivityStatus: ["  فعال"],
-    },
-    {
-        key: "9",
-        Row: 9,
-        ProductName: " نام شرکت تولیدی تست",
-        TrackingCode: "351865168",
-        ConfirmedRequestCode: "علی امیری",
-        DateRegistration: "خصوصی",
-        ActivityStatus: ["  فعال"],
-    },
-    {
-        key: "10",
-        Row: 10,
-        ProductName: "نام شرکت تولیدی تست",
-        TrackingCode: "351662168",
-        ConfirmedRequestCode: "امیرحسام خالویی",
-        DateRegistration: "دولتی",
-        ActivityStatus: ["در حال آزمایش"],
-    },
-    {
-        key: "11",
-        Row: 11,
-        ProductName: " نام شرکت تولیدی تست",
-        TrackingCode: "351665168",
-        ConfirmedRequestCode: "علی امیری",
-        DateRegistration: "خصوصی",
-        ActivityStatus: ["  غیرفعال"],
-    },
-    {
-        key: "12",
-        Row: 12,
-        ProductName: " نام شرکت تولیدی تست",
-        TrackingCode: "351665168",
-        ConfirmedRequestCode: "امیرحسام خالویی",
-        DateRegistration: "دولتی",
-        ActivityStatus: ["  فعال"],
-    },
-];

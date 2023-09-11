@@ -115,17 +115,33 @@ const columns: ColumnsType<DataType> = [
         key: "6",
         render: (_, { ActivityStatus }) => (
             <>
-                {ActivityStatus.map((ActivityStatus) => {
-                    let color = ActivityStatus.length > 16 ? 'geekblue' : 'green';
-                    if (ActivityStatus === 'loser') {
-                        color = 'volcano';
+                {ActivityStatus.map((activityStatus) => {
+                    let color;
+                    switch (activityStatus) {
+                        case 'دریافت استاندارد':
+                            color = 'green';
+                            break;
+                        case 'عدم دریافت استاندارد':
+                            color = 'red';
+                            break;
+                        case 'در حال آزمایش':
+                            color = 'yellow';
+                            break;
+                        case 'loser':
+                            color = 'volcano';
+                            break;
+                        default:
+                            color = 'geekblue'; // Default color if none of the conditions match
+                            break;
                     }
+
                     return (
-                        <Tag color={color} key={ActivityStatus}>
-                            {ActivityStatus.toUpperCase()}
+                        <Tag color={color} key={activityStatus}>
+                            {activityStatus.toUpperCase()}
                         </Tag>
                     );
                 })}
+
             </>
         ),
     },
