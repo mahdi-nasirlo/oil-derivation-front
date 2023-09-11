@@ -102,13 +102,13 @@ export default function PrimaryAddingProductTable({ setModalVisible }: { setModa
             <div className="box-border w-full mt-8 p-6">
                 <div className="flex justify-end">
                     <Button
-                        className="max-md:w-full flex items-center gap-2"
+                        className="max-md:w-full flex justify-center items-center gap-2"
                         size="large"
                         type="primary"
                         htmlType="submit"
                         onClick={showModal}
                     >
-                        <span className="flex gap-2 justify-center">افزودن محصول</span>
+                        <span className="flex gap-2">افزودن محصول</span>
                         <PlusIcon width={24} height={24} />
                     </Button>
                 </div>
