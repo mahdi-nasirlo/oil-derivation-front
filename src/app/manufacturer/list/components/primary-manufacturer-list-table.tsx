@@ -1,7 +1,9 @@
-import { Space, Table, Tag } from 'antd'
-import { ColumnsType } from 'antd/es/table';
+import {Space, Table, Tag} from 'antd'
+import {ColumnsType} from 'antd/es/table';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import useSWR from "swr";
+import {exeManagerProducerInfo} from "../../../../../units/Page/exeManagerProducerInfo";
 
 
 interface DataType {
@@ -16,29 +18,8 @@ interface DataType {
 
 
 export default function PrimaryManufacturerListTable() {
-    const [data, setData] = useState<DataType[]>([]);
 
-    useEffect(() => {
-        // Make an HTTP request to fetch the data from the server
-        fetch('http://192.168.52.102:97/api/Page/ExeManagerProducers', { method: "POST" })
-            .then((response) => response.json())
-            .then((result) => {
-                if (result.success) {
-                    setData(result.data.persons.map((person: any, index: any) => ({
-                        key: index.toString(),
-                        Row: index + 1,
-                        name: person.name,
-                        nationalCode: person.nationalCode,
-                        ceoName: person.ceoName,
-                        companyOwnershipTypeName: person.companyOwnershipTypeName,
-                        status: [person.status],
-                    })));
-                }
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
+    const {data, isLoading, mutate} = useSWR("/Page/ExeManagerProducers", exeManagerProducerInfo)
 
     const columns: ColumnsType<DataType> = [
         {
@@ -71,25 +52,24 @@ export default function PrimaryManufacturerListTable() {
             dataIndex: "status",
             key: "6",
             render: (_, record: any) => {
+
                 console.log(record);
+
+                let color = "";
+
+                if (record.status === "غیرفعال") {
+                    color = "red";
+                } else if (record.status === "فعال") {
+                    color = "green";
+                } else {
+                    color = "yellow";
+                }
+
                 return (
                     <>
-                        {record.status.map((item: any) => {
-                            let color = "";
-
-                            if (item === "غیرفعال") {
-                                color = "red";
-                            } else if (item === "فعال") {
-                                color = "green";
-                            } else {
-                                color = "yellow";
-                            }
-                            return (
-                                <Tag color={color} key={item}>
-                                    {item}
-                                </Tag>
-                            );
-                        })}
+                        <Tag color={color}>
+                            {record.status}
+                        </Tag>
                     </>
                 );
             },
@@ -107,8 +87,10 @@ export default function PrimaryManufacturerListTable() {
             ),
         },
     ];
+
     return (
         <Table
+            loading={isLoading}
             className="mt-8"
             columns={columns}
             dataSource={data}
