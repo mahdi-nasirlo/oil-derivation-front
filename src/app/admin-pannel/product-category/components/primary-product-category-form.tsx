@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Col, Form, Input, Row, Select } from 'antd'
+import { Button, Col, Form, Row, Select } from 'antd'
 import React from 'react'
 
 export default function PrimaryProductCategoryForm() {
@@ -12,18 +12,17 @@ export default function PrimaryProductCategoryForm() {
                     <Col xs={24} md={12}>
                         <Form.Item
                             name="year-establishment"
-                            label="دسته بندی محصول"
+                            label="نام دسته بندی"
                         >
                             <Select size="large" placeholder="انتخاب کنید" />
                         </Form.Item>
                     </Col>
                     <Col xs={24} md={12}>
-                        <Form.Item name="lastName" label="نام محصول">
-                            <Input size="large" placeholder="وارد کنید" />
+                        <Form.Item name="lastName" label="فعال/غیر فعال">
+                            <Select size="large" placeholder="انتخاب کنید" />
                         </Form.Item>
                     </Col>
                 </Row>
-
                 <Row dir="ltr">
                     <Col xs={10} md={3} lg={2}>
                         <div className="flex gap-4">

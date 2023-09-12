@@ -12,9 +12,7 @@ interface DataType {
     key: string;
     Row: number;
     ProductName: string;
-    TrackingCode: string;
     ConfirmedRequestCode: string;
-    DateRegistration: string;
     ActivityStatus: string[];
 }
 
@@ -72,26 +70,20 @@ export default function PrimaryProductCategoryTable({ setModalVisible }: { setMo
             key: "1",
         },
         {
-            title: "  دسته بندی محصول",
+            title: "نام دسته بندی",
             dataIndex: "ProductName",
             key: "2",
         },
         {
-            title: "  نام محصول",
-            dataIndex: "TrackingCode",
-            key: "3",
-        },
-
-        {
             title: "فعال/غیر فعال ",
             dataIndex: "ConfirmedRequestCode",
-            key: "4",
+            key: "3",
             render: (e, record) => <Switch defaultChecked />,
         },
 
         {
-            title: "جزئیات",
-            key: "جزئیات",
+            title: "عملیات",
+            key: "عملیات",
             render: (_, record) => (
                 <div className={"flex justify-start"}>
                     <Button type="link" className="text-secondary-500 font-bold" onClick={() => handleEdit(record)}>ویرایش</Button>
@@ -110,10 +102,10 @@ export default function PrimaryProductCategoryTable({ setModalVisible }: { setMo
                         type="primary"
                         onClick={showModal}
                     >
-                        <span className="flex ">
-                            افزودن دسته بندی محصول
-                        </span>
                         <PlusIcon width={24} height={24} />
+                        <span className="flex ">
+                            افزودن دسته بندی
+                        </span>
 
                     </Button>
                 </div>
@@ -205,26 +197,14 @@ export default function PrimaryProductCategoryTable({ setModalVisible }: { setMo
                                 labelCol={{ span: 24 }}
                                 wrapperCol={{ span: 24 }}
                                 name="year"
-                                label="نام"
+                                label="نام دسته بندی"
                             >
-                                <Input size="large" placeholder="وارد کنید" />
+                                <Select size="large" placeholder="انتخاب کنید" />
                             </Form.Item>
                         </Col>
                         <Col xs={24} md={12}>
                             <Form.Item labelCol={{ span: 24 }}
-                                wrapperCol={{ span: 24 }} name="lastName" label="نام محصول">
-                                <Input size="large" placeholder="وارد کنید" />
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={[32, 1]}>
-                        <Col xs={24} md={12}>
-                            <Form.Item
-                                labelCol={{ span: 24 }}
-                                wrapperCol={{ span: 24 }}
-                                name="establishment"
-                                label="وضعیت محصول"
-                            >
+                                wrapperCol={{ span: 24 }} name="lastName" label="فعال/غیر فعال">
                                 <Select size="large" placeholder="انتخاب کنید" />
                             </Form.Item>
                         </Col>
@@ -242,18 +222,14 @@ const data: DataType[] = [
         key: "1",
         Row: 1,
         ProductName: "   دسته اول",
-        TrackingCode: "بنزین پیرولیز",
         ConfirmedRequestCode: "علی امیری",
-        DateRegistration: "خصوصی",
         ActivityStatus: [" غیرفعال"],
     },
     {
         key: "2",
         Row: 2,
         ProductName: "   دسته دوم ",
-        TrackingCode: "بنزین پیرولیز",
         ConfirmedRequestCode: "امیرحسام خالویی",
-        DateRegistration: "خصوصی",
         ActivityStatus: ["  در انتظار بررسی"],
     },
 ];
