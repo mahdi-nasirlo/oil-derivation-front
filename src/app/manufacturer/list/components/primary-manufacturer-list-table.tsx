@@ -3,25 +3,16 @@ import {ColumnsType} from 'antd/es/table';
 import Link from 'next/link';
 import React from 'react'
 import useSWR from "swr";
-import {exeManagerProducerInfo} from "../../../../../units/Page/exeManagerProducerInfo";
-
-
-interface DataType {
-    key: string;
-    Row: number;
-    ProductName: string;
-    TrackingCode: string;
-    ConfirmedRequestCode: string;
-    DateRegistration: string;
-    ActivityStatus: string[];
-}
+import {listFetcher} from "../../../../../lib/server/listFetcher";
+import {ExeManagerProducer, Person} from "../../../../../interfaces/page";
+import {addIndexToData} from "../../../../../lib/addIndexToData";
 
 
 export default function PrimaryManufacturerListTable() {
 
-    const {data, isLoading, mutate} = useSWR("/Page/ExeManagerProducers", exeManagerProducerInfo)
+    const {data, isLoading, mutate} = useSWR<ExeManagerProducer>("/Page/ExeManagerProducers", listFetcher)
 
-    const columns: ColumnsType<DataType> = [
+    const columns: ColumnsType<Person & { Row: number }> = [
         {
             title: "ردیف",
             dataIndex: "Row",
@@ -80,7 +71,7 @@ export default function PrimaryManufacturerListTable() {
             key: "جزئیات",
             render: (_, record) => (
                 <Space size="middle">
-                    <Link href={""} className="action-btn-info">
+                    <Link href={`/manufacturer/info/${record.row}`} className="action-btn-info">
                         مشاهده اطلاعات
                     </Link>
                 </Space>
@@ -93,7 +84,7 @@ export default function PrimaryManufacturerListTable() {
             loading={isLoading}
             className="mt-8"
             columns={columns}
-            dataSource={data}
+            dataSource={addIndexToData(data?.persons)}
             pagination={{
                 defaultPageSize: 10,
                 showSizeChanger: true,
