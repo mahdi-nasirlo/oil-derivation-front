@@ -1,4 +1,4 @@
-export const addIndexToData = (data: any, keyName: string) => {
+export const addIndexToData = (data: any, keyName: string = "Row") => {
     if (!data) return [];
 
     // Use `map` to add an index to each item in the data array
