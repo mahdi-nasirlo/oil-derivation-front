@@ -1,17 +1,17 @@
 "use client";
 
-import {Button, Col, Divider, Form, Input, notification, Row, Typography, Upload,} from "antd";
+import {Button, Col, Divider, Form, Input, Row, Typography, Upload,} from "antd";
 import React from "react";
 import {UploadOutlined} from "@ant-design/icons";
-import {createRequestMaster} from "../../../../../units/RequestMaster/createRequestMaster";
 import useSWRMutation from "swr/mutation";
 import {useRouter} from "next/navigation";
+import {mutationFetcher} from "../../../../../lib/server/mutationFetcher";
 
 export default function Page() {
 
     const router = useRouter()
 
-    const {trigger, isMutating} = useSWRMutation("/RequestMaster/Create", createRequestMaster)
+    const {trigger, isMutating} = useSWRMutation("/RequestMaster/Create", mutationFetcher)
 
     const onFinish = async (values: RequestMasterForm) => {
 
@@ -23,13 +23,8 @@ export default function Page() {
         // @ts-ignore
         const res = await trigger(data)
 
-        notification.success({message: res?.message, placement: "bottomLeft"})
 
-        if (res?.success) {
-            setTimeout(() => {
-                router.push("/dashboard/request/laboratory")
-            }, 200);
-        }
+        router.push("/dashboard/request/laboratory")
 
     };
 

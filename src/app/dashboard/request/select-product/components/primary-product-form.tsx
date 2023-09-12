@@ -2,10 +2,10 @@
 
 import {Button, Col, Form, Row, Select} from "antd";
 import React, {useState} from "react";
-import {getAllProductSelectable} from "../../../../../../units/RequestDetail/getAllProductSelectable";
-import {createRequestDetailProduct} from "../../../../../../units/RequestDetail/createRequestDetailProduct";
 import {SvgIcon} from "@/components/layout/sidebar";
 import useSWRMutation from "swr/mutation";
+import {mutationFetcher} from "../../../../../../lib/server/mutationFetcher";
+import {getCookie} from "cookies-next";
 
 
 export default function PrimaryProductForm({mute}: { mute: any }) {
@@ -16,12 +16,12 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
         data: selectableProduct,
         isMutating: isLDSelectable,
         trigger: getSelectableProduct
-    } = useSWRMutation("/RequestDetail/GetAllProductSelectable", getAllProductSelectable);
+    } = useSWRMutation("/RequestDetail/GetAllProductSelectable", mutationFetcher);
 
     const {
         isMutating: isLDCreateProduct,
         trigger: createProduct
-    } = useSWRMutation("/RequestDetail/CreateProduct", createRequestDetailProduct)
+    } = useSWRMutation("/RequestDetail/CreateProduct", mutationFetcher)
 
 
     const onFinish = async (values: { productUid: string, densityType: boolean }) => {
@@ -36,7 +36,10 @@ export default function PrimaryProductForm({mute}: { mute: any }) {
 
         Setdunsite(value)
 
-        await getSelectableProduct(value)
+        await getSelectableProduct({
+            requestMasterUid: getCookie("requestMasterUid"),
+            densityType: value,
+        })
 
     };
 

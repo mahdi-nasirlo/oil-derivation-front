@@ -5,8 +5,9 @@ import React, {useState} from "react";
 import PrimaryProductTable from "@/app/dashboard/request/formulacion/components/primary-product-table";
 import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
-import {getAllRequestDetailMaterial} from "../../../../../units/RequestDetail/getAllRequestDetailMaterial";
 import {convertKeysToLowerCase} from "../../../../../lib/convertKeysToLowerCase";
+import {listFetcher} from "../../../../../lib/server/listFetcher";
+import {getCookie} from "cookies-next";
 
 export default function Formulacion() {
 
@@ -16,7 +17,7 @@ export default function Formulacion() {
         mutate,
         data: requestMasterMaterial,
         isLoading: requestMasterMaterialLoading,
-    } = useSWR("/RequestDetail/GetPageMaterial", getAllRequestDetailMaterial);
+    } = useSWR("/RequestDetail/GetPageMaterial", url => listFetcher(url, {arg: {requestMasterUid: getCookie("requestMasterUid")}}));
 
     return (
         <>

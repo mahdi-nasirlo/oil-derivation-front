@@ -2,14 +2,13 @@
 import {Button, Col, Divider, Form, Input, InputNumber, Row, Select, Typography,} from "antd";
 import {SvgIcon} from "@/components/layout/sidebar";
 import useSWR from "swr";
-import {getAllMaterial} from "../../../../../../units/Material/getAllMaterial";
 import {useEffect} from "react";
 import {useRouter} from "next/navigation";
 import {getCookie} from "cookies-next";
 import {useForm} from "antd/lib/form/Form";
 import useSWRMutation from "swr/mutation";
-import {createRequestDetailMaterial} from "../../../../../../units/RequestDetail/createRequestDetailMaterial";
-import {updateRequestDetailMaterial} from "../../../../../../units/RequestDetail/updateRequestDetailMaterial";
+import {listFetcher} from "../../../../../../lib/server/listFetcher";
+import {mutationFetcher} from "../../../../../../lib/server/mutationFetcher";
 
 export default function PrimaryProductForm({mute, data, setData}: {
     mute: any,
@@ -20,17 +19,20 @@ export default function PrimaryProductForm({mute, data, setData}: {
 
     const router = useRouter();
 
-    const {data: material, isLoading: isLoadingMaterial} = useSWR("/Material/GetAll", getAllMaterial);
+    const {
+        data: material,
+        isLoading: isLoadingMaterial
+    } = useSWR("/Material/GetAll", url => listFetcher(url, {arg: {name: null, is_active: true}}));
 
     const {
         isMutating: isMutatingCreate,
         trigger: create
-    } = useSWRMutation("/RequestDetail/CreateMaterial", createRequestDetailMaterial)
+    } = useSWRMutation("/RequestDetail/CreateMaterial", mutationFetcher)
 
     const {
         isMutating: isMutatingEdit,
         trigger: edit
-    } = useSWRMutation("/RequestDetail/UpdateMaterial", updateRequestDetailMaterial)
+    } = useSWRMutation("/RequestDetail/UpdateMaterial", mutationFetcher)
 
     const onFinish = async (values: MaterialRequest) => {
         values.requestMasterUid = `${getCookie("requestMasterUid")}`;

@@ -4,26 +4,29 @@ import React from "react";
 import {ColumnsType} from "antd/es/table";
 import PrimaryProductForm from "./components/primary-product-form";
 import useSWR from "swr";
-import {getRequestDetailProduct} from "../../../../../units/RequestDetail/getRequestDetailProduct";
 import useSWRMutation from "swr/mutation";
-import {deleteRequestDetailProduct} from "../../../../../units/RequestDetail/deleteRequestDetailProduct";
+import {mutationFetcher} from "../../../../../lib/server/mutationFetcher";
+import {listFetcher} from "../../../../../lib/server/listFetcher";
+import {getCookie} from "cookies-next";
 
 
 export default function Page() {
 
     const [form] = Form.useForm();
 
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values);
-    };
 
-
-    const {data: product, mutate, isLoading} = useSWR(
-        "/api/RequestDetail/GetPageProduct",
-        getRequestDetailProduct
+    const {data: product, mutate, isLoading} = useSWR<{ records: [], count: number }>(
+        "/RequestDetail/GetPageProduct",
+        url => listFetcher(url, {
+            arg: {
+                requestMasterUid: getCookie("requestMasterUid"),
+                fromRecord: 0,
+                selectRecord: 100
+            }
+        })
     );
 
-    const {isMutating: isDeleting, trigger} = useSWRMutation("/RequestDetail/DeleteProduct", deleteRequestDetailProduct)
+    const {isMutating: isDeleting, trigger} = useSWRMutation("/RequestDetail/DeleteProduct", mutationFetcher)
 
     const columns: ColumnsType<DataType> = [
         {
@@ -74,13 +77,12 @@ export default function Page() {
                 pagination={false}
                 className="mt-6"
                 columns={columns}
-                dataSource={product || []}
+                dataSource={product?.records || []}
             />
             <Divider/>
             <Form
                 form={form}
                 name="register"
-                onFinish={onFinish}
             >
                 <Form.Item
                     className=" mr-3 font-medium"
