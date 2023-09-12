@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Col, Form, Input, Modal, Row, Select } from 'antd'
+import { Button, Col, Form, Modal, Row, Select } from 'antd'
 import { useForm } from 'antd/es/form/Form';
 import React from 'react'
 
@@ -62,26 +62,14 @@ export default function PrimaryProductCategoryModal({ setModalVisible, modalVisi
                             labelCol={{ span: 24 }}
                             wrapperCol={{ span: 24 }}
                             name="year"
-                            label="نام"
+                            label="نام دسته بندی"
                         >
-                            <Input size="large" placeholder="وارد کنید" />
+                            <Select size="large" placeholder="انتخاب کنید" />
                         </Form.Item>
                     </Col>
                     <Col xs={24} md={12}>
                         <Form.Item labelCol={{ span: 24 }}
-                            wrapperCol={{ span: 24 }} name="lastName" label="نام محصول">
-                            <Input size="large" placeholder="وارد کنید" />
-                        </Form.Item>
-                    </Col>
-                </Row>
-                <Row gutter={[32, 1]}>
-                    <Col xs={24} md={12}>
-                        <Form.Item
-                            labelCol={{ span: 24 }}
-                            wrapperCol={{ span: 24 }}
-                            name="establishment"
-                            label="وضعیت محصول"
-                        >
+                            wrapperCol={{ span: 24 }} name="lastName" label="فعال/غیر فعال">
                             <Select size="large" placeholder="انتخاب کنید" />
                         </Form.Item>
                     </Col>
